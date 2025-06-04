@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>類風濕性關節炎快速評估指數 (RAPID3) 計算器</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'Heiti TC', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .time-estimate {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+        .question-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .question-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 15px;
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+        .difficulty-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .difficulty-option {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+        .difficulty-option:hover {
+            border-color: #3498db;
+            background-color: #f8f9fa;
+        }
+        .difficulty-option.selected {
+            border-color: #2980b9;
+            background-color: #edf7ff;
+        }
+        .difficulty-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .difficulty-option label {
+            font-weight: normal;
+            cursor: pointer;
+            flex: 1;
+        }
+        .scale-container {
+            margin-top: 10px;
+        }
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .scale-input {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #27ae60, #f39c12, #e74c3c);
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+        .scale-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2980b9;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .scale-input::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2980b9;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .current-value {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 10px;
+            padding: 5px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 250px;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #edf7ff;
+            display: none;
+        }
+        .result-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #2980b9;
+        }
+        .interpretation {
+            font-size: 18px;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .high-severity {
+            background-color: #fdf2f2;
+            color: #c53030;
+            border-left: 4px solid #e53e3e;
+        }
+        .moderate-severity {
+            background-color: #fffbf0;
+            color: #b7791f;
+            border-left: 4px solid #f6ad55;
+        }
+        .low-severity {
+            background-color: #fff5f0;
+            color: #c05621;
+            border-left: 4px solid #fd9853;
+        }
+        .near-remission {
+            background-color: #f0fff4;
+            color: #22543d;
+            border-left: 4px solid #48bb78;
+        }
+        .info-box {
+            background-color: #d4e6f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .calculation-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .calculation-details h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        .score-item {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f3f4;
+            border-radius: 6px;
+        }
+        .score-item-title {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .score-item-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2980b9;
+        }
+        @media (max-width: 768px) {
+            .score-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>類風濕性關節炎快速評估指數 (RAPID3) 計算器</h1>
+        
+        <div class="header-info">
+            <div class="time-estimate">預估完成時間：3分鐘</div>
+            <p>RAPID3 是一個簡短的問卷，用於評估類風濕性關節炎疾病活動性，幫助您和醫師更好地了解疾病對您的影響。</p>
+        </div>
+        
+        <div class="info-box">
+            <p><strong>什麼是 RAPID3？</strong></p>
+            <p>RAPID3 (Routine Assessment of Patient Index Data 3) 是一個簡單快速的類風濕性關節炎疾病活動性評估工具。它包含三個主要部分：身體功能、疼痛程度和整體健康評估。</p>
+            <p><strong>使用建議：</strong>建議每月至少完成一次，並在門診就醫當天進行評估，有助於您和醫師制定更好的治療計劃。</p>
+        </div>
+        
+        <div class="section">
+            <h3>第一部分：身體功能評估 (MDHAQ)</h3>
+            <p>請根據您過去一週的情況，選擇每項活動的困難程度：</p>
+            
+            <div class="question-group">
+                <label class="question-label">1. 穿衣，包括鞋帶和鈕扣</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('dressing', 0, this)">
+                        <input type="radio" name="dressing" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('dressing', 1, this)">
+                        <input type="radio" name="dressing" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('dressing', 2, this)">
+                        <input type="radio" name="dressing" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('dressing', 3, this)">
+                        <input type="radio" name="dressing" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">2. 起床和下床</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('arising', 0, this)">
+                        <input type="radio" name="arising" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('arising', 1, this)">
+                        <input type="radio" name="arising" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('arising', 2, this)">
+                        <input type="radio" name="arising" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('arising', 3, this)">
+                        <input type="radio" name="arising" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">3. 將滿杯或滿杯水舉到嘴邊</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('eating', 0, this)">
+                        <input type="radio" name="eating" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('eating', 1, this)">
+                        <input type="radio" name="eating" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('eating', 2, this)">
+                        <input type="radio" name="eating" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('eating', 3, this)">
+                        <input type="radio" name="eating" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">4. 在平地上走路</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('walking', 0, this)">
+                        <input type="radio" name="walking" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('walking', 1, this)">
+                        <input type="radio" name="walking" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('walking', 2, this)">
+                        <input type="radio" name="walking" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('walking', 3, this)">
+                        <input type="radio" name="walking" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">5. 清洗和擦乾全身</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('hygiene', 0, this)">
+                        <input type="radio" name="hygiene" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('hygiene', 1, this)">
+                        <input type="radio" name="hygiene" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('hygiene', 2, this)">
+                        <input type="radio" name="hygiene" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('hygiene', 3, this)">
+                        <input type="radio" name="hygiene" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">6. 彎腰從地板撿起衣物</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('reach', 0, this)">
+                        <input type="radio" name="reach" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('reach', 1, this)">
+                        <input type="radio" name="reach" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('reach', 2, this)">
+                        <input type="radio" name="reach" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('reach', 3, this)">
+                        <input type="radio" name="reach" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">7. 開關水龍頭</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('grip', 0, this)">
+                        <input type="radio" name="grip" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('grip', 1, this)">
+                        <input type="radio" name="grip" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('grip', 2, this)">
+                        <input type="radio" name="grip" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('grip', 3, this)">
+                        <input type="radio" name="grip" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">8. 上下車</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('activities', 0, this)">
+                        <input type="radio" name="activities" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('activities', 1, this)">
+                        <input type="radio" name="activities" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('activities', 2, this)">
+                        <input type="radio" name="activities" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('activities', 3, this)">
+                        <input type="radio" name="activities" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">9. 步行兩英里或三公里（如果您願意的話）</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('walking2miles', 0, this)">
+                        <input type="radio" name="walking2miles" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('walking2miles', 1, this)">
+                        <input type="radio" name="walking2miles" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('walking2miles', 2, this)">
+                        <input type="radio" name="walking2miles" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('walking2miles', 3, this)">
+                        <input type="radio" name="walking2miles" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">10. 參加您喜歡的娛樂活動和運動（如果您願意的話）</label>
+                <div class="difficulty-options">
+                    <div class="difficulty-option" onclick="selectOption('recreation', 0, this)">
+                        <input type="radio" name="recreation" value="0">
+                        <label>沒有困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('recreation', 1, this)">
+                        <input type="radio" name="recreation" value="1">
+                        <label>有些困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('recreation', 2, this)">
+                        <input type="radio" name="recreation" value="2">
+                        <label>很大困難</label>
+                    </div>
+                    <div class="difficulty-option" onclick="selectOption('recreation', 3, this)">
+                        <input type="radio" name="recreation" value="3">
+                        <label>無法進行</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>第二部分：疼痛評估</h3>
+            <p>請評估您過去一週因關節炎引起的疼痛程度：</p>
+            
+            <div class="question-group">
+                <label class="question-label">疼痛程度 (0-10)</label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>無疼痛</span>
+                        <span>最嚴重疼痛</span>
+                    </div>
+                    <input type="range" class="scale-input" id="painScore" min="0" max="10" value="0" step="0.1">
+                    <div class="current-value" id="painScore-value">0.0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>第三部分：整體健康評估</h3>
+            <p>考慮您過去一週的所有情況，包括疾病、身體、情緒和社交方面，您如何評估自己的整體健康狀況？</p>
+            
+            <div class="question-group">
+                <label class="question-label">整體健康狀況 (0-10)</label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>非常好</span>
+                        <span>非常差</span>
+                    </div>
+                    <input type="range" class="scale-input" id="globalScore" min="0" max="10" value="0" step="0.1">
+                    <div class="current-value" id="globalScore-value">0.0</div>
+                </div>
+            </div>
+        </div>
+        
+        <button onclick="calculateRAPID3()" id="calculateBtn">計算 RAPID3 分數</button>
+        
+        <div id="result" class="result">
+            <h3>RAPID3 評估結果</h3>
+            <div class="result-value" id="rapid3Score">--</div>
+            
+            <div class="score-breakdown">
+                <div class="score-item">
+                    <div class="score-item-title">身體功能</div>
+                    <div class="score-item-value" id="functionScore">--</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-item-title">疼痛程度</div>
+                    <div class="score-item-value" id="painDisplay">--</div>
+                </div>
+                <div class="score-item">
+                    <div class="score-item-title">整體健康</div>
+                    <div class="score-item-value" id="globalDisplay">--</div>
+                </div>
+            </div>
+            
+            <div id="interpretation" class="interpretation">
+                <div id="interpretationText"></div>
+            </div>
+            
+            <div class="calculation-details">
+                <h4>RAPID3 分數解釋</h4>
+                <ul>
+                    <li><strong>接近緩解 (0-3)：</strong>疾病活動性很低，症狀控制良好</li>
+                    <li><strong>輕度嚴重度 (3.1-6)：</strong>輕度疾病活動性，需要持續監測</li>
+                    <li><strong>中度嚴重度 (6.1-12)：</strong>中度疾病活動性，可能需要調整治療</li>
+                    <li><strong>高度嚴重度 (12.1-30)：</strong>高度疾病活動性，需要積極治療</li>
+                </ul>
+                
+                <h4>臨床建議</h4>
+                <p>請將此結果與您的醫師分享，以幫助評估治療效果並制定適合的治療計劃。建議每月進行一次評估，以追蹤疾病變化。</p>
+                
+                <div id="calculationBreakdown"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 全域變數
+        var answers = {
+            dressing: null,
+            arising: null,
+            eating: null,
+            walking: null,
+            hygiene: null,
+            reach: null,
+            grip: null,
+            activities: null,
+            walking2miles: null,
+            recreation: null,
+            painScore: 0,
+            globalScore: 0
+        };
+
+        // 選擇選項的函數
+        function selectOption(questionName, value, element) {
+            // 移除同組其他選項的選中狀態
+            var siblings = element.parentNode.children;
+            for (var i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('selected');
+                var radio = siblings[i].querySelector('input[type="radio"]');
+                if (radio) radio.checked = false;
+            }
+            
+            // 設置當前選項為選中狀態
+            element.classList.add('selected');
+            var radio = element.querySelector('input[type="radio"]');
+            if (radio) radio.checked = true;
+            
+            // 保存答案
+            answers[questionName] = parseInt(value);
+            
+            // 檢查是否可以啟用計算按鈕
+            checkCanCalculate();
+        }
+
+        // 更新滑桿值
+        function updateSliderValue(sliderId) {
+            var slider = document.getElementById(sliderId);
+            var valueDisplay = document.getElementById(sliderId + '-value');
+            
+            if (slider && valueDisplay) {
+                var value = parseFloat(slider.value);
+                valueDisplay.textContent = value.toFixed(1);
+                answers[sliderId] = value;
+                checkCanCalculate();
+            }
+        }
+
+        // 檢查是否可以啟用計算按鈕
+        function checkCanCalculate() {
+            var functionQuestions = ['dressing', 'arising', 'eating', 'walking', 'hygiene', 'reach', 'grip', 'activities', 'walking2miles', 'recreation'];
+            var allAnswered = true;
+            
+            for (var i = 0; i < functionQuestions.length; i++) {
+                if (answers[functionQuestions[i]] === null) {
+                    allAnswered = false;
+                    break;
+                }
+            }
+            
+            var calculateBtn = document.getElementById('calculateBtn');
+            if (calculateBtn) {
+                calculateBtn.disabled = !allAnswered;
+            }
+        }
+
+        // 計算 RAPID3
+        function calculateRAPID3() {
+            try {
+                // 計算身體功能分數
+                var functionQuestions = ['dressing', 'arising', 'eating', 'walking', 'hygiene', 'reach', 'grip', 'activities', 'walking2miles', 'recreation'];
+                var functionTotal = 0;
+                var functionCount = 0;
+                
+                for (var i = 0; i < functionQuestions.length; i++) {
+                    if (answers[functionQuestions[i]] !== null) {
+                        functionTotal += answers[functionQuestions[i]];
+                        functionCount++;
+                    }
+                }
+                
+                if (functionCount === 0) {
+                    alert('請完成所有身體功能評估項目');
+                    return;
+                }
+                
+                // 身體功能分數 = (總分 / 題數) × 10
+                var functionScore = (functionTotal / functionCount) * 10;
+                
+                // 疼痛分數和整體健康分數
+                var painScore = answers.painScore;
+                var globalScore = answers.globalScore;
+                
+                // RAPID3 總分
+                var rapid3Total = functionScore + painScore + globalScore;
+                
+                // 顯示結果
+                document.getElementById('rapid3Score').textContent = rapid3Total.toFixed(1);
+                document.getElementById('functionScore').textContent = functionScore.toFixed(1);
+                document.getElementById('painDisplay').textContent = painScore.toFixed(1);
+                document.getElementById('globalDisplay').textContent = globalScore.toFixed(1);
+                
+                // 解釋結果
+                interpretResult(rapid3Total);
+                
+                // 顯示計算細節
+                showCalculationDetails(functionScore, painScore, globalScore, rapid3Total, functionTotal, functionCount);
+                
+                // 顯示結果區域
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                alert('計算時發生錯誤，請檢查所有項目是否已填寫完整');
+            }
+        }
+
+        // 解釋結果
+        function interpretResult(rapid3Score) {
+            var interpretationDiv = document.getElementById('interpretation');
+            var interpretationText = document.getElementById('interpretationText');
+            
+            var className, interpretation;
+            
+            if (rapid3Score <= 3) {
+                className = 'near-remission';
+                interpretation = '<strong>接近緩解 (RAPID3 ≤ 3)</strong><br>' +
+                    '您的疾病活動性很低，症狀控制良好：<br>' +
+                    '• 繼續維持目前的治療方案<br>' +
+                    '• 保持規律運動和健康生活型態<br>' +
+                    '• 定期門診追蹤<br>' +
+                    '• 注意症狀變化，如有惡化請及時就醫';
+            } else if (rapid3Score <= 6) {
+                className = 'low-severity';
+                interpretation = '<strong>輕度嚴重度 (RAPID3 3.1-6)</strong><br>' +
+                    '您有輕度的疾病活動性：<br>' +
+                    '• 維持目前治療，密切監測症狀<br>' +
+                    '• 加強關節保護和適度運動<br>' +
+                    '• 注意疲勞管理和壓力調適<br>' +
+                    '• 每月評估症狀變化';
+            } else if (rapid3Score <= 12) {
+                className = 'moderate-severity';
+                interpretation = '<strong>中度嚴重度 (RAPID3 6.1-12)</strong><br>' +
+                    '您有中度的疾病活動性，可能需要調整治療：<br>' +
+                    '• 與醫師討論治療方案的調整<br>' +
+                    '• 考慮增加或更換抗風濕藥物<br>' +
+                    '• 加強復健治療和關節保護<br>' +
+                    '• 更頻繁的門診追蹤';
+            } else {
+                className = 'high-severity';
+                interpretation = '<strong>高度嚴重度 (RAPID3 > 12)</strong><br>' +
+                    '您有高度的疾病活動性，需要積極治療：<br>' +
+                    '• 立即與醫師討論治療方案<br>' +
+                    '• 可能需要使用生物製劑或標靶藥物<br>' +
+                    '• 積極的復健治療和疼痛管理<br>' +
+                    '• 密切監測病情變化';
+            }
+            
+            interpretationDiv.className = 'interpretation ' + className;
+            interpretationText.innerHTML = interpretation;
+        }
+
+        // 顯示計算細節
+        function showCalculationDetails(functionScore, painScore, globalScore, rapid3Total, functionTotal, functionCount) {
+            var calculationDiv = document.getElementById('calculationBreakdown');
+            
+            calculationDiv.innerHTML = 
+                '<h4>計算細節</h4>' +
+                '<p><strong>身體功能分數計算：</strong></p>' +
+                '<p>• 10項活動總分：' + functionTotal + ' 分</p>' +
+                '<p>• 平均分數：' + (functionTotal / functionCount).toFixed(2) + '</p>' +
+                '<p>• 身體功能分數：' + (functionTotal / functionCount).toFixed(2) + ' × 10 = ' + functionScore.toFixed(1) + '</p>' +
+                '<br>' +
+                '<p><strong>RAPID3 總分計算：</strong></p>' +
+                '<p>• 身體功能分數：' + functionScore.toFixed(1) + '</p>' +
+                '<p>• 疼痛分數：' + painScore.toFixed(1) + '</p>' +
+                '<p>• 整體健康分數：' + globalScore.toFixed(1) + '</p>' +
+                '<p><strong>RAPID3 總分：' + functionScore.toFixed(1) + ' + ' + painScore.toFixed(1) + ' + ' + globalScore.toFixed(1) + ' = ' + rapid3Total.toFixed(1) + '</strong></p>';
+        }
+
+        // 初始化頁面
+        function initializePage() {
+            // 設置滑桿事件監聽器
+            var painSlider = document.getElementById('painScore');
+            var globalSlider = document.getElementById('globalScore');
+            
+            if (painSlider) {
+                painSlider.addEventListener('input', function() {
+                    updateSliderValue('painScore');
+                });
+                // 初始化顯示值
+                updateSliderValue('painScore');
+            }
+            
+            if (globalSlider) {
+                globalSlider.addEventListener('input', function() {
+                    updateSliderValue('globalScore');
+                });
+                // 初始化顯示值
+                updateSliderValue('globalScore');
+            }
+            
+            // 初始化計算按鈕狀態
+            checkCanCalculate();
+        }
+
+        // 當頁面載入完成時初始化
+        window.addEventListener('load', initializePage);
+        
+        // 備用初始化（防止某些情況下 load 事件未觸發）
+        if (document.readyState === 'complete') {
+            initializePage();
+        } else {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康專欄</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+        
+         
+        .disease-content {
+            padding: 20px;
+        }
+        
+        .disease-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+        
+        .disease-content p {
+            font-size: 0.95rem;
+            color: #6B7280;
+        }
+        
+        .disease-content a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .disease-content a:hover {
+            color: #2563EB;
+        }
+        
+        .main-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+        }
+        
+        .sidebar ul li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .sidebar ul li a:before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        
+        .sidebar ul li a:hover {
+            color: #3498db;
+        }
+        
+        .sidebar ul li a.active {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .sidebar ul li a.active:before {
+            color: #3498db;
+        }
+        
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .intro-text {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 子頁面樣式 */
+        .subpage {
+            display: none;
+        }
+
+        .subpage.active {
+            display: block;
+        }
+        
+        /* 文章樣式 */
+        .latest-article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .latest-article h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .latest-article .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .collapsible-container {
+            margin-bottom: 20px;
+        }
+        
+        .collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.4s;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .article {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+        }
+        
+        .article h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .article .date {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .article p {
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* 文章列表卡片樣式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .article-item {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .article-content {
+            padding: 20px;
+            flex-grow: 1;
+            position: relative;
+            padding-right: 100px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .article-content a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .article-content a:hover h3 {
+            color: #3498db;
+        }
+        
+        .article-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+        }
+        
+        .article-date .year-month {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .article-date .day {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* 分頁樣式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .pagination a {
+            color: #333;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination a.active {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #3498db;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #f1f1f1;
+        }
+        
+        .pagination .prev, .pagination .next {
+            background-color: #fff;
+        }
+        
+        .pagination .prev.disabled, .pagination .next.disabled {
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 0 0 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .article-content {
+                padding-right: 20px;
+            }
+            
+            .article-date {
+                position: static;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+            
+            .article-date .day {
+                display: inline-block;
+                margin-right: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .article-date .year-month {
+                display: inline-block;
+            }
+            .pagination {
+                flex-wrap: wrap;
+            }
+            
+            .pagination a {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>最新內容</h1>
+            <div class="breadcrumb">
+                <a href="index.html">首頁</a>
+                <span>/</span>
+                最新內容
+            </div>
+
+        </div>
+        
+        <div class="main-wrapper">
+            <aside class="sidebar">
+                <h2>類別</h2>
+                <ul>
+                    <li><a href="#" class="tab-link" data-target="articles">風濕免疫</a></li>
+                    <li><a href="#" class="tab-link" data-target="allergy">過敏</a></li>
+                    <li><a href="#" class="tab-link" data-target="arthritis">關節炎</a></li>
+                    <li><a href="#" class="tab-link" data-target="medication">免疫不孕症</a></li>
+                    <li><a href="#" class="tab-link" data-target="gout">痛風</a></li>
+                    <li><a href="#" class="tab-link" data-target="medication">藥物</a></li>
+                    
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <!-- 子頁面容器 -->
+                <div class="subpages-container">
+                    <!-- 文章列表頁面 -->
+                    <div id="articles" class="subpage active">
+                         <!-- 會根據當前頁數顯示不同的文章列表 -->
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        
+                        <!-- 分頁控制 -->
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 李苡萍醫師風濕免疫科版權所有。</p>
+        </footer>
+    </div>
+
+    <!-- 子頁面相關JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 定義文章數據和每頁顯示數量
+            const articlesPerPage = 6; // 每頁顯示6篇文章
+            // 健康專欄文章數據
+            const articles = [
+                {
+                    title: "地中海飲食法：長壽的秘密武器 - 科學證實的健康飲食模式",
+                    url: "mediterranean-diet.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "15"
+                    }
+                },
+                {
+                    title: "居家運動指南：在家也能維持健康體態的簡單運動",
+                    url: "home-exercise.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "12"
+                    }
+                },
+                {
+                    title: "睡眠品質提升術：打造黃金8小時睡眠的實用方法",
+                    url: "sleep-quality.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "10"
+                    }
+                },
+                {
+                    title: "壓力管理大全：現代人必學的減壓技巧與心理調適",
+                    url: "stress-management.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "08"
+                    }
+                },
+                {
+                    title: "維生素D的重要性：陽光維生素對健康的影響",
+                    url: "vitamin-d-benefits.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "05"
+                    }
+                },
+                {
+                    title: "腸道健康守護者：益生菌的選擇與應用指南",
+                    url: "probiotics-guide.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "03"
+                    }
+                },
+                {
+                    title: "冬季養生攻略：寒冷季節的健康保養要點",
+                    url: "winter-health.html",
+                    date: {
+                        year_month: "2024/12",
+                        day: "28"
+                    }
+                },
+                {
+                    title: "水分攝取指南：如何正確補充身體所需水分",
+                    url: "hydration-guide.html",
+                    date: {
+                        year_month: "2024/12",
+                        day: "25"
+                    }
+                },
+                {
+                    title: "抗氧化食物大解析：延緩老化的天然食療法",
+                    url: "antioxidant-foods.html",
+                    date: {
+                        year_month: "2024/12",
+                        day: "22"
+                    }
+                },
+
+            ];
+
+            
+            
+            // 子頁面切換功能
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.classList.contains('tab-link')) {
+                        e.preventDefault();
+                        // 移除所有活動狀態
+                        document.querySelectorAll('.sidebar ul li a').forEach(lnk => {
+                            lnk.classList.remove('active');
+                        });
+                        
+                        document.querySelectorAll('.subpage').forEach(page => {
+                            page.classList.remove('active');
+                        });
+                        
+                        // 設置當前活動狀態
+                        this.classList.add('active');
+                        const targetId = this.getAttribute('data-target');
+                        if (document.getElementById(targetId)) {
+                            document.getElementById(targetId).classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // 可收納內容功能
+            const collapsibles = document.getElementsByClassName("collapsible");
+            for (let i = 0; i < collapsibles.length; i++) {
+                collapsibles[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+            
+            // 查找并設置初始活動的標籤
+            if (document.querySelector('.tab-link[data-target="articles"]')) {
+                document.querySelector('.tab-link[data-target="articles"]').classList.add('active');
+                document.getElementById('articles')?.classList.add('active');
+            }
+            
+            // 設置分頁功能
+            setupPagination();
+            
+            /**
+             * 設置分頁功能並處理URL參數
+             */
+            function setupPagination() {
+                if (articles.length === 0) return;
+                
+                // 獲取當前頁碼 (從URL參數)
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentPage = parseInt(urlParams.get('page')) || 1;
+                
+                // 計算總頁數
+                const totalPages = Math.ceil(articles.length / articlesPerPage);
+                
+                // 顯示文章和分頁
+                displayArticles(currentPage);
+                displayPagination(currentPage, totalPages);
+                
+                // 為分頁鏈接添加事件監聽器
+                document.querySelectorAll('.pagination a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!this.classList.contains('disabled')) {
+                            e.preventDefault();
+                            const page = parseInt(this.getAttribute('href').split('=')[1]);
+                            displayArticles(page);
+                            displayPagination(page, totalPages);
+                            
+                            // 更新URL，但不重新加載頁面
+                            const newUrl = window.location.pathname + `?page=${page}`;
+                            history.pushState({page: page}, '', newUrl);
+                        }
+                    });
+                });
+            }
+            
+            /**
+             * 根據頁碼顯示文章
+             * @param {number} page - 當前頁碼
+             */
+            function displayArticles(page) {
+                const articleGrid = document.querySelector('.article-grid');
+                if (!articleGrid) return;
+                
+                articleGrid.innerHTML = '';
+                
+                const startIndex = (page - 1) * articlesPerPage;
+                const endIndex = Math.min(startIndex + articlesPerPage, articles.length);
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    const article = articles[i];
+                    const articleElement = document.createElement('article');
+                    articleElement.classList.add('article-item');
+                    
+                    articleElement.innerHTML = `
+                        <div class="article-content">
+                            <a href="${article.url}">
+                                <h3>${article.title}</h3>
+                            </a>
+                            <div class="article-date">
+                                <div class="year-month">${article.date.year_month}</div>
+                                <div class="day">${article.date.day}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    articleGrid.appendChild(articleElement);
+                }
+            }
+            
+            /**
+             * 顯示分頁控制
+             * @param {number} currentPage - 當前頁碼
+             * @param {number} totalPages - 總頁數
+             */
+            function displayPagination(currentPage, totalPages) {
+                const paginationContainer = document.querySelector('.pagination');
+                if (!paginationContainer) return;
+                
+                paginationContainer.innerHTML = '';
+                
+                // 上一頁按鈕
+                const prevButton = document.createElement('a');
+                prevButton.href = `?page=${currentPage - 1}`;
+                prevButton.textContent = '« 上一頁';
+                prevButton.classList.add('prev');
+                
+                if (currentPage === 1) {
+                    prevButton.classList.add('disabled');
+                    prevButton.href = 'javascript:void(0)';
+                }
+                
+                paginationContainer.appendChild(prevButton);
+                
+                // 頁碼按鈕
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageLink = document.createElement('a');
+                    pageLink.href = `?page=${i}`;
+                    pageLink.textContent = i;
+                    
+                    if (i === currentPage) {
+                        pageLink.classList.add('active');
+                    }
+                    
+                    paginationContainer.appendChild(pageLink);
+                }
+                
+                // 下一頁按鈕
+                const nextButton = document.createElement('a');
+                nextButton.href = `?page=${currentPage + 1}`;
+                nextButton.textContent = '下一頁 »';
+                nextButton.classList.add('next');
+                
+                if (currentPage === totalPages) {
+                    nextButton.classList.add('disabled');
+                    nextButton.href = 'javascript:void(0)';
+                }
+                
+                paginationContainer.appendChild(nextButton);
+            }
+        });
+    </script>
+</body>
+</html>

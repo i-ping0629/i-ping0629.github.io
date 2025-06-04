@@ -1,0 +1,20 @@
+<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 地標外框 -->
+  <path d="M15 2C10.0294 2 6 6.0294 6 11C6 18.5 15 28 15 28C15 28 24 18.5 24 11C24 6.0294 19.9706 2 15 2Z" 
+        fill="#3B82F6" stroke="#2563EB" stroke-width="1.5"/>
+  
+  <!-- 內部圓點 -->
+  <circle cx="15" cy="11" r="4" fill="white"/>
+  
+  <!-- 建築物圖標 -->
+  <rect x="12" y="8" width="6" height="6" fill="#3B82F6"/>
+  <rect x="12.5" y="8.5" width="1" height="1" fill="white"/>
+  <rect x="14.5" y="8.5" width="1" height="1" fill="white"/>
+  <rect x="16.5" y="8.5" width="1" height="1" fill="white"/>
+  <rect x="12.5" y="10.5" width="1" height="1" fill="white"/>
+  <rect x="14.5" y="10.5" width="1" height="1" fill="white"/>
+  <rect x="16.5" y="10.5" width="1" height="1" fill="white"/>
+  <rect x="12.5" y="12.5" width="1" height="1" fill="white"/>
+  <rect x="14.5" y="12.5" width="1" height="1" fill="white"/>
+  <rect x="16.5" y="12.5" width="1" height="1" fill="white"/>
+</svg>

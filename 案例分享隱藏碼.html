@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例分享</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+        
+        .main-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+        }
+        
+        .sidebar ul li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .sidebar ul li a:before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        
+        .sidebar ul li a:hover {
+            color: #3498db;
+        }
+        
+        .sidebar ul li a.active {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .sidebar ul li a.active:before {
+            color: #3498db;
+        }
+        
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .intro-text {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 子頁面樣式 */
+        .subpage {
+            display: none;
+        }
+
+        .subpage.active {
+            display: block;
+        }
+        
+        /* 文章列表卡片樣式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .article-item {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .article-content {
+            padding: 20px;
+            flex-grow: 1;
+            position: relative;
+            padding-right: 100px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .article-content a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .article-content a:hover h3 {
+            color: #3498db;
+        }
+        
+        .article-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+        }
+        
+        .article-date .year-month {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .article-date .day {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* 分頁樣式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .pagination a {
+            color: #333;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination a.active {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #3498db;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #f1f1f1;
+        }
+        
+        .pagination .prev, .pagination .next {
+            background-color: #fff;
+        }
+        
+        .pagination .prev.disabled, .pagination .next.disabled {
+            color: #ccc;
+            pointer-events: none;
+        }
+        
+        /* 案例介紹樣式 */
+        .case-studies {
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .underline {
+            width: 60px;
+            height: 3px;
+            background-color: #f39c12;
+            margin: 0 auto 20px;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .case-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #3498db;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .case-card h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .case-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .read-more-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more-link:hover {
+            color: #2980b9;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 0 0 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .article-content {
+                padding-right: 20px;
+            }
+            
+            .article-date {
+                position: static;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+            
+            .article-date .day {
+                display: inline-block;
+                margin-right: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .article-date .year-month {
+                display: inline-block;
+            }
+            
+            .pagination {
+                flex-wrap: wrap;
+            }
+            
+            .pagination a {
+                margin-bottom: 5px;
+            }
+            
+            .cases-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .case-card {
+                padding: 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>案例分享</h1>
+            <div class="breadcrumb">
+                <a href="file:///C:/Users/user/Desktop/images/updated-rheumatology-website-with-subpages20250522.html#contact">首頁</a>
+                <span>/</span>
+                <a href="file:///C:/Users/user/Desktop/clean-ra-page.html">案例分享</a>
+            </div>
+        </header>
+  
+            </aside>
+            
+            <main class="main-content">
+                <!-- 文章列表頁面 -->
+                <div id="articles" class="subpage active">
+                    <div class="article-grid">
+                        <!-- 文章列表會由JavaScript動態生成 -->
+                    </div>
+                    
+                    <!-- 分頁控制 - 暫時隱藏
+                    <div class="pagination">
+                       分頁按鈕由JavaScript生成 -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- 案例介紹區塊 -->
+        <section class="case-studies">
+            <div class="section-header">
+                 <!-- <div class="underline"></div> -->
+                <p>臨床真實治療案例分享，希望能為相似情況的患者提供參考</p>
+            </div>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <h3>39歲女性類風濕性關節炎成功治療案例</h3>
+                    <p>林小姐長期飽受多關節疼痛困擾，經過精準診斷和個人化治療計劃，症狀獲得顯著改善。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+                
+                <div class="case-card">
+                    <h3>紅斑性狼瘡患者生活品質提升</h3>
+                    <p>張女士經過系統性治療和生活方式調整，成功控制疾病活動度，重返正常生活。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+                
+                <div class="case-card">
+                    <h3>乾癬關節炎合併用藥治療</h3>
+                    <p>王先生原本關節變形嚴重，通過新型生物製劑治療後，關節腫脹減輕，皮膚症狀也獲得控制。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+                
+                <div class="case-card">
+                    <h3>免疫不孕治療成功案例</h3>
+                    <p>陳小姐經歷多次懷孕失敗，診斷為抗磷脂質症候群，經過個人化治療方案，成功懷孕並順利生產。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 類風濕性關節炎醫學資訊網站. 保留所有權利。</p>
+        </footer>
+    </div>
+
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 定義文章數據和每頁顯示數量
+            const articlesPerPage = 6; // 每頁顯示6篇文章
+            // 文章數據（移除早期症狀診斷那篇）
+            
+            // 子頁面切換功能
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.classList.contains('tab-link')) {
+                        e.preventDefault();
+                        // 移除所有活動狀態
+                        document.querySelectorAll('.sidebar ul li a').forEach(lnk => {
+                            lnk.classList.remove('active');
+                        });
+                        
+                        document.querySelectorAll('.subpage').forEach(page => {
+                            page.classList.remove('active');
+                        });
+                        
+                        // 設置當前活動狀態
+                        this.classList.add('active');
+                        const targetId = this.getAttribute('data-target');
+                        if (document.getElementById(targetId)) {
+                            document.getElementById(targetId).classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // 顯示所有文章（不使用分頁）
+            displayAllArticles();
+            
+            /**
+             * 顯示所有文章
+             */
+            function displayAllArticles() {
+                const articleGrid = document.querySelector('.article-grid');
+                if (!articleGrid) return;
+                
+                articleGrid.innerHTML = '';
+                
+                articles.forEach(article => {
+                    const articleElement = document.createElement('article');
+                    articleElement.classList.add('article-item');
+                    
+                    articleElement.innerHTML = `
+                        <div class="article-content">
+                            <a href="${article.url}">
+                                <h3>${article.title}</h3>
+                            </a>
+                            <div class="article-date">
+                                <div class="year-month">${article.date.year_month}</div>
+                                <div class="day">${article.date.day}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    articleGrid.appendChild(articleElement);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

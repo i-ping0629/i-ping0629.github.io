@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免疫疾病症狀自我檢測</title>
+    <style>
+        :root {
+            --primary-color: #3B82F6;
+            --secondary-color: #EAB308;
+            --text-color: #1F2937;
+            --bg-light: #F9FAFB;
+            --accent-light: #F3F4F6;
+            --accent-dark: #0F172A;
+            --accent-light-blue: #EFF6FF;
+            --red-color: #EF4444;
+            --green-color: #10B981;
+            --yellow-color: #F59E0B;
+            --purple-color: #8B5CF6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .logo p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--accent-dark);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 20px;
+            color: var(--text-color);
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .disclaimer {
+            background-color: #FEF2F2;
+            border-left: 4px solid var(--red-color);
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .disclaimer h3 {
+            color: var(--red-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .disclaimer p {
+            color: #991B1B;
+            font-size: 0.95rem;
+        }
+        
+        .symptom-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .category {
+            flex: 1;
+            min-width: 200px;
+            background-color: var(--accent-light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .category-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .symptom-list {
+            list-style: none;
+        }
+        
+        .symptom-item {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .symptom-checkbox {
+            position: absolute;
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+        
+        .symptom-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+        
+        .symptom-label:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        .symptom-checkbox:checked + .symptom-label {
+            background-color: var(--accent-light-blue);
+            font-weight: bold;
+        }
+        
+        .checkmark {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 4px;
+            margin-right: 10px;
+            position: relative;
+        }
+        
+        .symptom-checkbox:checked + .symptom-label .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid var(--primary-color);
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        .analyze-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 30px auto;
+            text-align: center;
+        }
+        
+        .analyze-btn:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .results-section {
+            display: none;
+            margin-top: 40px;
+        }
+        
+        .results-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .disease-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .disease-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .disease-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .disease-card.high-risk {
+            border-top-color: var(--red-color);
+        }
+        
+        .disease-card.moderate-risk {
+            border-top-color: var(--yellow-color);
+        }
+        
+        .disease-card.low-risk {
+            border-top-color: var(--green-color);
+        }
+        
+        .disease-header {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--accent-light);
+        }
+        
+        .disease-name {
+            font-size: 1.2rem;
+            color: var(--accent-dark);
+        }
+        
+        .risk-badge {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+        
+        .high-risk .risk-badge {
+            background-color: var(--red-color);
+        }
+        
+        .moderate-risk .risk-badge {
+            background-color: var(--yellow-color);
+        }
+        
+        .low-risk .risk-badge {
+            background-color: var(--green-color);
+        }
+        
+        .disease-content {
+            padding: 20px;
+        }
+        
+        .symptoms-matched {
+            margin-bottom: 15px;
+        }
+        
+        .symptoms-matched h4 {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+        
+        .matched-list {
+            list-style: none;
+            padding-left: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .matched-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 5px;
+            color: #4B5563;
+        }
+        
+        .matched-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .disease-description {
+            font-size: 0.95rem;
+            color: #4B5563;
+            margin-bottom: 15px;
+        }
+        
+        .disease-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .learn-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        
+        .learn-more:hover {
+            color: #2563EB;
+        }
+        
+        .no-results {
+            background-color: var(--accent-light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .no-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .selected-symptoms {
+            margin-top: 20px;
+            background-color: var(--accent-light-blue);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .selected-symptoms h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .selected-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .selected-item {
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+        }
+        
+        .next-steps {
+            background-color: var(--accent-light);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+        
+        .next-steps h3 {
+            font-size: 1.3rem;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+        }
+        
+        .next-steps p {
+            margin-bottom: 15px;
+        }
+        
+        .next-steps ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .next-steps li {
+            margin-bottom: 8px;
+        }
+        
+        .reset-btn {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .reset-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .severity-info {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .severity-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .severity-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .severity-high {
+            background-color: var(--red-color);
+        }
+        
+        .severity-moderate {
+            background-color: var(--yellow-color);
+        }
+        
+        .severity-low {
+            background-color: var(--green-color);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #e5e7eb;
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .symptom-categories {
+                flex-direction: column;
+            }
+            
+            .category {
+                min-width: 100%;
+            }
+            
+            .disease-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div>
+                    <h1>免疫疾病症狀自我檢測</h1>
+                    <p>及早發現，及早求助</p>
+                </div>
+            </a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h2>免疫疾病症狀自我檢測工具</h2>
+            <p>選擇您目前有的症狀，我們將初步分析可能相關的免疫疾病，幫助您及早發現潛在健康問題</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="disclaimer section">
+            <h3>重要聲明</h3>
+            <p>本工具僅供初步參考，不能取代專業醫療診斷。如有任何健康問題，請儘快就醫諮詢專業醫師意見。免疫疾病的確診需要專業醫師詳細評估、詳盡的病史詢問、各項檢查及實驗室數據綜合判斷。</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">選擇您目前有的症狀</h2>
+            <p>請勾選您近期出現的症狀。症狀越詳細，分析結果越準確。</p>
+            
+            <div class="symptom-categories">
+                <div class="category">
+                    <div class="category-title">
+                        <div class="category-icon">關</div>
+                        <span>關節症狀</span>
+                    </div>
+                    <ul class="symptom-list">
+                        <li class="symptom-item">
+                            <input type="checkbox" id="joint-pain" class="symptom-checkbox" value="關節疼痛">
+                            <label for="joint-pain" class="symptom-label">
+                                <span class="checkmark"></span>
+                                關節疼痛
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="joint-swelling" class="symptom-checkbox" value="關節腫脹">
+                            <label for="joint-swelling" class="symptom-label">
+                                <span class="checkmark"></span>
+                                關節腫脹
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="morning-stiffness" class="symptom-checkbox" value="晨間僵硬">
+                            <label for="morning-stiffness" class="symptom-label">
+                                <span class="checkmark"></span>
+                                晨間僵硬（超過30分鐘）
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="symmetric-joint-pain" class="symptom-checkbox" value="對稱性關節疼痛">
+                            <label for="symmetric-joint-pain" class="symptom-label">
+                                <span class="checkmark"></span>
+                                對稱性關節疼痛（如雙手、雙膝）
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="back-pain" class="symptom-checkbox" value="脊椎/下背痛">
+                            <label for="back-pain" class="symptom-label">
+                                <span class="checkmark"></span>
+                                脊椎或下背部疼痛
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title">
+                        <div class="category-icon">皮</div>
+                        <span>皮膚症狀</span>
+                    </div>
+                    <ul class="symptom-list">
+                        <li class="symptom-item">
+                            <input type="checkbox" id="butterfly-rash" class="symptom-checkbox" value="蝴蝶斑疹">
+                            <label for="butterfly-rash" class="symptom-label">
+                                <span class="checkmark"></span>
+                                臉部蝴蝶狀紅斑（橫跨鼻樑兩頰）
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="sun-sensitivity" class="symptom-checkbox" value="對陽光敏感">
+                            <label for="sun-sensitivity" class="symptom-label">
+                                <span class="checkmark"></span>
+                                對陽光敏感（曬後皮膚異常紅腫）
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="rash" class="symptom-checkbox" value="皮疹">
+                            <label for="rash" class="symptom-label">
+                                <span class="checkmark"></span>
+                                皮疹或紅斑
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="skin-tightening" class="symptom-checkbox" value="皮膚緊繃硬化">
+                            <label for="skin-tightening" class="symptom-label">
+                                <span class="checkmark"></span>
+                                皮膚緊繃或硬化
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="psoriasis" class="symptom-checkbox" value="乾癬皮膚病變">
+                            <label for="psoriasis" class="symptom-label">
+                                <span class="checkmark"></span>
+                                銀白色鱗屑斑塊（乾癬）
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title">
+                        <div class="category-icon">全</div>
+                        <span>全身症狀</span>
+                    </div>
+                    <ul class="symptom-list">
+                        <li class="symptom-item">
+                            <input type="checkbox" id="fatigue" class="symptom-checkbox" value="疲勞">
+                            <label for="fatigue" class="symptom-label">
+                                <span class="checkmark"></span>
+                                持續性疲勞
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="fever" class="symptom-checkbox" value="低燒">
+                            <label for="fever" class="symptom-label">
+                                <span class="checkmark"></span>
+                                不明原因的低燒
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="weight-loss" class="symptom-checkbox" value="體重減輕">
+                            <label for="weight-loss" class="symptom-label">
+                                <span class="checkmark"></span>
+                                不明原因的體重減輕
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="hair-loss" class="symptom-checkbox" value="脫髮">
+                            <label for="hair-loss" class="symptom-label">
+                                <span class="checkmark"></span>
+                                異常脫髮
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="muscle-pain" class="symptom-checkbox" value="肌肉痠痛">
+                            <label for="muscle-pain" class="symptom-label">
+                                <span class="checkmark"></span>
+                                肌肉痠痛或無力
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="category">
+                    <div class="category-title">
+                        <div class="category-icon">其</div>
+                        <span>其他症狀</span>
+                    </div>
+                    <ul class="symptom-list">
+                        <li class="symptom-item">
+                            <input type="checkbox" id="dry-eyes" class="symptom-checkbox" value="乾眼症">
+                            <label for="dry-eyes" class="symptom-label">
+                                <span class="checkmark"></span>
+                                眼睛乾澀
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="dry-mouth" class="symptom-checkbox" value="口乾">
+                            <label for="dry-mouth" class="symptom-label">
+                                <span class="checkmark"></span>
+                                口乾
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="raynauds" class="symptom-checkbox" value="雷諾氏現象">
+                            <label for="raynauds" class="symptom-label">
+                                <span class="checkmark"></span>
+                                手指/腳趾遇冷變白或發紫
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="mouth-ulcers" class="symptom-checkbox" value="口腔潰瘍">
+                            <label for="mouth-ulcers" class="symptom-label">
+                                <span class="checkmark"></span>
+                                口腔潰瘍
+                            </label>
+                        </li>
+                        <li class="symptom-item">
+                            <input type="checkbox" id="swollen-glands" class="symptom-checkbox" value="淋巴結腫大">
+                            <label for="swollen-glands" class="symptom-label">
+                                <span class="checkmark"></span>
+                                淋巴結腫大
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="analyze-btn" id="analyzeBtn">分析症狀</button>
+        </div>
+        
+        <div class="results-section" id="resultsSection">
+            <h2 class="results-title">症狀分析結果</h2>
+            
+            <div class="selected-symptoms" id="selectedSymptoms">
+                <h3>您選擇的症狀：</h3>
+                <div class="selected-list" id="selectedList"></div>
+            </div>
+            
+            <div class="severity-info">
+                <div class="severity-item">
+                    <div class="severity-color severity-high"></div>
+                    <span>症狀匹配度高</span>
+                </div>
+                <div class="severity-item">
+                    <div class="severity-color severity-moderate"></div>
+                    <span>症狀匹配度中等</span>
+                </div>
+                <div class="severity-item">
+                    <div class="severity-color severity-low"></div>
+                    <span>症狀匹配度低</span>
+                </div>
+            </div>
+            
+            <div class="disease-cards" id="diseaseCards">
+                <!-- 疾病卡片將由JavaScript動態生成 -->
+            </div>
+            
+            <div class="no-results" id="noResults" style="display: none;">
+                <h3>未發現明顯免疫疾病相關症狀組合</h3>
+                <p>根據您選擇的症狀，目前未能識別出明確的免疫疾病模式。這可能是因為：</p>
+                <ul>
+                    <li>您選擇的症狀較為常見，可能與多種健康問題相關</li>
+                    <li>症狀數量或組合不足以形成免疫疾病的典型表現</li>
+                    <li>症狀可能與其他非免疫系統疾病相關</li>
+                </ul>
+                <p><strong>請注意：</strong>這並不表示您完全沒有免疫疾病的可能性，若症狀持續或加重，請儘快諮詢醫師進行專業評估。</p>
+                <p style="margin-top: 15px; color: #3B82F6;"><em>如果您的症狀影響日常生活或持續超過兩週，不論本工具的結果如何，都建議尋求醫師診斷。</em></p>
+            </div>
+            
+            <div class="next-steps">
+                <h3>後續建議</h3>
+                <p>如果您的症狀與上述任何疾病匹配度較高，建議採取以下步驟：</p>
+                <ul>
+                    <li>儘快預約免疫風濕科專科醫師診察</li>
+                    <li>記錄您的症狀發生時間、頻率和嚴重程度</li>
+                    <li>就診時攜帶此分析結果，有助於醫師初步了解</li>
+                    <li>勿自行服藥或停藥，應遵循醫師指導</li>
+                </ul>
+                <p><strong>請記住：</strong>免疫疾病早期診斷和治療對預後至關重要。如有任何不適，請及時就醫。</p>
+                
+                <button class="reset-btn" id="resetBtn">重新測試</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 免疫疾病症狀自我檢測工具 | 本工具不提供醫療建議，請咨詢專業醫師進行診斷</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const resultsSection = document.getElementById('resultsSection');
+            const selectedList = document.getElementById('selectedList');
+            const diseaseCards = document.getElementById('diseaseCards');
+            const noResults = document.getElementById('noResults');
+            const checkboxes = document.querySelectorAll('.symptom-checkbox');
+            
+            // 免疫疾病資料庫
+            const diseases = [
+                {
+                    id: 'ra',
+                    name: '類風濕性關節炎',
+                    description: '一種慢性自體免疫疾病，主要影響關節，導致發炎、疼痛、腫脹和僵硬。長期可能造成關節損傷和變形。',
+                    symptoms: [
+                        '關節疼痛', '關節腫脹', '晨間僵硬', '對稱性關節疼痛', '疲勞', '低燒'
+                    ],
+                    link: 'ra-info.html'
+                },
+                {
+                    id: 'sle',
+                    name: '紅斑性狼瘡',
+                    description: '一種全身性自體免疫疾病，免疫系統錯誤攻擊健康組織，可能影響多個器官系統，包括皮膚、關節、腎臟、心臟等。',
+                    symptoms: [
+                        '蝴蝶斑疹', '對陽光敏感', '關節疼痛', '疲勞', '低燒', '脫髮', '口腔潰瘍'
+                    ],
+                    link: 'sle-info.html'
+                },
+                {
+                    id: 'sjogren',
+                    name: '乾燥症',
+                    description: '一種免疫系統疾病，主要影響產生淚液和唾液的腺體，導致眼睛和口腔乾燥。也可能影響其他器官系統。',
+                    symptoms: [
+                        '乾眼症', '口乾', '疲勞', '關節疼痛'
+                    ],
+                    link: 'sjogren-info.html'
+                },
+                {
+                    id: 'scleroderma',
+                    name: '硬皮症',
+                    description: '一種罕見的自體免疫疾病，特徵是皮膚和內臟異常纖維化和硬化。可影響多個器官系統。',
+                    symptoms: [
+                        '皮膚緊繃硬化', '雷諾氏現象', '關節疼痛', '疲勞', '肌肉痠痛'
+                    ],
+                    link: 'scleroderma-info.html'
+                },
+                {
+                    id: 'as',
+                    name: '僵直性脊椎炎',
+                    description: '一種主要影響脊椎的慢性發炎性疾病，可能導致脊椎融合和姿勢改變。主要影響下背部和骨盆。',
+                    symptoms: [
+                        '脊椎/下背痛', '晨間僵硬', '疲勞', '關節疼痛'
+                    ],
+                    link: 'as-info.html'
+                },
+                {
+                    id: 'psa',
+                    name: '乾癬性關節炎',
+                    description: '一種與乾癬相關的關節炎，影響皮膚和關節，可能導致關節變形。',
+                    symptoms: [
+                        '關節疼痛', '關節腫脹', '乾癬皮膚病變', '疲勞', '指(趾)甲變形'
+                    ],
+                    link: 'psa-info.html'
+                },
+                {
+                    id: 'pm',
+                    name: '多發性肌炎',
+                    description: '一種影響肌肉的發炎性疾病，主要表現為肌肉無力，尤其是靠近軀幹的肌肉。',
+                    symptoms: [
+                        '肌肉痠痛', '疲勞', '皮疹', '低燒'
+                    ],
+                    link: 'pm-info.html'
+                },
+                {
+                    id: 'vasculitis',
+                    name: '血管炎症候群',
+                    description: '一組以血管發炎為特徵的疾病，可能影響身體不同部位的血管，導致各種症狀。',
+                    symptoms: [
+                        '皮疹', '疲勞', '低燒', '體重減輕', '關節疼痛'
+                    ],
+                    link: 'vasculitis-info.html'
+                }
+            ];
+            
+            // 分析症狀
+            analyzeBtn.addEventListener('click', function() {
+                const selectedSymptoms = [];
+                checkboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        selectedSymptoms.push(checkbox.value);
+                    }
+                });
+                
+                if (selectedSymptoms.length === 0) {
+                    alert('請至少選擇一項症狀');
+                    return;
+                }
+                
+                // 顯示選擇的症狀
+                selectedList.innerHTML = '';
+                selectedSymptoms.forEach(symptom => {
+                    const item = document.createElement('div');
+                    item.className = 'selected-item';
+                    item.textContent = symptom;
+                    selectedList.appendChild(item);
+                });
+                
+                // 計算疾病匹配度
+                const matchedDiseases = [];
+                diseases.forEach(disease => {
+                    let matchCount = 0;
+                    selectedSymptoms.forEach(symptom => {
+                        if (disease.symptoms.includes(symptom)) {
+                            matchCount++;
+                        }
+                    });
+                    
+                    // 如果有匹配的症狀，則添加到結果中
+                    if (matchCount > 0) {
+                        const matchPercentage = (matchCount / disease.symptoms.length) * 100;
+                        let riskLevel = '';
+                        
+                        if (matchPercentage >= 60) {
+                            riskLevel = 'high-risk';
+                        } else if (matchPercentage >= 30) {
+                            riskLevel = 'moderate-risk';
+                        } else {
+                            riskLevel = 'low-risk';
+                        }
+                        
+                        const matchedSymptoms = disease.symptoms.filter(symptom => 
+                            selectedSymptoms.includes(symptom)
+                        );
+                        
+                        matchedDiseases.push({
+                            ...disease,
+                            matchCount,
+                            matchPercentage,
+                            riskLevel,
+                            matchedSymptoms
+                        });
+                    }
+                });
+                
+                // 排序疾病匹配度（從高到低）
+                matchedDiseases.sort((a, b) => b.matchPercentage - a.matchPercentage);
+                
+                // 顯示分析結果
+                diseaseCards.innerHTML = '';
+                
+                // 檢查是否有匹配的疾病
+                if (matchedDiseases.length === 0) {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                    
+                    matchedDiseases.forEach(disease => {
+                        const card = document.createElement('div');
+                        card.className = `disease-card ${disease.riskLevel}`;
+                        
+                        let riskText = '';
+                        if (disease.riskLevel === 'high-risk') {
+                            riskText = '症狀匹配度高';
+                        } else if (disease.riskLevel === 'moderate-risk') {
+                            riskText = '症狀匹配度中等';
+                        } else {
+                            riskText = '症狀匹配度低';
+                        }
+                        
+                        card.innerHTML = `
+                            <div class="disease-header">
+                                <h3 class="disease-name">${disease.name}</h3>
+                                <span class="risk-badge">${riskText}</span>
+                            </div>
+                            <div class="disease-content">
+                                <p class="disease-description">${disease.description}</p>
+                                <div class="symptoms-matched">
+                                    <h4>匹配的症狀 (${disease.matchedSymptoms.length}/${disease.symptoms.length}):</h4>
+                                    <ul class="matched-list">
+                                        ${disease.matchedSymptoms.map(symptom => `<li>${symptom}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                   <!-- 暫時隱藏 - 
+                                <div class="disease-action">
+                                    <a href="${disease.link}" class="learn-more">了解更多 →</a>
+                                </div>
+                            </div>
+                             -->
+                        `;
+                        
+                        diseaseCards.appendChild(card);
+                    });
+                }
+                
+                // 顯示結果區塊
+                resultsSection.style.display = 'block';
+                
+                // 滾動到結果區域
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // 重置按鈕
+            resetBtn.addEventListener('click', function() {
+                // 清除選擇的症狀
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+                
+                // 隱藏結果區塊
+                resultsSection.style.display = 'none';
+                
+                // 滾動回頂部
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>

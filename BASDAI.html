@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>僵直性脊椎炎疾病活動指數 (BASDAI) 計算器</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'Heiti TC', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #2980b9;
+            margin-bottom: 15px;
+        }
+        .question-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        .question-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        .scale-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .scale-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 0;
+        }
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .scale-input {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(to right, #27ae60, #f39c12, #e74c3c);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .scale-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2980b9;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .scale-input::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #2980b9;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .current-value {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 18px;
+            text-align: center;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 250px;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #edf7ff;
+            display: none;
+        }
+        .result-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #2980b9;
+        }
+        .interpretation {
+            font-size: 18px;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .high-activity {
+            background-color: #fdf2f2;
+            color: #c53030;
+            border-left: 4px solid #e53e3e;
+        }
+        .moderate-activity {
+            background-color: #fffbf0;
+            color: #b7791f;
+            border-left: 4px solid #f6ad55;
+        }
+        .low-activity {
+            background-color: #f0fff4;
+            color: #22543d;
+            border-left: 4px solid #48bb78;
+        }
+        .info-box {
+            background-color: #d4e6f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .help-icon {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 8px;
+            line-height: 18px;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #2c3e50 transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .calculation-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .calculation-details h4 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        @media (max-width: 768px) {
+            .scale-labels {
+                font-size: 12px;
+            }
+            .current-value {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>僵直性脊椎炎疾病活動指數 (BASDAI) 計算器</h1>
+        
+        <div class="info-box">
+            <p><strong>BASDAI (Bath Ankylosing Spondylitis Disease Activity Index)</strong> 是評估僵直性脊椎炎疾病活動性的重要工具。</p>
+            <p>此量表包含6個問題，評估過去一週的症狀嚴重程度。每個問題使用0-10的視覺類比量表評分。</p>
+            <p><strong>評分範圍：</strong>0分表示無症狀，10分表示症狀最嚴重。</p>
+        </div>
+        
+        <div class="section">
+            <h3>症狀評估 - 過去一週的情況</h3>
+            
+            <div class="question-group">
+                <label class="question-label">
+                    1. 您感到疲勞的程度如何？
+                    <span class="tooltip">
+                        <span class="help-icon">?</span>
+                        <span class="tooltiptext">評估整體疲勞感和精力不足的程度。僵直性脊椎炎患者常有顯著的疲勞症狀，這是疾病活動性的重要指標。</span>
+                    </span>
+                </label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>無疲勞</span>
+                        <span>非常疲勞</span>
+                    </div>
+                    <input type="range" class="scale-input" id="fatigue" min="0" max="10" value="0" step="0.1" oninput="updateValue('fatigue')">
+                    <div class="current-value" id="fatigue-value">0.0</div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">
+                    2. 您脊椎疼痛的程度如何？
+                    <span class="tooltip">
+                        <span class="help-icon">?</span>
+                        <span class="tooltiptext">評估脊椎（頸椎、胸椎、腰椎）的疼痛程度。這是僵直性脊椎炎最主要的症狀之一。</span>
+                    </span>
+                </label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>無疼痛</span>
+                        <span>劇烈疼痛</span>
+                    </div>
+                    <input type="range" class="scale-input" id="spinalPain" min="0" max="10" value="0" step="0.1" oninput="updateValue('spinalPain')">
+                    <div class="current-value" id="spinalPain-value">0.0</div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">
+                    3. 您關節腫脹或壓痛的程度如何？
+                    <span class="tooltip">
+                        <span class="help-icon">?</span>
+                        <span class="tooltiptext">評估除脊椎外其他關節（如髖部、膝蓋、肩膀等）的腫脹和壓痛程度。周邊關節炎是AS的常見表現。</span>
+                    </span>
+                </label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>無腫脹/壓痛</span>
+                        <span>嚴重腫脹/壓痛</span>
+                    </div>
+                    <input type="range" class="scale-input" id="jointPain" min="0" max="10" value="0" step="0.1" oninput="updateValue('jointPain')">
+                    <div class="current-value" id="jointPain-value">0.0</div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">
+                    4. 您感到不適的程度如何？
+                    <span class="tooltip">
+                        <span class="help-icon">?</span>
+                        <span class="tooltiptext">評估整體的身體不適感、健康狀況不佳的感覺。這是患者對疾病整體影響的主觀評估。</span>
+                    </span>
+                </label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>感覺良好</span>
+                        <span>感覺很差</span>
+                    </div>
+                    <input type="range" class="scale-input" id="discomfort" min="0" max="10" value="0" step="0.1" oninput="updateValue('discomfort')">
+                    <div class="current-value" id="discomfort-value">0.0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>晨間僵硬評估</h3>
+            
+            <div class="question-group">
+                <label class="question-label">
+                    5. 晨間脊椎僵硬的嚴重程度如何？
+                    <span class="tooltip">
+                        <span class="help-icon">?</span>
+                        <span class="tooltiptext">評估早晨起床時脊椎僵硬的嚴重程度。晨間僵硬是僵直性脊椎炎的典型症狀，通常在活動後會改善。</span>
+                    </span>
+                </label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>無僵硬</span>
+                        <span>非常僵硬</span>
+                    </div>
+                    <input type="range" class="scale-input" id="morningStiffnessSeverity" min="0" max="10" value="0" step="0.1" oninput="updateValue('morningStiffnessSeverity')">
+                    <div class="current-value" id="morningStiffnessSeverity-value">0.0</div>
+                </div>
+            </div>
+            
+            <div class="question-group">
+                <label class="question-label">
+                    6. 晨間脊椎僵硬持續多長時間？
+                    <span class="tooltip">
+                        <span class="help-icon">?</span>
+                        <span class="tooltiptext">評估晨間僵硬持續的時間長度。0表示無僵硬或持續時間很短，10表示僵硬持續2小時或更長時間。</span>
+                    </span>
+                </label>
+                <div class="scale-container">
+                    <div class="scale-labels">
+                        <span>0分鐘</span>
+                        <span>2小時或更久</span>
+                    </div>
+                    <input type="range" class="scale-input" id="morningStiffnessDuration" min="0" max="10" value="0" step="0.1" oninput="updateValue('morningStiffnessDuration')">
+                    <div class="current-value" id="morningStiffnessDuration-value">0.0</div>
+                </div>
+            </div>
+        </div>
+        
+        <button onclick="calculateBASDAI()">計算 BASDAI 分數</button>
+        
+        <div id="result" class="result">
+            <h3>BASDAI 評估結果</h3>
+            <div class="result-value" id="basdaiScore">--</div>
+            <div id="interpretation" class="interpretation">
+                <div id="interpretationText"></div>
+            </div>
+            
+            <div class="calculation-details">
+                <h4>計算方式</h4>
+                <p>BASDAI = (Q1 + Q2 + Q3 + Q4 + [(Q5 + Q6) ÷ 2]) ÷ 5</p>
+                <div id="calculationBreakdown"></div>
+                
+                <h4>臨床意義</h4>
+                <ul>
+                    <li><strong>BASDAI ≥ 4：</strong>表示疾病活動性高，可能需要調整治療</li>
+                    <li><strong>BASDAI < 4：</strong>表示疾病控制良好</li>
+                    <li><strong>治療目標：</strong>維持 BASDAI < 4，理想情況下 < 2</li>
+                    <li><strong>生物製劑適應症：</strong>BASDAI ≥ 4 且傳統治療效果不佳</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateValue(questionId) {
+            const slider = document.getElementById(questionId);
+            const valueDisplay = document.getElementById(questionId + '-value');
+            valueDisplay.textContent = parseFloat(slider.value).toFixed(1);
+        }
+        
+        function calculateBASDAI() {
+            // 獲取所有問題的分數
+            const q1 = parseFloat(document.getElementById('fatigue').value);
+            const q2 = parseFloat(document.getElementById('spinalPain').value);
+            const q3 = parseFloat(document.getElementById('jointPain').value);
+            const q4 = parseFloat(document.getElementById('discomfort').value);
+            const q5 = parseFloat(document.getElementById('morningStiffnessSeverity').value);
+            const q6 = parseFloat(document.getElementById('morningStiffnessDuration').value);
+            
+            // 計算 BASDAI
+            // 公式: (Q1 + Q2 + Q3 + Q4 + ((Q5 + Q6) / 2)) / 5
+            const morningStiffnessAverage = (q5 + q6) / 2;
+            const basdai = (q1 + q2 + q3 + q4 + morningStiffnessAverage) / 5;
+            
+            // 顯示結果
+            document.getElementById('basdaiScore').textContent = basdai.toFixed(1);
+            
+            // 解釋結果
+            interpretResult(basdai);
+            
+            // 顯示計算細節
+            showCalculationDetails(q1, q2, q3, q4, q5, q6, morningStiffnessAverage, basdai);
+            
+            // 顯示結果區域
+            document.getElementById('result').style.display = 'block';
+        }
+        
+        function interpretResult(basdai) {
+            const interpretationDiv = document.getElementById('interpretation');
+            const interpretationText = document.getElementById('interpretationText');
+            
+            let className, interpretation;
+            
+            if (basdai >= 4) {
+                className = 'high-activity';
+                interpretation = `
+                    <strong>高疾病活動性 (BASDAI ≥ 4)</strong><br>
+                    目前疾病活動性較高，建議：<br>
+                    • 與醫師討論調整治療方案<br>
+                    • 考慮加強藥物治療或使用生物製劑<br>
+                    • 加強復健和運動治療<br>
+                    • 密切監控症狀變化<br>
+                    • 定期追蹤評估治療效果
+                `;
+            } else if (basdai >= 2) {
+                className = 'moderate-activity';
+                interpretation = `
+                    <strong>中等疾病活動性 (BASDAI 2-4)</strong><br>
+                    疾病控制尚可，但仍有改善空間：<br>
+                    • 維持目前治療方案<br>
+                    • 注意症狀變化趨勢<br>
+                    • 持續規律運動和復健<br>
+                    • 定期門診追蹤<br>
+                    • 目標是降低至 BASDAI < 2
+                `;
+            } else {
+                className = 'low-activity';
+                interpretation = `
+                    <strong>低疾病活動性 (BASDAI < 2)</strong><br>
+                    疾病控制良好，請繼續保持：<br>
+                    • 維持目前有效的治療方案<br>
+                    • 持續規律運動習慣<br>
+                    • 保持良好生活型態<br>
+                    • 定期門診追蹤<br>
+                    • 注意是否有症狀復發跡象
+                `;
+            }
+            
+            interpretationDiv.className = 'interpretation ' + className;
+            interpretationText.innerHTML = interpretation;
+        }
+        
+        function showCalculationDetails(q1, q2, q3, q4, q5, q6, morningStiffnessAverage, basdai) {
+            const calculationDiv = document.getElementById('calculationBreakdown');
+            
+            calculationDiv.innerHTML = `
+                <p><strong>各項評分：</strong></p>
+                <p>疲勞程度 (Q1): ${q1.toFixed(1)}</p>
+                <p>脊椎疼痛 (Q2): ${q2.toFixed(1)}</p>
+                <p>關節腫脹/壓痛 (Q3): ${q3.toFixed(1)}</p>
+                <p>整體不適 (Q4): ${q4.toFixed(1)}</p>
+                <p>晨間僵硬嚴重程度 (Q5): ${q5.toFixed(1)}</p>
+                <p>晨間僵硬持續時間 (Q6): ${q6.toFixed(1)}</p>
+                <p>晨間僵硬平均值 ((Q5+Q6)/2): ${morningStiffnessAverage.toFixed(1)}</p>
+                <p><strong>BASDAI = (${q1.toFixed(1)} + ${q2.toFixed(1)} + ${q3.toFixed(1)} + ${q4.toFixed(1)} + ${morningStiffnessAverage.toFixed(1)}) ÷ 5 = ${basdai.toFixed(1)}</strong></p>
+            `;
+        }
+        
+        // 初始化所有滑桿的顯示值
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliders = ['fatigue', 'spinalPain', 'jointPain', 'discomfort', 'morningStiffnessSeverity', 'morningStiffnessDuration'];
+            sliders.forEach(function(sliderId) {
+                updateValue(sliderId);
+            });
+        });
+    </script>
+</body>
+</html>

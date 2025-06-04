@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李苡萍 - 過敏免疫風濕科醫師</title>
+    <style>
+         .case-fade-out {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3B82F6;
+            --secondary-color: #EAB308;
+            --text-color: #1F2937;
+            --bg-light: #F9FAFB;
+            --accent-light: #F3F4F6;
+            --accent-dark: #0F172A;
+            --accent-light-blue: #EFF6FF;
+        }
+        
+        body {
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .logo p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent-dark);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        .cta-button:hover {
+            background-color: #2563EB;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .cta-button.secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .cta-button.secondary:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--accent-dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #6B7280;
+        }
+        
+        .doctor-profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .doctor-image {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+        
+        .doctor-image img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 100%;
+        }
+        
+        .doctor-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .doctor-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .specialty-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .specialty-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .specialty-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent-dark);
+        }
+        
+        .specialty-image {
+            height: 190px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .specialty-image img {
+            width: 80%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .disease-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .disease-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .disease-image {
+            height: 0px;
+            overflow: hidden;
+        }
+        
+        .disease-image img {
+            width: 0%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .disease-card:hover .disease-image img {
+            transform: scale(1.1);
+        }
+        
+        .disease-content {
+            padding: 20px;
+        }
+        
+        .disease-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+        
+        .disease-content p {
+            font-size: 0.95rem;
+            color: #6B7280;
+        }
+        
+        .disease-content a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .disease-content a:hover {
+            color: #2563EB;
+        }
+        
+        .schedule-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table, th, td {
+            border: none;
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--accent-light);
+        }
+        
+        td.active {
+            position: relative;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        td.active:after {
+            content: '門診';
+            display: block;
+            font-size: 0.8rem;
+            color: #2563EB;
+        }
+        
+        .notes {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--accent-light);
+            border-radius: 8px;
+        }
+        
+        .notes h4 {
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+        
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .contact-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--accent-dark);
+        }
+        
+        .contact-card p {
+            color: #6B7280;
+        }
+        
+        .online-booking {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: var(--accent-dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #D1D5DB;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #D1D5DB;
+            font-size: 0.9rem;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        /* Case Studies Sidebar Styles */
+        .main-content-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .main-content {
+            flex: 3;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+            padding: 25px;
+            background-color: var(--accent-light-blue);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            align-self: flex-start;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .case-study {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .case-study:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .case-study h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+        
+        .case-study p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: #6B7280;
+        }
+        
+        .case-study a {
+            display: inline-block;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .case-study a:hover {
+            color: #2563EB;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .resource-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--accent-dark);
+        }
+        
+        .resource-card p {
+            font-size: 0.9rem;
+            color: #6B7280;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+                justify-content: center;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .doctor-profile, .contact-cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+    <style>
+        /* 下拉菜單樣式 */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 101;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content a {
+            color: var(--text-color) !important;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            transition: all 0.2s;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--accent-light);
+            color: var(--primary-color) !important;
+        }
+        
+        .dropdown > a::after {
+            content: " ";
+            font-size: 0.7em;
+            vertical-align: middle;
+            margin-left: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                background-color: var(--accent-light);
+                margin-left: 15px;
+                border-radius: 5px;
+            }
+        }
+        /* 標籤導航樣式 */
+        .tabs-navigation {
+            display: flex;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 10px 15px;
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .tab-button.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        /* 子頁面樣式 */
+        .subpage {
+            display: none;
+        }
+
+        .subpage.active {
+            display: block;
+        }
+        
+        /* 文章樣式 */
+        .latest-article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .latest-article h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .latest-article .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .collapsible-container {
+            margin-bottom: 20px;
+        }
+        
+        .collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.4s;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible:after {
+            content: '\002B';
+            color: #777777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 4px 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div>
+                    <h1>李苡萍醫師</h1>
+                    <p>過敏免疫風濕科專科醫師</p>
+                </div>
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="#home">首頁</a></li>
+                    <li><a href="#about">醫師簡介</a></li>
+                    <li class="dropdown">
+                        <a href="#diseases">疾病資訊</a>
+                        <div class="dropdown-content">
+                            <a href="./類風濕性關節炎.html">類風濕性關節炎</a>
+                            <a href="./退化性關節炎.html">退化性關節炎</a>
+                            <a href="./紅斑性狼瘡.html">紅斑性狼瘡</a>
+                            <a href="./乾燥症.html">乾燥症</a>
+                            <a href="./僵直性脊椎炎.html">僵直性脊椎炎</a>
+                            <a href="./乾癬性關節炎.html">乾癬性關節炎</a>
+                            <a href="./異位性皮膚炎.html">異位性皮膚炎</a>
+                            <a href="./尋麻疹.html">尋麻疹</a>
+                            <a href="./痛風.html">痛風</a>
+                            <a href="./骨質疏鬆.html">骨質疏鬆</a>
+                        </div>
+                    </li>
+                    <li><a href="file:///C:/Users/user/Desktop/class_page.html">案例介紹</a></li>
+                    <!-- 暫時隱藏下拉選單內容
+                     <div class="dropdown-content">
+                        <a href="./merged-ra-page.html">類風濕性關節炎案例</a>
+                        <a href="#case2">紅斑性狼瘡案例</a>
+                        <a href="#case3">乾癬關節炎案例</a>
+                        <a href="#case4">免疫不孕案例</a>
+                        <a href="#case4">要多少免疫做多少</a>
+                    </div>
+                    -->
+                </li>
+                <li><a href="./updated-health-column.html">最新內容</a></li>
+                <li><a href="#schedule">門診時刻</a></li>
+                <li><a href="#contact">預約諮詢</a></li>
+                <li class="dropdown">
+                    <a href="#tool">健康小工具</a>
+                    <div class="dropdown-content">
+                        <a href="./FRAX.html">骨折風險評估</a>
+                        <a href="./RAPID3.html">類風濕性關節炎評估</a>
+                        <a href="./BASDAI.html">僵直性脊椎炎評估</a>
+                        <a href="./Self%20assessment.html">免疫疾病自我檢測</a>
+                    </div>
+                </li>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>專業治療過敏免疫風濕疾病</h2>
+            <p>李苡萍醫師擁有豐富過敏免疫風濕疾病及免疫不孕症臨床經驗，致力於提供高品質的醫療服務</p>
+            <div>
+                <a href="#schedule" class="cta-button">查看門診時間</a>
+                <a href="https://shh.tmu.edu.tw/page/Shhreg.aspx?deptCode=AE&docCode=19310" class="cta-button secondary">立即預約</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container main-content-wrapper">
+            <div class="main-content">
+                <div class="section-header">
+                    <h2>醫師簡介</h2>
+                </div>
+            
+            <div class="doctor-profile">
+                <div class="doctor-image">
+                    <img src="DSC08496Vs.jpg" alt="李苡萍醫師照片">
+                </div>
+                <div class="doctor-info">
+                    <h3>李苡萍 醫師</h3>
+                    <p>李苡萍醫師目前擔任雙和醫院過敏免疫風濕科主治醫師，致力於為患者提供最專業的醫療服務。</p>
+
+                    <div class="credentials"></div>
+                    <h4>主治專長</h4>
+                        <ul>
+                            <li>關節炎 （類風濕性關節炎、僵直性脊椎炎、乾癬性關節炎、退化性關節炎、痛風）</li>
+                            <li>自體免疫疾病 （紅斑性狼瘡、乾燥症、硬皮症、皮肌炎、血管炎）</li>
+                            <li>過敏問題（過敏性鼻炎、蕁麻疹、異位性皮膚炎）</li>
+                            <li>骨質疏鬆、肌纖維痛症</li>
+                             <li>免疫不孕症 (抗磷脂質症候群)</li>
+                             
+                         </ul> 
+
+                        <h4>經歷</h4>
+                        <ul>
+                            <li>雙和醫院過敏免疫風濕科總醫師</li>
+                            <li>雙和醫院內科部住院醫師</li>
+                         </ul>
+                            
+                    <div class="credentials">
+                        <h4>專科證書</h4>
+                        <ul>
+                            <li>醫師證書</li>
+                            <li>內科專科醫師證書</li>
+                            <li>免疫過敏專科醫師證書</li>
+                            <li>風濕專科醫師證書</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        
+            </aside>
+        </div>
+    </section>
+    
+    <section id="diseases">
+        <div class="container main-content-wrapper">
+            <div class="main-content">
+                <div class="section-header">
+                    <h2>疾病資訊</h2>
+                    <p>了解常見風濕免疫疾病</p>
+                </div>
+            
+            <div class="disease-grid">
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="類風濕性關節炎">
+                    </div>
+                    <div class="disease-content">
+                        <h3>類風濕性關節炎</h3>
+                        <p>一種慢性自體免疫性疾病，主要影響關節，導致疼痛、腫脹和僵硬。</p>
+                        <a href="https://ra-info-3nqxynb.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="退化性關節炎">
+                    </div>
+                    <div class="disease-content">
+                        <h3>退化性關節炎</h3>
+                        <p>退化性關節炎 (Osteoarthritis, OA) 是一種常見的關節炎，會影響關節的軟骨、骨骼、韌帶和滑膜等組織。它會導致關節疼痛、僵硬和活動能力下降。</p>
+                        <a href="https://oa-info-687t7lg.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="紅斑性狼瘡">
+                    </div>
+                    <div class="disease-content">
+                        <h3>紅斑性狼瘡</h3>
+                        <p>全身性自體免疫疾病，可能影響多個器官系統，包括皮膚、關節、腎臟等。</p>
+                        <a href="https://lupus-info-nhwd4x8.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="乾燥症">
+                    </div>
+                    <div class="disease-content">
+                        <h3>乾燥症</h3>
+                        <p>乾燥症又稱「修格蘭氏症候群（Sjogren's syndrome）」是一種自體免疫疾病，主要影響淚腺和唾液腺，導致眼睛和口腔乾燥。</p>
+                        <a href="https://dry-syndrome-v0quoph.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="僵直性脊椎炎">
+                    </div>
+                    <div class="disease-content">
+                        <h3>僵直性脊椎炎</h3>
+                        <p>一種主要影響脊椎的慢性發炎性疾病，可能導致脊椎融合和姿勢改變。</p>
+                        <a href="https://axspa-intro-r2auttn.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="乾癬關節炎">
+                    </div>
+                    <div class="disease-content">
+                        <h3>乾癬關節炎</h3>
+                        <p>一種伴隨乾癬的關節炎，影響皮膚和關節，可能導致關節變形。</p>
+                        <a href="https://psoriatic-arthritis-17s5hab.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="異位性皮膚炎">
+                    </div>
+                    <div class="disease-content">
+                        <h3>異位性皮膚炎</h3>
+                        <p>異位性皮膚炎又稱異位性濕疹、過敏性濕疹，是一種會反覆發作的慢性皮膚發炎疾病，與遺傳因素及環境誘發因子有關，原因為免疫系統失調，或因肌膚屏障功能較弱，無法承受外在環境刺激而發病。</p>
+                        <a href="https://atopic-dermatitis-tvinwyn.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="尋麻疹">
+                    </div>
+                    <div class="disease-content">
+                        <h3>尋麻疹</h3>
+                        <p>蕁麻疹可依照「反覆且持續發作的時間」分為急性與慢性蕁麻疹，急性蕁麻疹多會在數小時、數天內自行消退，但若症狀反覆發生超過6週，即為慢性蕁麻疹。</p>
+                        <a href="https://hives-info-olbike1.gamma.site/">了解更多 →</a> 
+                    </div>
+                    
+                </div>
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="痛風">
+                    </div>
+                    <div class="disease-content">
+                        <h3>痛風</h3>
+                        <p>痛風是一種發炎性關節炎，會反覆發作，引起劇烈的關節疼痛。這種疼痛通常發生在大腳趾，但也可能出現在其他腳趾、腳踝、膝蓋甚至手指。</p>
+                        <a href="https://gout-info-yu5ddfh.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="骨質疏鬆">
+                    </div>
+                    <div class="disease-content">
+                        <h3>骨質疏鬆</h3>
+                        <p>骨質疏鬆症，又稱「無聲的殺手」，對人體造成骨折的傷害，往往在一瞬間就會發生，不可不慎。</p>
+                        <a href="https://osteoporosis-knowledge-205m2v6.gamma.site/">了解更多 →</a> 
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <aside class="sidebar">
+                <h3>健康專欄</h3>
+                <div class="case-study">
+                    <h4>過敏原檢測怎麼看?</h4>
+                    <p>過敏免疫風濕科醫師帶您識破迷思，重拾健康。</p>
+                    <a href="https://buttery-rabbit-7mps77s.gamma.site/">了解更多 →</a> 
+                </div>
+                
+                <div class="case-study">
+                    <h4>飲食與風濕病的關係</h4>
+                    <p>飲食是管理風濕病的重要一環。透過選擇有益的食物並避免可能加劇發炎的食物，您可以有效支持治療，改善生活品質，讓身體感覺更舒適。</p>
+                    <a href="https://nifty-snake-9j9as6q.gamma.site/">了解更多 →</a> 
+                </div>
+                
+                <div class="case-study">
+                    <h4>如何預防關節炎惡化</h4>
+                    <p>關節炎是一種常見的慢性疾病，會導致關節疼痛、僵硬、腫脹，嚴重影響生活品質。雖然關節炎無法完全治癒，但透過積極的預防與管理，我們可以有效延緩其惡化，維持關節功能，提升生活品質。</p>
+                    <a href="https://arctic-cow-bwbe44d.gamma.site/">了解更多 →</a> 
+                </div>
+            </aside>
+        </div>
+    </section>
+    
+    <section id="case-report">
+        <div class="container">
+            <div class="section-header">
+                <h2>案例介紹</h2>
+                <p>案例分享，希望能為相似情況的患者提供參考</p>
+            </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="紅斑性狼瘡案例">
+                    </div>
+                    <div class="disease-content">
+                        <h3>免疫不孕治療成功案例</h3>
+                        <p>林小姐經歷多次試管嬰兒失敗，診斷為抗磷脂質症候群，經過個人化治療方案，成功懷孕並順利生產。</p>
+                        <a href="https://unnatural-cow-wimyf71.gamma.site/">閱讀全文 →</a> 
+                    </div>
+                </div>
+
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="紅斑性狼瘡案例">
+                    </div>
+                    <div class="disease-content">
+                        <h3>紅斑性狼瘡</h3>
+                        <p>江小姐原本關節變形嚴重，通過新型生物製劑治療後，關節腫脹減輕，皮膚症狀也獲得控制。</p>
+                        <a href="cases/ra-case1.html">閱讀全文 →</a> 
+                    </div>
+                </div>
+                
+                <div class="disease-card">
+                    <div class="disease-image">
+                        <img src="/api/placeholder/300/150" alt="免疫不孕案例">
+                    </div>
+                    <div class="disease-content">
+                        <h3>免疫不孕治療成功案例</h3>
+                        <p>林小姐經歷多次試管嬰兒失敗，診斷為抗磷脂質症候群，經過個人化治療方案，成功懷孕並順利生產。</p>
+                        <a href="https://unnatural-cow-wimyf71.gamma.site/">閱讀全文 →</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2>門診時刻表</h2>
+                <p>規劃您的就診時間</p>
+            </div>
+            
+            <div class="schedule-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>時段</th>
+                            <th>週一</th>
+                            <th>週二</th>
+                            <th>週三</th>
+                            <th>週四</th>
+                            <th>週五</th>
+                            <th>週六</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>上午<br>08:30-11:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="active"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>下午<br>13:30-16:30</td>
+                            <td class="active"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="active"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>晚間<br>18:00-22:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="notes">
+                    <h4>備註事項：</h4>
+                    <ul>
+                        <li>門診時間可能因假日及特殊情況調整，請以醫院公告為準</li>
+                        <li>初診患者建議預約掛號，可提前準備相關檢查報告</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>預約諮詢</h2>
+            </div>
+            
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <img src="./address-icon.svg" alt="地址圖標">
+                    </div>
+                    <h3>地址</h3>
+                    <p>新北市中和區中正路291號</p>
+                    <p>(捷運景安站出站雙和接駁車或公車橘五、二轉乘至雙和醫院)</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <img src="./telephone-icon.svg" alt="電話圖標">
+                    </div>
+                    <h3>電話專線</h3>
+                    <p>電話：(02) 2249-0088</p>
+                    <p>服務時間：週一至週五 08:30-21:00</p>
+                </div>
+
+                <div class="contact-card">
+                    <a href="https://shh.tmu.edu.tw/page/Shhreg.aspx?deptCode=AE&docCode=19310" target="_blank"><div class="contact-icon">
+                    <img alt="APP圖標" src="./hospital-icon.svg"/>
+                    </div></a>
+                    <h3>線上預約</h3>
+                    <p>雙和醫院APP線上預約</p>
+                    <p>可於App Store或Google Play下載</p>
+                </div>
+            </div>
+            
+            <div class="online-booking">
+                <h3>預約提醒</h3>
+                <p>預約號額滿時，請當日上午06:00於官網/APP掛現場號</p>
+                <p><strong>注意：</strong>緊急狀況請直接聯繫急診或撥打119，本網站僅提供非緊急醫療諮詢服務。</p>
+               
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>快速連結</h3>
+                    <ul>
+                        <li><a href="#home">首頁</a></li>
+                        <li><a href="#about">醫師簡介</a></li>
+                        <li><a href="#diseases">疾病資訊</a></li>
+                        <li><a href="#case-report">案例介紹</a></li>
+                        <li><a href="./updated-health-column.html">最新內容</a></li>
+                        <li><a href="#schedule">門診時刻</a></li>
+                        <li><a href="#contact">預約諮詢</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>聯絡資訊</h3>
+                    <ul>
+                        <li>地址：新北市中和區中正路291號</li>
+                        <li>電話：(02) 2249-0088</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>門診時間</h3>
+                    <ul>
+                        <li>週一下午 13:30-16:30</li>
+                        <li>週五上午 08:30-11:30</li>
+                        <li>週五下午 13:30-16:30</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 李苡萍醫師風濕免疫科版權所有</p>
+                <p>網站更新日期：2025年4月26日</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // 子頁面切換功能
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有活動狀態
+                    document.querySelectorAll('.tab-button').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    document.querySelectorAll('.subpage').forEach(page => {
+                        page.classList.remove('active');
+                    });
+                    
+                    // 設置當前活動狀態
+                    this.classList.add('active');
+                    document.getElementById(this.dataset.target).classList.add('active');
+                });
+            });
+            
+            // 可收納內容功能
+            var coll = document.getElementsByClassName("collapsible");
+            for (var i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

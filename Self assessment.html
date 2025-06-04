@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免疫疾病症狀自我檢測工具</title>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', 'Heiti TC', sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .header-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .disclaimer {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid #f39c12;
+        }
+        .disclaimer h3 {
+            color: #b7791f;
+            margin-top: 0;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+        }
+        .section h3 {
+            margin-top: 0;
+            color: #2980b9;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .symptom-group {
+            margin-bottom: 15px;
+        }
+        .symptom-category {
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 15px 0 10px 0;
+            font-size: 16px;
+        }
+        .symptom-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 12px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        .symptom-item:hover {
+            border-color: #3498db;
+            background-color: #f8f9fa;
+        }
+        .symptom-item.checked {
+            border-color: #2980b9;
+            background-color: #edf7ff;
+        }
+        .symptom-checkbox {
+            margin-right: 12px;
+            margin-top: 2px;
+            transform: scale(1.2);
+        }
+        .symptom-label {
+            flex: 1;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .severity-options {
+            display: none;
+            margin-top: 10px;
+            padding-left: 24px;
+        }
+        .severity-options.show {
+            display: block;
+        }
+        .severity-radio {
+            margin-right: 15px;
+            margin-bottom: 8px;
+        }
+        .severity-radio input {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 300px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 8px;
+            background-color: #edf7ff;
+            display: none;
+        }
+        .result h3 {
+            color: #2980b9;
+            margin-top: 0;
+            text-align: center;
+            font-size: 22px;
+        }
+        .selected-symptoms {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #17a2b8;
+        }
+        .symptom-tag {
+            display: inline-block;
+            background-color: #e7f3ff;
+            color: #2980b9;
+            padding: 4px 8px;
+            margin: 2px;
+            border-radius: 12px;
+            font-size: 13px;
+            border: 1px solid #b3d9ff;
+        }
+        .risk-level {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .risk-low {
+            background-color: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+        .risk-moderate {
+            background-color: #fff3cd;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+        }
+        .risk-high {
+            background-color: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+        .disease-breakdown {
+            margin-top: 20px;
+        }
+        .disease-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+            position: relative;
+        }
+        .disease-item.high {
+            background-color: #fff5f5;
+            border-color: #feb2b2;
+        }
+        .disease-item.moderate {
+            background-color: #fffbf0;
+            border-color: #fed7aa;
+        }
+        .disease-item.low {
+            background-color: #f0fff4;
+            border-color: #c6f6d5;
+        }
+        .disease-name {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .disease-score {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .disease-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .badge-high {
+            background-color: #fee;
+            color: #d63384;
+        }
+        .badge-moderate {
+            background-color: #fff3cd;
+            color: #b7791f;
+        }
+        .badge-low {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        .recommendation {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #17a2b8;
+        }
+        .recommendation h4 {
+            color: #17a2b8;
+            margin-top: 0;
+        }
+        .specific-advice {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f4fd;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        .reset-btn {
+            background-color: #17a2b8;
+            padding: 8px 16px;
+            font-size: 14px;
+            max-width: 120px;
+            margin-top: 10px;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>免疫疾病症狀自我檢測工具</h1>
+        
+        <div class="header-info">
+            <h2>自我檢測說明</h2>
+            <p>本工具可幫助您評估是否有自體免疫疾病的相關症狀。請仔細閱讀每個症狀描述，並根據您最近3個月的身體狀況進行勾選。</p>
+        </div>
+        
+        <div class="disclaimer">
+            <h3>⚠️ 重要聲明</h3>
+            <p><strong>本檢測工具僅供參考，不能作為醫學診斷依據。</strong></p>
+            <p>如果您有任何症狀或健康疑慮，請務必尋求專業醫師的診斷和治療建議。早期診斷和治療對於自體免疫疾病的管理非常重要。</p>
+        </div>
+
+        <div class="section">
+            <h3>關節相關症狀</h3>
+            
+            <div class="symptom-category">關節疼痛與腫脹</div>
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="joint-pain" data-diseases="ra,oa,sle,psa,as" data-weight="2">
+                <label class="symptom-label" for="joint-pain">關節疼痛、壓痛或腫脹</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="morning-stiffness" data-diseases="ra,as,psa" data-weight="3">
+                <label class="symptom-label" for="morning-stiffness">晨間關節僵硬，持續30分鐘以上</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="symmetric-joints" data-diseases="ra,sle" data-weight="3">
+                <label class="symptom-label" for="symmetric-joints">對稱性關節疼痛（如雙手、雙膝同時疼痛）</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="multiple-joints" data-diseases="ra,sle,psa" data-weight="2">
+                <label class="symptom-label" for="multiple-joints">多個關節同時受影響</label>
+            </div>
+
+            <div class="symptom-category">脊椎症狀</div>
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="back-pain" data-diseases="as,psa" data-weight="3">
+                <label class="symptom-label" for="back-pain">腰部和臀部疼痛，持續數週或數月</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="night-pain" data-diseases="as" data-weight="3">
+                <label class="symptom-label" for="night-pain">夜間或清晨背痛，影響睡眠</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="spine-stiffness" data-diseases="as,psa" data-weight="2">
+                <label class="symptom-label" for="spine-stiffness">脊椎僵硬，特別是早晨或久坐後</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>皮膚相關症狀</h3>
+            
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="butterfly-rash" data-diseases="sle" data-weight="4">
+                <label class="symptom-label" for="butterfly-rash">臉頰和鼻子上的蝴蝶狀皮疹</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="psoriasis-skin" data-diseases="psa" data-weight="4">
+                <label class="symptom-label" for="psoriasis-skin">紅色斑塊伴有銀白色鱗屑（手肘、膝蓋、頭皮等）</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="dry-skin" data-diseases="sjogren" data-weight="2">
+                <label class="symptom-label" for="dry-skin">皮膚持續乾燥、發癢</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="photosensitivity" data-diseases="sle" data-weight="3">
+                <label class="symptom-label" for="photosensitivity">對陽光敏感，曝曬後出現皮疹</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="mouth-ulcers" data-diseases="sle,sjogren" data-weight="2">
+                <label class="symptom-label" for="mouth-ulcers">反覆口腔潰瘍</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="hair-loss" data-diseases="sle" data-weight="2">
+                <label class="symptom-label" for="hair-loss">異常脫髮</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>乾燥症狀</h3>
+            
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="dry-eyes" data-diseases="sjogren" data-weight="3">
+                <label class="symptom-label" for="dry-eyes">眼睛乾澀、灼熱、有異物感</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="dry-mouth" data-diseases="sjogren" data-weight="3">
+                <label class="symptom-label" for="dry-mouth">口乾、吞嚥困難、味覺改變</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="salivary-gland" data-diseases="sjogren" data-weight="3">
+                <label class="symptom-label" for="salivary-gland">唾液腺腫大</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="vaginal-dryness" data-diseases="sjogren" data-weight="2">
+                <label class="symptom-label" for="vaginal-dryness">陰道乾燥（女性）</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>全身症狀</h3>
+            
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="fatigue" data-diseases="ra,sle,sjogren,as,psa" data-weight="2">
+                <label class="symptom-label" for="fatigue">持續疲勞、無力感</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="fever" data-diseases="ra,sle,as" data-weight="2">
+                <label class="symptom-label" for="fever">反覆低燒</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="weight-loss" data-diseases="ra,as" data-weight="2">
+                <label class="symptom-label" for="weight-loss">不明原因體重減輕、食慾不振</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="muscle-weakness" data-diseases="oa,sle" data-weight="1">
+                <label class="symptom-label" for="muscle-weakness">肌肉無力</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>其他症狀</h3>
+            
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="raynaud" data-diseases="sle,sjogren" data-weight="3">
+                <label class="symptom-label" for="raynaud">手指腳趾遇冷變白變藍並麻木（雷諾現象）</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="chest-pain" data-diseases="sle" data-weight="2">
+                <label class="symptom-label" for="chest-pain">深呼吸時胸痛</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="headache" data-diseases="sle" data-weight="1">
+                <label class="symptom-label" for="headache">頻繁頭痛</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="swelling" data-diseases="sle" data-weight="2">
+                <label class="symptom-label" for="swelling">手、腳或眼周腫脹</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="nail-changes" data-diseases="psa" data-weight="3">
+                <label class="symptom-label" for="nail-changes">指甲凹陷、龜裂、變厚或與甲床分離</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="joint-sounds" data-diseases="oa" data-weight="2">
+                <label class="symptom-label" for="joint-sounds">關節活動時有摩擦聲或喀喀聲</label>
+            </div>
+
+            <div class="symptom-item">
+                <input type="checkbox" class="symptom-checkbox" id="enthesitis" data-diseases="psa,as" data-weight="3">
+                <label class="symptom-label" for="enthesitis">肌腱或韌帶連接骨頭處發炎疼痛（附著點炎）</label>
+            </div>
+        </div>
+
+        <button onclick="calculateRisk()">開始評估</button>
+
+        <div id="result" class="result">
+            <h3>症狀分析結果</h3>
+            
+            <div id="selected-symptoms" class="selected-symptoms">
+                <h4>您選擇的症狀：</h4>
+                <div id="symptom-tags"></div>
+            </div>
+            
+            <div id="disease-breakdown" class="disease-breakdown">
+                <h4>各疾病症狀符合程度：</h4>
+                <div id="disease-list"></div>
+            </div>
+            
+            <div id="recommendation" class="recommendation">
+                <h4>後續建議</h4>
+                <div id="advice-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 疾病定義
+        const diseases = {
+            ra: { 
+                name: '類風濕性關節炎', 
+                description: '一種慢性的自體免疫疾病，主要影響關節和周圍組織，常導致關節發炎、疼痛、腫脹和僵硬，長期可能造成關節損傷和變形。',
+                color: 'moderate'
+            },
+            oa: { 
+                name: '退化性關節炎', 
+                description: '一種退化性關節疾病，主要因關節軟骨磨損而引起疼痛、僵硬和活動受限。',
+                color: 'low'
+            },
+            sle: { 
+                name: '紅斑性狼瘡', 
+                description: '一種全身性自體免疫疾病，可影響皮膚、關節、腎臟、心臟等多個器官系統。',
+                color: 'high'
+            },
+            sjogren: { 
+                name: '乾燥症', 
+                description: '一種慢性自體免疫疾病，主要影響淚腺和唾液腺，導致眼乾和口乾等症狀。',
+                color: 'low'
+            },
+            as: { 
+                name: '僵直性脊椎炎', 
+                description: '一種慢性發炎性疾病，主要影響脊椎和骶髂關節，導致背痛、僵硬等症狀。',
+                color: 'low'
+            },
+            psa: { 
+                name: '乾癬性關節炎', 
+                description: '結合皮膚乾癬和關節炎的疾病，可影響關節、皮膚和指甲。',
+                color: 'moderate'
+            }
+        };
+
+        // 專科建議
+        const diseaseRecommendations = {
+            ra: [
+                '風濕免疫科專科醫師診察',
+                '血液檢查：RF、抗CCP抗體、ESR、CRP',
+                '關節X光或超音波檢查',
+                '及早使用疾病修飾性抗風濕藥物(DMARDs)'
+            ],
+            sle: [
+                '風濕免疫科專科醫師診察',
+                '血液檢查：ANA、抗ds-DNA、補體C3/C4',
+                '尿液檢查評估腎功能',
+                '避免過度日曬，使用防曬用品'
+            ],
+            sjogren: [
+                '風濕免疫科或眼科醫師診察',
+                '淚液分泌測試和唾液腺功能檢查',
+                '血液檢查：RF、抗SSA/SSB抗體',
+                '使用人工淚液和唾液替代品'
+            ],
+            as: [
+                '風濕免疫科專科醫師診察',
+                '脊椎和骨盆X光檢查',
+                '血液檢查：HLA-B27、ESR、CRP',
+                '規律運動和物理治療'
+            ],
+            psa: [
+                '風濕免疫科或皮膚科醫師診察',
+                '關節和皮膚症狀詳細評估',
+                '影像學檢查評估關節損傷',
+                '皮膚和關節症狀同時治療'
+            ],
+            oa: [
+                '骨科或復健科醫師診察',
+                '關節X光檢查',
+                '適度運動和體重控制',
+                '物理治療和關節保護'
+            ]
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.symptom-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const parentItem = this.closest('.symptom-item');
+                    if (this.checked) {
+                        parentItem.classList.add('checked');
+                    } else {
+                        parentItem.classList.remove('checked');
+                    }
+                });
+            });
+        });
+
+        function calculateRisk() {
+            const scores = { ra: 0, oa: 0, sle: 0, sjogren: 0, as: 0, psa: 0 };
+            const selectedSymptoms = [];
+            let totalSymptoms = 0;
+
+            // 計算分數
+            document.querySelectorAll('.symptom-checkbox:checked').forEach(checkbox => {
+                const symptomLabel = checkbox.nextElementSibling.textContent;
+                selectedSymptoms.push(symptomLabel);
+                
+                const diseaseList = checkbox.getAttribute('data-diseases').split(',');
+                const weight = parseInt(checkbox.getAttribute('data-weight')) || 1;
+                
+                diseaseList.forEach(disease => {
+                    if (scores.hasOwnProperty(disease)) {
+                        scores[disease] += weight;
+                    }
+                });
+                totalSymptoms++;
+            });
+
+            if (totalSymptoms === 0) {
+                alert('請至少選擇一個症狀進行評估');
+                return;
+            }
+
+            displayResults(scores, selectedSymptoms, totalSymptoms);
+        }
+
+        function displayResults(scores, selectedSymptoms, totalSymptoms) {
+            // 顯示選擇的症狀
+            const symptomTagsDiv = document.getElementById('symptom-tags');
+            symptomTagsDiv.innerHTML = selectedSymptoms.map(symptom => 
+                `<span class="symptom-tag">${symptom}</span>`
+            ).join('');
+
+            // 排序疾病分數
+            const sortedDiseases = Object.entries(scores)
+                .filter(([key, score]) => score > 0)
+                .sort((a, b) => b[1] - a[1]);
+
+            // 顯示疾病分析
+            const diseaseListDiv = document.getElementById('disease-list');
+            let diseaseHtml = '';
+
+            if (sortedDiseases.length === 0) {
+                diseaseHtml = '<p>根據您選擇的症狀，沒有明顯指向特定自體免疫疾病的跡象。</p>';
+            } else {
+                sortedDiseases.forEach(([diseaseKey, score]) => {
+                    const disease = diseases[diseaseKey];
+                    let riskLevel, badgeClass, itemClass;
+                    
+                    if (score >= 8) {
+                        riskLevel = '症狀匹配度高';
+                        badgeClass = 'badge-high';
+                        itemClass = 'high';
+                    } else if (score >= 4) {
+                        riskLevel = '症狀匹配度中等';
+                        badgeClass = 'badge-moderate';
+                        itemClass = 'moderate';
+                    } else {
+                        riskLevel = '症狀匹配度偏低';
+                        badgeClass = 'badge-low';
+                        itemClass = 'low';
+                    }
+
+                    diseaseHtml += `
+                        <div class="disease-item ${itemClass}">
+                            <div class="disease-badge ${badgeClass}">${riskLevel}</div>
+                            <div class="disease-name">${disease.name}</div>
+                            <div class="disease-score">匹配症狀 (${score}分)</div>
+                            <div style="font-size: 13px; color: #666; margin-top: 5px;">
+                                ${disease.description}
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            diseaseListDiv.innerHTML = diseaseHtml;
+
+            // 顯示建議
+            displayRecommendations(sortedDiseases, totalSymptoms);
+
+            // 顯示結果區域
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function displayRecommendations(sortedDiseases, totalSymptoms) {
+            const adviceDiv = document.getElementById('advice-content');
+            let adviceHtml = '';
+
+            if (totalSymptoms >= 5 || (sortedDiseases.length > 0 && sortedDiseases[0][1] >= 6)) {
+                adviceHtml += `
+                    <p style="color: #d63384; font-weight: bold;">如果您的症狀與任何疾病匹配度高，建議採取以下步驟：</p>
+                    <ul>
+                        <li><strong>儘快諮詢風濕免疫科專科醫師</strong></li>
+                        <li>記錄您的症狀發生時間、頻率和嚴重程度</li>
+                        <li>就診時攜帶此分析結果，有助於醫師初步了解</li>
+                        <li>勿自行服藥或停藥，應遵循醫師指導</li>
+                    </ul>
+                `;
+            } else if (totalSymptoms >= 2) {
+                adviceHtml += `
+                    <p style="color: #b7791f; font-weight: bold;">您有一些相關症狀，建議：</p>
+                    <ul>
+                        <li>建議諮詢家庭醫師或內科醫師</li>
+                        <li>考慮進行基本的血液檢查</li>
+                        <li>記錄症狀的變化和持續時間</li>
+                        <li>注意症狀是否持續惡化</li>
+                    </ul>
+                `;
+            } else {
+                adviceHtml += `
+                    <p style="color: #0f5132; font-weight: bold;">根據目前症狀，建議：</p>
+                    <ul>
+                        <li>繼續保持健康的生活型態</li>
+                        <li>定期健康檢查</li>
+                        <li>如有新症狀出現，請及時就醫</li>
+                    </ul>
+                `;
+            }
+
+            // 針對最高分疾病提供專科建議
+            if (sortedDiseases.length > 0 && sortedDiseases[0][1] >= 4) {
+                const topDiseaseKey = sortedDiseases[0][0];
+                const recommendations = diseaseRecommendations[topDiseaseKey];
+                
+                if (recommendations) {
+                    adviceHtml += `
+                        <div class="specific-advice">
+                            <h5 style="color: #3498db; margin-top: 0;">針對${diseases[topDiseaseKey].name}的專科建議：</h5>
+                            <ul style="margin-bottom: 0;">
+                                ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+            }
+
+            adviceHtml += `
+                <div style="margin-top: 15px; padding: 15px; background-color: #e8f4fd; border-radius: 6px; border-left: 4px solid #3498db;">
+                    <p><strong>請記住：</strong>免疫疾病早期診斷和治療對於後續管理至關重要。如有任何不適，請及時就醫。</p>
+                    <button onclick="resetTest()" class="reset-btn">重新測試</button>
+                </div>
+            `;
+
+            adviceDiv.innerHTML = adviceHtml;
+        }
+
+        function resetTest() {
+            // 清除所有勾選
+            document.querySelectorAll('.symptom-checkbox').forEach(checkbox => {
+                checkbox.checked = false;
+                const parentItem = checkbox.closest('.symptom-item');
+                parentItem.classList.remove('checked');
+            });
+
+            // 隱藏結果
+            document.getElementById('result').style.display = 'none';
+
+            // 滾動到頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

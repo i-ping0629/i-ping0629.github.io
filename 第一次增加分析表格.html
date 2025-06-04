@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>類風濕性關節炎</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+        
+         
+        .disease-content {
+            padding: 20px;
+        }
+        
+        .disease-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+        
+        .disease-content p {
+            font-size: 0.95rem;
+            color: #6B7280;
+        }
+        
+        .disease-content a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .disease-content a:hover {
+            color: #2563EB;
+        }
+        
+        .main-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+        }
+        
+        .sidebar ul li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .sidebar ul li a:before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        
+        .sidebar ul li a:hover {
+            color: #3498db;
+        }
+        
+        .sidebar ul li a.active {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .sidebar ul li a.active:before {
+            color: #3498db;
+        }
+        
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .intro-text {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 子頁面樣式 */
+        .subpage {
+            display: none;
+        }
+
+        .subpage.active {
+            display: block;
+        }
+        
+        /* 文章樣式 */
+        .latest-article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .latest-article h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .latest-article .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .collapsible-container {
+            margin-bottom: 20px;
+        }
+        
+        .collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.4s;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .article {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+        }
+        
+        .article h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .article .date {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .article p {
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* 文章列表卡片樣式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .article-item {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .article-content {
+            padding: 20px;
+            flex-grow: 1;
+            position: relative;
+            padding-right: 100px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .article-content a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .article-content a:hover h3 {
+            color: #3498db;
+        }
+        
+        .article-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+        }
+        
+        .article-date .year-month {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .article-date .day {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* 分頁樣式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .pagination a {
+            color: #333;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination a.active {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #3498db;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #f1f1f1;
+        }
+        
+        .pagination .prev, .pagination .next {
+            background-color: #fff;
+        }
+        
+        .pagination .prev.disabled, .pagination .next.disabled {
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 案例介紹樣式 */
+        .case-studies {
+            margin: 50px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .underline {
+            width: 60px;
+            height: 3px;
+            background-color: #f39c12;
+            margin: 0 auto 20px;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .case-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #3498db;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .case-card h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .case-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .read-more-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more-link:hover {
+            color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 0 0 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .article-content {
+                padding-right: 20px;
+            }
+            
+            .article-date {
+                position: static;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+            
+            .article-date .day {
+                display: inline-block;
+                margin-right: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .article-date .year-month {
+                display: inline-block;
+            }
+            .pagination {
+                flex-wrap: wrap;
+            }
+            
+            .pagination a {
+                margin-bottom: 5px;
+            }
+            
+            .cases-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .case-card {
+                padding: 20px;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>類風濕性關節炎</h1>
+            <div class="breadcrumb">
+                <a href="index.html">首頁</a>
+                <span>/</span>
+                <a href="disease-info.html">疾病說明</a>
+                <span>/</span>
+                類風濕性關節炎
+            </div>
+        </header>
+        
+        <div class="intro-text">
+            <p>有感於病患對於類風濕性關節炎的專業了解較少，容易造成診斷延遲甚至不適當的治療。</p>
+            <p>希望能提供一些類風濕性關節炎醫學知識</p>
+        </div>
+        
+        <div class="main-wrapper">
+            <aside class="sidebar">
+                <h2>疾病資訊</h2>
+                <ul>
+                    <li><a href="#" class="tab-link" data-target="articles">文章列表</a></li>
+                    <li><a href="#" class="tab-link" data-target="overview">何謂類風濕性關節炎</a></li>
+                    
+                    <!-- 暫時隱藏以下選項
+                    <li><a href="#" class="tab-link" data-target="early-symptoms">早期症狀識別</a></li>
+                    <li><a href="#" class="tab-link" data-target="diagnosis">診斷方法</a></li>
+                    <li><a href="#" class="tab-link" data-target="differentiation">與其他關節炎的區別</a></li>
+                    <li><a href="#" class="tab-link" data-target="importance">早期診斷的重要性</a></li>
+                    <li><a href="#" class="tab-link" data-target="risk-factors">風險因素</a></li>
+                    <li><a href="#" class="tab-link" data-target="lifestyle">生活與飲食指南</a></li>
+                    -->
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <!-- 子頁面容器 -->
+                <div class="subpages-container">
+                    <!-- 文章列表頁面 -->
+                    <div id="articles" class="subpage active">
+                         <!-- 會根據當前頁數顯示不同的文章列表 -->
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        
+                        <!-- 分頁控制 -->
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 疾病概述頁面 -->
+                    <div id="overview" class="subpage">
+                        <div class="intro-text">
+                            <h2>類風濕性關節炎概述</h2>
+                            <p>類風濕性關節炎（Rheumatoid Arthritis，簡稱RA）是一種慢性自體免疫疾病，會導致關節發炎、疼痛、腫脹與僵硬。如未及時治療，可能造成關節永久性損傷。</p>
+                            <p>不同於退化性關節炎主要是由於關節磨損，類風濕性關節炎是由免疫系統誤攻擊自身關節滑膜引起的。此疾病通常會影響身體多個關節，且傾向於對稱發生，例如雙手、雙腕或雙膝關節同時受到影響。</p>
+                            <p>除了關節症狀外，某些患者可能會出現關節以外的表現，如疲勞、輕度發燒、體重減輕等全身性症狀。及早診斷並開始治療至關重要，可顯著減緩疾病進展，預防關節永久性損傷。</p>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>重要資訊</h2>
+                            <p>類風濕性關節炎是一種自體免疫疾病，會導致關節滑膜慢性發炎。患者的免疫系統錯誤地攻擊自身的關節組織，引起發炎反應和疼痛。若不加以治療，長期的發炎可能導致關節永久性損傷、變形，甚至喪失功能。</p>
+                            <p>該疾病通常影響手部和腳部的小關節，如手指和腳趾，也可能影響腕、膝、踝等較大的關節。一個顯著特徵是其症狀往往呈對稱性，即左右兩側相同的關節同時受累。</p>
+                            <p>及早診斷和治療對於預防關節損傷和保持生活質量至關重要。現代治療方法能有效控制症狀，減緩疾病進展，幫助患者維持正常生活和工作。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 暫時隱藏 - 早期症狀識別頁面
+                    <div id="early-symptoms" class="subpage">
+                        <div class="intro-text">
+                            <h2>早期症狀識別</h2>
+                            <p>類風濕性關節炎的早期症狀可能較為輕微且間歇性出現，容易被忽視或誤認為暫時性的不適。然而，這些初期跡象對於早期診斷極為重要：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">關節症狀</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>晨間僵硬：</strong>起床後關節僵硬感持續30分鐘以上，這是類風濕性關節炎的典型特徵之一，與退化性關節炎（通常僵硬持續較短時間）明顯不同。</li>
+                                    <li><strong>小關節受累：</strong>手指和腳趾的小關節最常首先受到影響，特別是指關節和掌指關節。</li>
+                                    <li><strong>對稱性發炎：</strong>關節症狀傾向於對稱出現，例如雙手同時受到影響。</li>
+                                    <li><strong>關節觸痛和腫脹：</strong>關節周圍組織出現紅腫熱痛，觸摸時有明顯壓痛感。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">全身症狀</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>異常疲勞：</strong>持續且無法通過休息緩解的疲勞感。</li>
+                                    <li><strong>低度發燒：</strong>長期持續的輕度發熱，通常不超過38°C。</li>
+                                    <li><strong>食慾不振：</strong>可能導致非計劃性的體重減輕。</li>
+                                    <li><strong>全身不適：</strong>類似感冒的全身不適感。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>很多患者回顧病史時會提到，在關節症狀明顯出現前數月就已經出現莫名的疲勞感或輕微關節不適。這些非特異性症狀雖然容易被忽視，但對於高風險人群（如有家族史者）是重要的警訊。</p>
+                        </div>
+                    </div>
+                    -->
+                    
+                    <!-- 暫時隱藏 - 診斷方法頁面
+                    <div id="diagnosis" class="subpage">
+                        <div class="intro-text">
+                            <h2>診斷方法</h2>
+                            <p>類風濕性關節炎的診斷通常綜合臨床症狀、體格檢查和實驗室檢查結果。沒有單一檢查可確診此疾病，醫師需要綜合評估多項指標：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">實驗室檢查</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>類風濕因子(RF)：</strong>約70-80%的類風濕性關節炎患者RF呈陽性，但非特異性，其他疾病也可能出現陽性結果。</li>
+                                    <li><strong>抗環瓜氨酸肽抗體(抗CCP抗體)：</strong>較RF更具特異性，陽性結果強烈提示類風濕性關節炎。</li>
+                                    <li><strong>血沉(ESR)和C反應蛋白(CRP)：</strong>這些炎症指標通常在活動性疾病中升高，可用於監測疾病活動度。</li>
+                                    <li><strong>全血計數：</strong>慢性炎症可能導致輕度貧血。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">影像學檢查</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>X光檢查：</strong>可顯示關節間隙變窄、骨質疏鬆和關節侵蝕，但早期可能無明顯變化。</li>
+                                    <li><strong>超聲波檢查：</strong>能評估關節滑膜增生和積液情況，對早期診斷有幫助。</li>
+                                    <li><strong>磁共振成像(MRI)：</strong>可檢測早期關節炎變化，如滑膜炎和骨髓水腫。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>臨床醫師通常根據2010年美國風濕病學會(ACR)/歐洲抗風濕病聯盟(EULAR)分類標準進行診斷，該標準考慮受累關節數量、血清學檢查結果、炎症指標和症狀持續時間等因素。</p>
+                        </div>
+                    </div>
+                    -->
+                    
+                    <!-- 暫時隱藏 - 與其他關節炎的區別頁面
+                    <div id="differentiation" class="subpage">
+                        <div class="intro-text">
+                            <h2>與其他關節炎的區別</h2>
+                            <p>類風濕性關節炎與多種其他關節疾病有相似表現，正確鑑別診斷對於制定合適的治療方案至關重要：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">類風濕性關節炎 vs. 退化性關節炎</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>年齡：</strong>類風濕性關節炎可發生在任何年齡，但多見於30-50歲；退化性關節炎通常發生在老年人。</li>
+                                    <li><strong>晨僵：</strong>類風濕性關節炎晨僵持續時間長(>30分鐘)；退化性關節炎晨僵通常短暫。</li>
+                                    <li><strong>關節分布：</strong>類風濕性關節炎常對稱性影響多個小關節；退化性關節炎通常影響負重關節如膝、髖和手部DIP關節。</li>
+                                    <li><strong>發炎表現：</strong>類風濕性關節炎關節有明顯發紅、腫脹和熱感；退化性關節炎發炎症狀較輕。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">類風濕性關節炎 vs. 痛風</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>發作特點：</strong>類風濕性關節炎症狀持續存在；痛風通常急性發作後緩解。</li>
+                                    <li><strong>常見部位：</strong>類風濕性關節炎多發於手指小關節；痛風好發於第一蹠趾關節(足拇指)。</li>
+                                    <li><strong>性別傾向：</strong>類風濕性關節炎女性多見；痛風男性更常見。</li>
+                                    <li><strong>實驗室檢查：</strong>痛風患者血尿酸升高，關節液檢查可見尿酸結晶。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">類風濕性關節炎 vs. 脊椎關節病</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>好發部位：</strong>類風濕性關節炎主要影響四肢關節；脊椎關節病主要影響脊柱和薦髂關節。</li>
+                                    <li><strong>遺傳標記：</strong>脊椎關節病與HLA-B27密切相關；類風濕性關節炎則否。</li>
+                                    <li><strong>伴隨症狀：</strong>脊椎關節病可能伴有眼睛葡萄膜炎；類風濕性關節炎可能有皮下結節。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+                    
+                    <!-- 暫時隱藏 - 早期診斷的重要性頁面
+                    <div id="importance" class="subpage">
+                        <div class="intro-text">
+                            <h2>早期診斷的重要性</h2>
+                            <p>類風濕性關節炎的早期診斷和治療對疾病預後至關重要，研究顯示及時干預可顯著改善治療效果和生活質量：</p>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>早期干預的關鍵優勢</h2>
+                            <p><strong>疾病窗口期</strong>：研究表明，類風濕性關節炎發病後的首3-6個月被稱為「治療窗口期」，此時積極治療效果最佳，可能導致疾病緩解，甚至避免長期用藥。</p>
+                            <p><strong>防止不可逆關節損傷</strong>：類風濕性關節炎相當部分的關節損傷發生在起病初期。早期診斷和治療可顯著減少關節侵蝕和功能喪失的風險。</p>
+                            <p><strong>改善長期預後</strong>：早期接受治療的患者較晚期治療者有更高的疾病緩解率、更好的關節功能和更高的生活質量。</p>
+                            <p><strong>降低共病風險</strong>：未經控制的類風濕性關節炎可增加心血管疾病、骨質疏鬆等併發症風險。早期治療可降低這些風險。</p>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>早期診斷的挑戰在於初期症狀可能不典型或輕微，容易被忽視。因此，對高風險人群（如有家族史的人）出現持續性關節不適時，應及時就醫並進行相關檢查。</p>
+                            <p>現代治療策略強調「早期、積極、達標」的原則，通過疾病改善型抗風濕藥物(DMARDs)、生物製劑等早期干預，儘早控制炎症，實現臨床緩解或低疾病活動度，最大限度保護關節功能。</p>
+                        </div>
+                    </div>
+                    -->
+
+                    <!-- 暫時隱藏 - 風險因素頁面
+                    <div id="risk-factors" class="subpage">
+                        <div class="intro-text">
+                            <h2>風險因素</h2>
+                            <p>類風濕性關節炎的確切病因尚未完全闡明，但研究表明多種因素可能增加發病風險：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">遺傳因素</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>家族史：</strong>有類風濕性關節炎家族史的人發病風險增加3-5倍。</li>
+                                    <li><strong>基因標記：</strong>HLA-DRB1基因的某些亞型(尤其是共同表位)與類風濕性關節炎關聯性強。</li>
+                                    <li><strong>其他基因：</strong>PTPN22、STAT4等基因多態性也與發病風險相關。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">環境因素</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>吸煙：</strong>吸煙是目前最明確的環境風險因素，可增加發病風險並加重病情。</li>
+                                    <li><strong>感染：</strong>某些細菌(如牙齦疾病相關菌)和病毒可能通過分子模擬機制觸發自身免疫反應。</li>
+                                    <li><strong>職業暴露：</strong>矽塵、礦物油等職業暴露可能增加風險。</li>
+                                    <li><strong>空氣污染：</strong>研究表明，長期暴露於PM2.5等空氣污染物可能與發病風險增加相關。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">個體因素</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>性別：</strong>女性發病率約為男性的2-3倍，提示荷爾蒙因素可能參與。</li>
+                                    <li><strong>年齡：</strong>任何年齡均可發病，但30-50歲發病高峰。</li>
+                                    <li><strong>肥胖：</strong>脂肪組織產生促炎因子，可能增加發病風險。</li>
+                                    <li><strong>腸道微生物組：</strong>腸道菌群失調可能影響免疫系統功能，與多種自身免疫疾病相關。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>基因-環境相互作用</h2>
+                            <p>類風濕性關節炎的發病機制被認為是遺傳易感性與環境觸發因素相互作用的結果。例如，研究發現吸煙對HLA-DRB1共同表位陽性個體的發病風險影響更大，這種基因-環境相互作用大大增加了發病風險。</p>
+                            <p>同時，表觀遺傳學機制(如DNA甲基化、組蛋白修飾等)可能是環境因素影響基因表達、進而促進疾病發生的重要途徑。這些發現為預防和個體化治療提供了新思路。</p>
+                        </div>
+                    </div>
+                    -->
+
+                    <!-- 暫時隱藏 - 生活與飲食指南頁面
+                    <div id="lifestyle" class="subpage">
+                        <div class="intro-text">
+                            <h2>生活與飲食指南</h2>
+                            <p>藥物治療是類風濕性關節炎管理的基石，但生活方式調整和飲食管理也是綜合治療計劃的重要組成部分，有助於改善症狀、增強藥物療效並提高生活質量：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">飲食建議</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>地中海飲食：</strong>富含橄欖油、魚類、堅果、水果蔬菜和全穀物的地中海飲食可能有助於減輕炎症和關節症狀。</li>
+                                    <li><strong>增加抗炎食物：</strong>富含ω-3脂肪酸的食物(如鮭魚、沙丁魚)、抗氧化物質豐富的蔬果(如藍莓、綠葉蔬菜)、薑黃素等天然抗炎成分。</li>
+                                    <li><strong>減少促炎食物：</strong>限制過度加工食品、精製碳水化合物、飽和脂肪和反式脂肪的攝入，減少紅肉攝取。</li>
+                                    <li><strong>關注特殊食物：</strong>部分患者可能對某些食物(如茄屬蔬果、乳製品)敏感，可通過食物日記觀察對症狀的影響。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">適合的運動方式</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>低衝擊有氧運動：</strong>游泳、水中運動、騎自行車等可增強心肺功能而不加重關節壓力。</li>
+                                    <li><strong>肌力訓練：</strong>輕至中度的力量訓練可增強關節周圍肌肉，提高關節穩定性。</li>
+                                    <li><strong>伸展運動：</strong>瑜伽、太極等可改善關節活動度和柔韌性，減輕僵硬感。</li>
+                                    <li><strong>運動原則：</strong>遵循「先易後難、循序漸進」原則，避免關節疼痛時進行高強度運動；疾病急性發作期應暫停或減少運動。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">壓力管理與睡眠</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>壓力管理：</strong>壓力可能誘發或加重疾病發作，可通過冥想、深呼吸、漸進式肌肉放鬆等技巧管理壓力。</li>
+                                    <li><strong>充足睡眠：</strong>保證足夠的睡眠時間和質量，有助於減輕疲勞和疼痛，增強免疫功能。</li>
+                                    <li><strong>心理支持：</strong>必要時尋求專業心理支持，學習積極應對慢性疾病的技巧，保持良好心態。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>日常自我管理小貼士</h2>
+                            <p><strong>關節保護：</strong>使用人體工學工具，避免關節過度使用和不當姿勢。疼痛時可使用熱敷或冷敷緩解症狀。</p>
+                            <p><strong>勞逸結合：</strong>合理安排作息，避免過度勞累，學會根據疾病節律調整活動強度和休息時間。</p>
+                            <p><strong>規律覆診：</strong>遵醫囑定期覆診和實驗室檢查，及時調整治療方案。</p>
+                            <p><strong>戒煙：</strong>吸煙不僅增加發病風險，還會減弱治療效果，所有患者都應戒煙。</p>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>值得注意的是，生活方式調整應與藥物治療相輔相成，而非替代。患者應在醫生指導下制定個體化的生活和飲食計劃，特別是在使用某些藥物(如甲氨蝶呤)時，應關注藥物與食物的相互作用。</p>
+                            <p>綜合的疾病管理策略，包括藥物治療、生活方式調整和心理支持，有助於患者更好地控制疾病活動度，維持功能和生活質量。</p>
+                        </div>
+                    </div>
+                    -->，但對於高風險人群（如有家族史者）是重要的警訊。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 診斷方法頁面 -->
+                    <div id="diagnosis" class="subpage">
+                        <div class="intro-text">
+                            <h2>診斷方法</h2>
+                            <p>類風濕性關節炎的診斷通常綜合臨床症狀、體格檢查和實驗室檢查結果。沒有單一檢查可確診此疾病，醫師需要綜合評估多項指標：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">實驗室檢查</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>類風濕因子(RF)：</strong>約70-80%的類風濕性關節炎患者RF呈陽性，但非特異性，其他疾病也可能出現陽性結果。</li>
+                                    <li><strong>抗環瓜氨酸肽抗體(抗CCP抗體)：</strong>較RF更具特異性，陽性結果強烈提示類風濕性關節炎。</li>
+                                    <li><strong>血沉(ESR)和C反應蛋白(CRP)：</strong>這些炎症指標通常在活動性疾病中升高，可用於監測疾病活動度。</li>
+                                    <li><strong>全血計數：</strong>慢性炎症可能導致輕度貧血。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">影像學檢查</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>X光檢查：</strong>可顯示關節間隙變窄、骨質疏鬆和關節侵蝕，但早期可能無明顯變化。</li>
+                                    <li><strong>超聲波檢查：</strong>能評估關節滑膜增生和積液情況，對早期診斷有幫助。</li>
+                                    <li><strong>磁共振成像(MRI)：</strong>可檢測早期關節炎變化，如滑膜炎和骨髓水腫。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>臨床醫師通常根據2010年美國風濕病學會(ACR)/歐洲抗風濕病聯盟(EULAR)分類標準進行診斷，該標準考慮受累關節數量、血清學檢查結果、炎症指標和症狀持續時間等因素。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 與其他關節炎的區別頁面 -->
+                    <div id="differentiation" class="subpage">
+                        <div class="intro-text">
+                            <h2>與其他關節炎的區別</h2>
+                            <p>類風濕性關節炎與多種其他關節疾病有相似表現，正確鑑別診斷對於制定合適的治療方案至關重要：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">類風濕性關節炎 vs. 退化性關節炎</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>年齡：</strong>類風濕性關節炎可發生在任何年齡，但多見於30-50歲；退化性關節炎通常發生在老年人。</li>
+                                    <li><strong>晨僵：</strong>類風濕性關節炎晨僵持續時間長(>30分鐘)；退化性關節炎晨僵通常短暫。</li>
+                                    <li><strong>關節分布：</strong>類風濕性關節炎常對稱性影響多個小關節；退化性關節炎通常影響負重關節如膝、髖和手部DIP關節。</li>
+                                    <li><strong>發炎表現：</strong>類風濕性關節炎關節有明顯發紅、腫脹和熱感；退化性關節炎發炎症狀較輕。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">類風濕性關節炎 vs. 痛風</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>發作特點：</strong>類風濕性關節炎症狀持續存在；痛風通常急性發作後緩解。</li>
+                                    <li><strong>常見部位：</strong>類風濕性關節炎多發於手指小關節；痛風好發於第一蹠趾關節(足拇指)。</li>
+                                    <li><strong>性別傾向：</strong>類風濕性關節炎女性多見；痛風男性更常見。</li>
+                                    <li><strong>實驗室檢查：</strong>痛風患者血尿酸升高，關節液檢查可見尿酸結晶。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">類風濕性關節炎 vs. 脊椎關節病</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>好發部位：</strong>類風濕性關節炎主要影響四肢關節；脊椎關節病主要影響脊柱和薦髂關節。</li>
+                                    <li><strong>遺傳標記：</strong>脊椎關節病與HLA-B27密切相關；類風濕性關節炎則否。</li>
+                                    <li><strong>伴隨症狀：</strong>脊椎關節病可能伴有眼睛葡萄膜炎；類風濕性關節炎可能有皮下結節。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 早期診斷的重要性頁面 -->
+                    <div id="importance" class="subpage">
+                        <div class="intro-text">
+                            <h2>早期診斷的重要性</h2>
+                            <p>類風濕性關節炎的早期診斷和治療對疾病預後至關重要，研究顯示及時干預可顯著改善治療效果和生活質量：</p>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>早期干預的關鍵優勢</h2>
+                            <p><strong>疾病窗口期</strong>：研究表明，類風濕性關節炎發病後的首3-6個月被稱為「治療窗口期」，此時積極治療效果最佳，可能導致疾病緩解，甚至避免長期用藥。</p>
+                            <p><strong>防止不可逆關節損傷</strong>：類風濕性關節炎相當部分的關節損傷發生在起病初期。早期診斷和治療可顯著減少關節侵蝕和功能喪失的風險。</p>
+                            <p><strong>改善長期預後</strong>：早期接受治療的患者較晚期治療者有更高的疾病緩解率、更好的關節功能和更高的生活質量。</p>
+                            <p><strong>降低共病風險</strong>：未經控制的類風濕性關節炎可增加心血管疾病、骨質疏鬆等併發症風險。早期治療可降低這些風險。</p>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>早期診斷的挑戰在於初期症狀可能不典型或輕微，容易被忽視。因此，對高風險人群（如有家族史的人）出現持續性關節不適時，應及時就醫並進行相關檢查。</p>
+                            <p>現代治療策略強調「早期、積極、達標」的原則，通過疾病改善型抗風濕藥物(DMARDs)、生物製劑等早期干預，儘早控制炎症，實現臨床緩解或低疾病活動度，最大限度保護關節功能。</p>
+                        </div>
+                    </div>
+
+                    <!-- 風險因素頁面 -->
+                    <div id="risk-factors" class="subpage">
+                        <div class="intro-text">
+                            <h2>風險因素</h2>
+                            <p>類風濕性關節炎的確切病因尚未完全闡明，但研究表明多種因素可能增加發病風險：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">遺傳因素</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>家族史：</strong>有類風濕性關節炎家族史的人發病風險增加3-5倍。</li>
+                                    <li><strong>基因標記：</strong>HLA-DRB1基因的某些亞型(尤其是共同表位)與類風濕性關節炎關聯性強。</li>
+                                    <li><strong>其他基因：</strong>PTPN22、STAT4等基因多態性也與發病風險相關。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">環境因素</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>吸煙：</strong>吸煙是目前最明確的環境風險因素，可增加發病風險並加重病情。</li>
+                                    <li><strong>感染：</strong>某些細菌(如牙齦疾病相關菌)和病毒可能通過分子模擬機制觸發自身免疫反應。</li>
+                                    <li><strong>職業暴露：</strong>矽塵、礦物油等職業暴露可能增加風險。</li>
+                                    <li><strong>空氣污染：</strong>研究表明，長期暴露於PM2.5等空氣污染物可能與發病風險增加相關。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">個體因素</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>性別：</strong>女性發病率約為男性的2-3倍，提示荷爾蒙因素可能參與。</li>
+                                    <li><strong>年齡：</strong>任何年齡均可發病，但30-50歲發病高峰。</li>
+                                    <li><strong>肥胖：</strong>脂肪組織產生促炎因子，可能增加發病風險。</li>
+                                    <li><strong>腸道微生物組：</strong>腸道菌群失調可能影響免疫系統功能，與多種自身免疫疾病相關。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>基因-環境相互作用</h2>
+                            <p>類風濕性關節炎的發病機制被認為是遺傳易感性與環境觸發因素相互作用的結果。例如，研究發現吸煙對HLA-DRB1共同表位陽性個體的發病風險影響更大，這種基因-環境相互作用大大增加了發病風險。</p>
+                            <p>同時，表觀遺傳學機制(如DNA甲基化、組蛋白修飾等)可能是環境因素影響基因表達、進而促進疾病發生的重要途徑。這些發現為預防和個體化治療提供了新思路。</p>
+                        </div>
+                    </div>
+
+                    <!-- 生活與飲食指南頁面 -->
+                    <div id="lifestyle" class="subpage">
+                        <div class="intro-text">
+                            <h2>生活與飲食指南</h2>
+                            <p>藥物治療是類風濕性關節炎管理的基石，但生活方式調整和飲食管理也是綜合治療計劃的重要組成部分，有助於改善症狀、增強藥物療效並提高生活質量：</p>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">飲食建議</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>地中海飲食：</strong>富含橄欖油、魚類、堅果、水果蔬菜和全穀物的地中海飲食可能有助於減輕炎症和關節症狀。</li>
+                                    <li><strong>增加抗炎食物：</strong>富含ω-3脂肪酸的食物(如鮭魚、沙丁魚)、抗氧化物質豐富的蔬果(如藍莓、綠葉蔬菜)、薑黃素等天然抗炎成分。</li>
+                                    <li><strong>減少促炎食物：</strong>限制過度加工食品、精製碳水化合物、飽和脂肪和反式脂肪的攝入，減少紅肉攝取。</li>
+                                    <li><strong>關注特殊食物：</strong>部分患者可能對某些食物(如茄屬蔬果、乳製品)敏感，可通過食物日記觀察對症狀的影響。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">適合的運動方式</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>低衝擊有氧運動：</strong>游泳、水中運動、騎自行車等可增強心肺功能而不加重關節壓力。</li>
+                                    <li><strong>肌力訓練：</strong>輕至中度的力量訓練可增強關節周圍肌肉，提高關節穩定性。</li>
+                                    <li><strong>伸展運動：</strong>瑜伽、太極等可改善關節活動度和柔韌性，減輕僵硬感。</li>
+                                    <li><strong>運動原則：</strong>遵循「先易後難、循序漸進」原則，避免關節疼痛時進行高強度運動；疾病急性發作期應暫停或減少運動。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="collapsible-container">
+                            <button class="collapsible">壓力管理與睡眠</button>
+                            <div class="content">
+                                <ul style="padding: 15px 15px 15px 35px; list-style-type: disc;">
+                                    <li><strong>壓力管理：</strong>壓力可能誘發或加重疾病發作，可通過冥想、深呼吸、漸進式肌肉放鬆等技巧管理壓力。</li>
+                                    <li><strong>充足睡眠：</strong>保證足夠的睡眠時間和質量，有助於減輕疲勞和疼痛，增強免疫功能。</li>
+                                    <li><strong>心理支持：</strong>必要時尋求專業心理支持，學習積極應對慢性疾病的技巧，保持良好心態。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="latest-article">
+                            <h2>日常自我管理小貼士</h2>
+                            <p><strong>關節保護：</strong>使用人體工學工具，避免關節過度使用和不當姿勢。疼痛時可使用熱敷或冷敷緩解症狀。</p>
+                            <p><strong>勞逸結合：</strong>合理安排作息，避免過度勞累，學會根據疾病節律調整活動強度和休息時間。</p>
+                            <p><strong>規律覆診：</strong>遵醫囑定期覆診和實驗室檢查，及時調整治療方案。</p>
+                            <p><strong>戒煙：</strong>吸煙不僅增加發病風險，還會減弱治療效果，所有患者都應戒煙。</p>
+                        </div>
+                        
+                        <div class="intro-text" style="margin-top: 20px;">
+                            <p>值得注意的是，生活方式調整應與藥物治療相輔相成，而非替代。患者應在醫生指導下制定個體化的生活和飲食計劃，特別是在使用某些藥物(如甲氨蝶呤)時，應關注藥物與食物的相互作用。</p>
+                            <p>綜合的疾病管理策略，包括藥物治療、生活方式調整和心理支持，有助於患者更好地控制疾病活動度，維持功能和生活質量。</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- 案例介紹區塊 -->
+        <section class="case-studies">
+            <div class="section-header">
+                <h2>案例介紹</h2>
+                <div class="underline"></div>
+                <p>真實治療案例分享，希望能為相似情況的患者提供參考</p>
+            </div>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <h3>39歲女性類風濕性關節炎成功治療案例</h3>
+                    <p>林小姐長期飽受多關節疼痛困擾，經過精準診斷和個人化治療計劃，症狀獲得顯著改善。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+                
+                <div class="case-card">
+                    <h3>紅斑性狼瘡患者生活品質提升</h3>
+                    <p>張女士經過系統性治療和生活方式調整，成功控制疾病活動度，重返正常生活。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+                
+                <div class="case-card">
+                    <h3>乾癬關節炎合併用藥治療</h3>
+                    <p>王先生原本關節變形嚴重，通過新型生物製劑治療後，關節腫脹減輕，皮膚症狀也獲得控制。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+                
+                <div class="case-card">
+                    <h3>免疫不孕治療成功案例</h3>
+                    <p>陳小姐經歷多次懷孕失敗，診斷為抗磷脂質症候群，經過個人化治療方案，成功懷孕並順利生產。</p>
+                    <a href="#" class="read-more-link">閱讀全文 →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 類風濕性關節炎醫學資訊網站. 保留所有權利。</p>
+        </footer>
+    </div>
+
+    <!-- 子頁面相關JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 定義文章數據和每頁顯示數量
+            const articlesPerPage = 6; // 每頁顯示6篇文章
+            // 文章數據
+            const articles = [
+                {
+                    title: "類風濕性關節炎的早期症狀與診斷 - 及早發現的關鍵指標",
+                    url: "ra-early-symptoms.html",
+                    date: {
+                        year_month: "2025/04",
+                        day: "27"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎合併骨質疏鬆的低劑量治療 - 減少用藥副作用的使用？",
+                    url: "ra-biologics.html",
+                    date: {
+                        year_month: "2025/04",
+                        day: "29"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎患者的飲食建議 - 降低發炎反應的機會！",
+                    url: "ra-diet.html",
+                    date: {
+                        year_month: "2025/04",
+                        day: "28"
+                    }
+                },
+                {
+                    title: "適合類風濕性關節炎患者的運動 - 維持關節健康與活動力",
+                    url: "ra-exercise.html",
+                    date: {
+                        year_month: "2025/03",
+                        day: "15"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎與妊娠計畫 - 女性患者的用藥調整指南",
+                    url: "ra-pregnancy.html",
+                    date: {
+                        year_month: "2025/03",
+                        day: "08"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎研究新進展 - 精準治療的突破性進展",
+                    url: "ra-research.html",
+                    date: {
+                        year_month: "2025/02",
+                        day: "22"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎的共病管理 - 心血管疾病與骨質疏鬆的預防",
+                    url: "ra-comorbidities.html",
+                    date: {
+                        year_month: "2025/02",
+                        day: "15"
+                    }
+                },
+                {
+                    title: "生物製劑治療類風濕性關節炎 - 選擇與療效監測",
+                    url: "ra-biologics-monitoring.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "30"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎的疼痛管理 - 藥物與非藥物方法",
+                    url: "ra-pain-management.html",
+                    date: {
+                        year_month: "2025/01",
+                        day: "18"
+                    }
+                },
+                {
+                    title: "類風濕性關節炎與疲勞 - 能量保存與生活品質提升策略",
+                    url: "ra-fatigue.html",
+                    date: {
+                        year_month: "2024/12",
+                        day: "25"
+                    }
+                }
+            ];
+            
+            // 子頁面切換功能
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.classList.contains('tab-link')) {
+                        e.preventDefault();
+                        // 移除所有活動狀態
+                        document.querySelectorAll('.sidebar ul li a').forEach(lnk => {
+                            lnk.classList.remove('active');
+                        });
+                        
+                        document.querySelectorAll('.subpage').forEach(page => {
+                            page.classList.remove('active');
+                        });
+                        
+                        // 設置當前活動狀態
+                        this.classList.add('active');
+                        const targetId = this.getAttribute('data-target');
+                        if (document.getElementById(targetId)) {
+                            document.getElementById(targetId).classList.add('active');
+                        }
+                    }
+                });
+            });
+            
+            // 可收納內容功能
+            const collapsibles = document.getElementsByClassName("collapsible");
+            for (let i = 0; i < collapsibles.length; i++) {
+                collapsibles[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+            
+            // 查找并設置初始活動的標籤
+            if (document.querySelector('.tab-link[data-target="articles"]')) {
+                document.querySelector('.tab-link[data-target="articles"]').classList.add('active');
+                document.getElementById('articles')?.classList.add('active');
+            }
+            
+            // 設置分頁功能
+            setupPagination();
+            
+            /**
+             * 設置分頁功能並處理URL參數
+             */
+            function setupPagination() {
+                if (articles.length === 0) return;
+                
+                // 獲取當前頁碼 (從URL參數)
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentPage = parseInt(urlParams.get('page')) || 1;
+                
+                // 計算總頁數
+                const totalPages = Math.ceil(articles.length / articlesPerPage);
+                
+                // 顯示文章和分頁
+                displayArticles(currentPage);
+                displayPagination(currentPage, totalPages);
+                
+                // 為分頁鏈接添加事件監聽器
+                document.querySelectorAll('.pagination a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!this.classList.contains('disabled')) {
+                            e.preventDefault();
+                            const page = parseInt(this.getAttribute('href').split('=')[1]);
+                            displayArticles(page);
+                            displayPagination(page, totalPages);
+                            
+                            // 更新URL，但不重新加載頁面
+                            const newUrl = window.location.pathname + `?page=${page}`;
+                            history.pushState({page: page}, '', newUrl);
+                        }
+                    });
+                });
+            }
+            
+            /**
+             * 根據頁碼顯示文章
+             * @param {number} page - 當前頁碼
+             */
+            function displayArticles(page) {
+                const articleGrid = document.querySelector('.article-grid');
+                if (!articleGrid) return;
+                
+                articleGrid.innerHTML = '';
+                
+                const startIndex = (page - 1) * articlesPerPage;
+                const endIndex = Math.min(startIndex + articlesPerPage, articles.length);
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    const article = articles[i];
+                    const articleElement = document.createElement('article');
+                    articleElement.classList.add('article-item');
+                    
+                    articleElement.innerHTML = `
+                        <div class="article-content">
+                            <a href="${article.url}">
+                                <h3>${article.title}</h3>
+                            </a>
+                            <div class="article-date">
+                                <div class="year-month">${article.date.year_month}</div>
+                                <div class="day">${article.date.day}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    articleGrid.appendChild(articleElement);
+                }
+            }
+            
+            /**
+             * 顯示分頁控制
+             * @param {number} currentPage - 當前頁碼
+             * @param {number} totalPages - 總頁數
+             */
+            function displayPagination(currentPage, totalPages) {
+                const paginationContainer = document.querySelector('.pagination');
+                if (!paginationContainer) return;
+                
+                paginationContainer.innerHTML = '';
+                
+                // 上一頁按鈕
+                const prevButton = document.createElement('a');
+                prevButton.href = `?page=${currentPage - 1}`;
+                prevButton.textContent = '« 上一頁';
+                prevButton.classList.add('prev');
+                
+                if (currentPage === 1) {
+                    prevButton.classList.add('disabled');
+                    prevButton.href = 'javascript:void(0)';
+                }
+                
+                paginationContainer.appendChild(prevButton);
+                
+                // 頁碼按鈕
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageLink = document.createElement('a');
+                    pageLink.href = `?page=${i}`;
+                    pageLink.textContent = i;
+                    
+                    if (i === currentPage) {
+                        pageLink.classList.add('active');
+                    }
+                    
+                    paginationContainer.appendChild(pageLink);
+                }
+                
+                // 下一頁按鈕
+                const nextButton = document.createElement('a');
+                nextButton.href = `?page=${currentPage + 1}`;
+                nextButton.textContent = '下一頁 »';
+                nextButton.classList.add('next');
+                
+                if (currentPage === totalPages) {
+                    nextButton.classList.add('disabled');
+                    nextButton.href = 'javascript:void(0)';
+                }
+                
+                paginationContainer.appendChild(nextButton);
+            }
+        });
+    </script>
+</body>
+</html>

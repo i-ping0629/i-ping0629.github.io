@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>健康專欄</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+         
+        .disease-content {
+            padding: 20px;
+        }
+        
+        .disease-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-dark);
+        }
+        
+        .disease-content p {
+            font-size: 0.95rem;
+            color: #6B7280;
+        }
+        
+        .disease-content a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--primary-color);
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .disease-content a:hover {
+            color: #2563EB;
+        }
+        
+        .main-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .sidebar {
+            flex: 0 0 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .sidebar ul {
+            list-style-type: none;
+        }
+        
+        .sidebar ul li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .sidebar ul li a:before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+        
+        .sidebar ul li a:hover {
+            color: #3498db;
+        }
+        
+        .sidebar ul li a.active {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .sidebar ul li a.active:before {
+            color: #3498db;
+        }
+        
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .intro-text {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+        
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 子頁面樣式 */
+        .subpage {
+            display: none;
+        }
+
+        .subpage.active {
+            display: block;
+        }
+        
+        /* 文章樣式 */
+        .latest-article {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .latest-article h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+        
+        .latest-article .date {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .collapsible-container {
+            margin-bottom: 20px;
+        }
+        
+        .collapsible {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.4s;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #ddd;
+        }
+        
+        .collapsible:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 4px 4px;
+        }
+        
+        .article {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+        }
+        
+        .article h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .article .date {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .article p {
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .read-more:hover {
+            text-decoration: underline;
+        }
+        
+        /* 文章列表卡片樣式 */
+        .article-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .article-item {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .article-content {
+            padding: 20px;
+            flex-grow: 1;
+            position: relative;
+            padding-right: 100px;
+        }
+        
+        .article-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .article-content a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .article-content a:hover h3 {
+            color: #3498db;
+        }
+        
+        .article-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: center;
+        }
+        
+        .article-date .year-month {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .article-date .day {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* 分頁樣式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .pagination a {
+            color: #333;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            margin: 0 4px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .pagination a.active {
+            background-color: #3498db;
+            color: white;
+            border: 1px solid #3498db;
+        }
+        
+        .pagination a:hover:not(.active) {
+            background-color: #f1f1f1;
+        }
+        
+        .pagination .prev, .pagination .next {
+            background-color: #fff;
+        }
+        
+        .pagination .prev.disabled, .pagination .next.disabled {
+            color: #ccc;
+            pointer-events: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            .main-wrapper {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 0 0 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .article-content {
+                padding-right: 20px;
+            }
+            
+            .article-date {
+                position: static;
+                text-align: left;
+                margin-bottom: 10px;
+            }
+            
+            .article-date .day {
+                display: inline-block;
+                margin-right: 5px;
+                font-size: 1.2rem;
+            }
+            
+            .article-date .year-month {
+                display: inline-block;
+            }
+            .pagination {
+                flex-wrap: wrap;
+            }
+            
+            .pagination a {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>最新內容</h1>
+            <div class="breadcrumb">
+                <a href="index.html">首頁</a>
+                <span>/</span>
+                最新內容
+            </div>
+        </header>
+        
+        <div class="main-wrapper">
+            <aside class="sidebar">
+                <h2>類別</h2>
+                <ul>
+                    <li><a href="#" class="tab-link" data-target="articles">風濕免疫</a></li>
+                    <li><a href="#" class="tab-link" data-target="allergy">過敏</a></li>
+                    <li><a href="#" class="tab-link" data-target="arthritis">關節炎</a></li>
+                    <li><a href="#" class="tab-link" data-target="medication">免疫不孕症</a></li>
+                    <li><a href="#" class="tab-link" data-target="gout">痛風</a></li>
+                    <li><a href="#" class="tab-link" data-target="drugs">藥物</a></li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <div class="subpages-container">
+                    <!-- 風濕免疫分類 -->
+                    <div id="articles" class="subpage active">
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 過敏分類 -->
+                    <div id="allergy" class="subpage">
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 關節炎分類 -->
+                    <div id="arthritis" class="subpage">
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 免疫不孕症分類 -->
+                    <div id="medication" class="subpage">
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 痛風分類 -->
+                    <div id="gout" class="subpage">
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 藥物分類 -->
+                    <div id="drugs" class="subpage">
+                        <div class="article-grid">
+                            <!-- 文章列表會由JavaScript動態生成 -->
+                        </div>
+                        <div class="pagination">
+                            <!-- 分頁按鈕由JavaScript生成 -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 李苡萍醫師風濕免疫科版權所有。</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const articlesPerPage = 4;
+            
+            // 各分類文章數據
+            const articleData = {
+                articles: [
+                    {
+                        title: "<a href='file:///Users/oreo/Downloads/updated-rheumatology-website-with-subpages20250522.html'>你來咬我的超連結啊</a>",
+                        date: { year_month: "2025/01", day: "15" }
+                    },
+                    {
+                        title: "<a href='file:///Users/oreo/Downloads/updated-rheumatology-website-with-subpages20250522.html'>怎麼樣我又成功了</a>",
+                        date: { year_month: "2025/01", day: "12" }
+                    },
+                    {
+                        title: "<a href='file:///Users/oreo/Downloads/updated-rheumatology-website-with-subpages20250522.html'>類風濕性關節炎的生物製劑治療：新時代的突破</a>",
+                        date: { year_month: "2025/01", day: "10" }
+                    },
+                    {
+                        title: "自體免疫疾病的營養管理：科學飲食指南",
+                        date: { year_month: "2025/01", day: "08" }
+                    },
+                    {
+                        title: "系統性紅斑狼瘡患者的日常護理",
+                        date: { year_month: "2025/01", day: "05" }
+                    },
+                    {
+                        title: "風濕免疫疾病的早期診斷指標",
+                        date: { year_month: "2025/01", day: "03" }
+                    }
+                ],
+                allergy: [
+                    {
+                        title: "過敏性鼻炎的季節性管理：有效控制症狀的策略",
+                        date: { year_month: "2025/01", day: "14" }
+                    },
+                    {
+                        title: "食物過敏診斷指南：從症狀識別到過敏原檢測",
+                        date: { year_month: "2025/01", day: "11" }
+                    },
+                    {
+                        title: "蕁麻疹的成因與治療：皮膚過敏的完整解析",
+                        date: { year_month: "2025/01", day: "09" }
+                    },
+                    {
+                        title: "氣喘管理新觀念：預防發作的生活調整",
+                        date: { year_month: "2025/01", day: "06" }
+                    },
+                    {
+                        title: "兒童過敏預防：從嬰幼兒期開始的保護策略",
+                        date: { year_month: "2025/01", day: "04" }
+                    }
+                ],
+                arthritis: [
+                    {
+                        title: "類風濕性關節炎的早期診斷：把握治療黃金期",
+                        date: { year_month: "2025/01", day: "13" }
+                    },
+                    {
+                        title: "退化性關節炎的保養秘訣：延緩軟骨磨損",
+                        date: { year_month: "2025/01", day: "10" }
+                    },
+                    {
+                        title: "關節炎患者的運動指南：安全有效的復健方法",
+                        date: { year_month: "2025/01", day: "07" }
+                    },
+                    {
+                        title: "關節發炎的營養對策：抗炎飲食的實踐",
+                        date: { year_month: "2025/01", day: "04" }
+                    },
+                    {
+                        title: "僵直性脊椎炎的診斷與治療新進展",
+                        date: { year_month: "2025/01", day: "02" }
+                    }
+                ],
+                medication: [
+                    {
+                        title: "免疫不孕症的診斷與治療：重燃生育希望",
+                        date: { year_month: "2025/01", day: "12" }
+                    },
+                    {
+                        title: "抗磷脂症候群與懷孕：安全度過孕期的策略",
+                        date: { year_month: "2025/01", day: "09" }
+                    },
+                    {
+                        title: "自體免疫疾病患者的生育規劃：專業指導",
+                        date: { year_month: "2025/01", day: "06" }
+                    },
+                    {
+                        title: "免疫調節劑在生殖醫學的應用：個人化治療",
+                        date: { year_month: "2025/01", day: "03" }
+                    }
+                ],
+                gout: [
+                    {
+                        title: "痛風急性發作的緊急處理：快速緩解疼痛",
+                        date: { year_month: "2025/01", day: "11" }
+                    },
+                    {
+                        title: "痛風患者的飲食指南：低普林飲食實踐",
+                        date: { year_month: "2025/01", day: "08" }
+                    },
+                    {
+                        title: "尿酸控制的長期策略：預防痛風復發",
+                        date: { year_month: "2025/01", day: "05" }
+                    },
+                    {
+                        title: "痛風石的形成與處理：避免關節破壞",
+                        date: { year_month: "2025/01", day: "02" }
+                    }
+                ],
+                drugs: [
+                    {
+                        title: "生物製劑使用指南：安全性與療效評估",
+                        date: { year_month: "2025/01", day: "13" }
+                    },
+                    {
+                        title: "免疫抑制劑的正確使用：避免副作用",
+                        date: { year_month: "2025/01", day: "10" }
+                    },
+                    {
+                        title: "類固醇的合理使用：最小化風險最大化效益",
+                        date: { year_month: "2025/01", day: "07" }
+                    },
+                    {
+                        title: "新型免疫調節藥物：治療選擇的新突破",
+                        date: { year_month: "2025/01", day: "04" }
+                    }
+                ]
+            };
+            
+            let currentCategory = 'articles';
+            let articles = articleData[currentCategory];
+            
+            // 子頁面切換功能
+            const sidebarLinks = document.querySelectorAll('.sidebar ul li a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.classList.contains('tab-link')) {
+                        e.preventDefault();
+                        
+                        // 移除所有活動狀態
+                        document.querySelectorAll('.sidebar ul li a').forEach(lnk => {
+                            lnk.classList.remove('active');
+                        });
+                        document.querySelectorAll('.subpage').forEach(page => {
+                            page.classList.remove('active');
+                        });
+                        
+                        // 設置當前活動狀態
+                        this.classList.add('active');
+                        const targetId = this.getAttribute('data-target');
+                        
+                        // 更新當前分類和文章數據
+                        currentCategory = targetId;
+                        articles = articleData[currentCategory] || [];
+                        
+                        if (document.getElementById(targetId)) {
+                            document.getElementById(targetId).classList.add('active');
+                            setupPagination();
+                        }
+                    }
+                });
+            });
+            
+            // 設置初始活動標籤
+            if (document.querySelector('.tab-link[data-target="articles"]')) {
+                document.querySelector('.tab-link[data-target="articles"]').classList.add('active');
+                document.getElementById('articles')?.classList.add('active');
+            }
+
+            // 設置分頁功能
+            setupPagination();
+            
+            /**
+             * 設置分頁功能並處理URL參數
+             */
+            function setupPagination() {
+                if (articles.length === 0) return;
+
+                // 獲取當前頁碼 (從URL參數)
+                const urlParams = new URLSearchParams(window.location.search);
+                const currentPage = parseInt(urlParams.get('page')) || 1;
+
+                 // 計算總頁數
+                const totalPages = Math.ceil(articles.length / articlesPerPage);
+                
+                 // 顯示文章和分頁
+                displayArticles(currentPage);
+                displayPagination(currentPage, totalPages);
+                
+                // 為分頁鏈接添加事件監聽器
+                document.querySelectorAll('.pagination a').forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        if (!this.classList.contains('disabled')) {
+                            e.preventDefault();
+                            const page = parseInt(this.getAttribute('href').split('=')[1]);
+                            displayArticles(page);
+                            displayPagination(page, totalPages);
+
+                             // 更新URL，但不重新加載頁面
+                            const newUrl = window.location.pathname + `?page=${page}`;
+                            history.pushState({page: page}, '', newUrl);
+                        }
+                    });
+                });
+            }
+            
+             /**
+             * 根據頁碼顯示文章
+             * @param {number} page - 當前頁碼
+             */
+            function displayArticles(page) {
+                const articleGrid = document.querySelector(`#${currentCategory} .article-grid`);
+                if (!articleGrid) return;
+                
+                articleGrid.innerHTML = '';
+                
+                const startIndex = (page - 1) * articlesPerPage;
+                const endIndex = Math.min(startIndex + articlesPerPage, articles.length);
+                
+                for (let i = startIndex; i < endIndex; i++) {
+                    const article = articles[i];
+                    const articleElement = document.createElement('article');
+                    articleElement.classList.add('article-item');
+                    
+                    articleElement.innerHTML = `
+                        <div class="article-content">
+                            <a href="${article.url}">
+                                <h3>${article.title}</h3>
+                            </a>
+                            <div class="article-date">
+                                <div class="year-month">${article.date.year_month}</div>
+                                <div class="day">${article.date.day}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    articleGrid.appendChild(articleElement);
+                }
+            }
+            
+              /**
+             * 顯示分頁控制
+             * @param {number} currentPage - 當前頁碼
+             * @param {number} totalPages - 總頁數
+             */
+            function displayPagination(currentPage, totalPages) {
+                const paginationContainer = document.querySelector(`#${currentCategory} .pagination`);
+                if (!paginationContainer) return;
+                
+                paginationContainer.innerHTML = '';
+                
+                // 上一頁按鈕
+                const prevButton = document.createElement('a');
+                prevButton.href = `?page=${currentPage - 1}`;
+                prevButton.textContent = '« 上一頁';
+                prevButton.classList.add('prev');
+                
+                if (currentPage === 1) {
+                    prevButton.classList.add('disabled');
+                    prevButton.href = 'javascript:void(0)';
+                }
+                
+                paginationContainer.appendChild(prevButton);
+                
+                // 頁碼按鈕
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageLink = document.createElement('a');
+                    pageLink.href = `?page=${i}`;
+                    pageLink.textContent = i;
+                    
+                    if (i === currentPage) {
+                        pageLink.classList.add('active');
+                    }
+                    
+                    paginationContainer.appendChild(pageLink);
+                }
+                
+                // 下一頁按鈕
+                const nextButton = document.createElement('a');
+                nextButton.href = `?page=${currentPage + 1}`;
+                nextButton.textContent = '下一頁 »';
+                nextButton.classList.add('next');
+                
+                if (currentPage === totalPages) {
+                    nextButton.classList.add('disabled');
+                    nextButton.href = 'javascript:void(0)';
+                }
+                
+                paginationContainer.appendChild(nextButton);
+            }
+        });
+    </script>
+</body>
+</html>
