@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紅斑性狼瘡 (SLE) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #3498db;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .risk-factor-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .risk-factor-item:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .risk-factor-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .risk-factor-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .causes-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .cause-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .cause-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .symptom-category {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-category:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .symptom-category h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .impacts-pyramid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .impact-level {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            text-align: center;
+        }
+
+        .impact-level h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .impact-level .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diagnosis-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .diagnosis-item:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .diagnosis-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .treatment-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-item:hover {
+            background: #e9ecef;
+            border-left-color: #c0392b;
+        }
+
+        .treatment-item h4 {
+            color: #c0392b;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .important-note {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: 1px solid #c3e6cb;
+        }
+
+        .puzzle-note {
+            background: #e7f3ff;
+            color: #0c5460;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #bee5eb;
+            border-left: 4px solid #3498db;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .causes-circle {
+                flex-direction: column;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #2980b9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>紅斑性狼瘡 (SLE)</h1>
+            <p>紅斑性狼瘡是一種慢性疾病，會導致身體任何部位發炎和疼痛。這是一種自體免疫性疾病，意味著您的免疫系統會攻擊健康的組織。紅斑性狼瘡最常影響皮膚、關節和內部器官，如腎臟。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是紅斑性狼瘡</a></li>
+                <li><a href="#risk-factors">風險因子</a></li>
+                <li><a href="#causes">成因</a></li>
+                <li><a href="#symptoms">症狀表現</a></li>
+                <li><a href="#impacts">對身體的影響</a></li>
+                <li><a href="#diagnosis">診斷方法</a></li>
+                <li><a href="#treatment">治療方式</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是紅斑性狼瘡？(SLE)</h2>
+            <p>紅斑性狼瘡是一種慢性疾病，會導致身體任何部位發炎和疼痛。</p>
+            <p>這是一種自體免疫性疾病，意味著您的免疫系統會攻擊健康的組織。</p>
+            <p>紅斑性狼瘡最常影響皮膚、關節和內部器官，如腎臟。</p>
+        </div>
+
+        <div class="section" id="risk-factors">
+            <h2>誰有患紅斑性狼瘡的風險？</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <div class="icon">👩</div>
+                    <h4>15 至 44 歲的女性</h4>
+                    <p>女性是紅斑性狼瘡的高風險群體，特別是生育年齡的女性</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <div class="icon">👨‍👩‍👧‍👦</div>
+                    <h4>有紅斑性狼瘡或其他自體免疫疾病家族史的人</h4>
+                    <p>家族遺傳因素會增加患病風險</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <div class="icon">🌍</div>
+                    <h4>任何年齡、性別和種族的人</h4>
+                    <p>雖然某些群體風險較高，但任何人都可能患上紅斑性狼瘡</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>為什麼會得紅斑性狼瘡？</h2>
+            <p>目前尚無人知曉紅斑性狼瘡的病因。環境觸發因素是可能引起紅斑性狼瘡症狀或使之惡化的因素。</p>
+            
+            <div class="causes-circle">
+                <div class="cause-item">
+                    <h4>🧬 遺傳因素</h4>
+                    <p>紅斑性狼瘡和其他自體免疫性疾病確實有家族遺傳傾向</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>♀️ 荷爾蒙因素</h4>
+                    <p>專家認為，它可能是因某些激素（包括雌激素）引起</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🌞 環境觸發因素</h4>
+                    <p>紫外線、感染、精疲力竭、身體壓力、情緒壓力</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>紅斑性狼瘡有哪些症狀？</h2>
+            <p>由於紅斑性狼瘡會影響身體的許多不同部位，因此會引起許多不同的症狀。請記住，這些症狀可能會時好時壞。</p>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-category">
+                    <h4>常見症狀</h4>
+                    <ul>
+                        <li>疲勞（經常感到疲倦）</li>
+                        <li>關節疼痛或腫脹</li>
+                        <li>手、腳或眼周腫脹</li>
+                        <li>頭痛</li>
+                        <li>低燒</li>
+                        <li>對光敏感</li>
+                        <li>深呼吸時胸痛</li>
+                    </ul>
+                </div>
+
+                <div class="symptom-category">
+                    <h4>皮膚和頭髮問題</h4>
+                    <ul>
+                        <li>臉頰和鼻子上的蝴蝶狀皮疹</li>
+                        <li>口腔潰瘍</li>
+                        <li>脫髮</li>
+                    </ul>
+                </div>
+
+                <div class="symptom-category">
+                    <h4>血液問題</h4>
+                    <ul>
+                        <li>血球異常</li>
+                        <li>紅血球數量偏低（貧血）</li>
+                        <li>手指和腳趾溫度低時變白或變藍並感到麻木（雷諾現象）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="impacts">
+            <h2>紅斑性狼瘡會對身體造成什麼影響？</h2>
+            
+            <div class="impacts-pyramid">
+                <div class="impact-level">
+                    <h4><span class="icon">🏃‍♂️</span>身體上的影響</h4>
+                    <p>疲勞、疼痛、關節炎、皮膚病變、腎臟問題、心肺問題、神經精神問題等等</p>
+                </div>
+
+                <div class="impact-level">
+                    <h4><span class="icon">🧠</span>心理上的影響</h4>
+                    <p>焦慮、憂鬱等心理問題</p>
+                </div>
+
+                <div class="impact-level">
+                    <h4><span class="icon">👥</span>社交上的影響</h4>
+                    <p>影響外觀和活動能力，影響社交、工作和學業</p>
+                </div>
+            </div>
+
+            <div class="important-note">
+                定期回診檢查疾病狀況，按醫囑服用藥物對於控制疾病很重要。
+            </div>
+        </div>
+
+        <div class="section" id="diagnosis">
+            <h2>紅斑性狼瘡的診斷</h2>
+            
+            <div class="diagnosis-grid">
+                <div class="diagnosis-item">
+                    <h4>病史詢問</h4>
+                    <p>醫生會詢問您的關節症狀、發病時間、家族史等</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>身體檢查</h4>
+                    <p>醫生會檢查您的關節是否有壓痛、腫脹、活動受限等</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>血液檢查</h4>
+                    <p>全血細胞計數 (CBC)，測量血液中紅血球、白血球和血小板的數量<br>
+                    抗體檢查，補體檢查，以檢查發炎跡象</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>尿液檢查</h4>
+                    <p>尿液檢查可以幫助醫師查看您的腎臟是否有任何問題</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>組織切片</h4>
+                    <p>如皮膚、腎臟 (病情需要)</p>
+                </div>
+            </div>
+
+            <div class="puzzle-note">
+                <h4>診斷的挑戰性</h4>
+                <p>診斷紅斑性狼瘡可能具有挑戰性。沒有一項檢查可以給醫生一個明確的「是」或「否」的答案。</p>
+                <p>有時，需要數月甚至數年的時間才能獲得做出狼瘡診斷。</p>
+                <p><strong>診斷狼瘡就像拼圖一樣</strong>——每個答案或檢查結果都像一塊拼圖。當足夠多的拼圖塊拼湊在一起時，才能診斷紅斑性狼瘡。</p>
+            </div>
+        </div>
+
+        <div class="section" id="treatment">
+            <h2>如何治療紅斑性狼瘡？</h2>
+            
+            <div class="treatment-grid">
+                <div class="treatment-item">
+                    <h4>免疫抑製劑</h4>
+                    <p>如必賴克廔 - 幫助防止您的免疫系統攻擊</p>
+                </div>
+
+                <div class="treatment-item">
+                    <h4>生物製劑</h4>
+                    <p>幫助您的免疫系統正常運作</p>
+                </div>
+
+                <div class="treatment-item">
+                    <h4>類固醇</h4>
+                    <p>幫助減輕發炎</p>
+                </div>
+
+                <div class="treatment-item">
+                    <h4>消炎藥</h4>
+                    <p>幫助減輕炎症和疼痛</p>
+                </div>
+
+                <div class="treatment-item">
+                    <h4>抗凝劑</h4>
+                    <p>幫助預防血栓</p>
+                </div>
+            </div>
+
+            <h3>治療目標</h3>
+            <p>雖然目前尚無法治癒紅斑性狼瘡，但正確的治療計劃可以幫助您：</p>
+            <ul>
+                <li><strong>控制您的症狀</strong>——如關節疼痛、腫脹和疲勞</li>
+                <li><strong>防止您的免疫系統攻擊自己的身體</strong></li>
+                <li><strong>保護您的器官免受損害</strong></li>
+            </ul>
+
+            <div class="important-note">
+                由於紅斑性狼瘡會引起許多不同的症狀，因此可以使用許多不同種類的藥物來治療。
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add fade-in animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

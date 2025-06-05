@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>骨質疏鬆症 (Osteoporosis) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #495057;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #007bff;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #6c757d;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .risk-factor-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .risk-factor-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .risk-factor-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .risk-factor-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .symptom-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .symptom-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .symptom-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diagnosis-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .diagnosis-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagnosis-item h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+            font-size: 1.4em;
+        }
+
+        .t-score-box {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #b3d9ff;
+        }
+
+        .t-score-box h3 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .t-score-box ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .t-score-box li {
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 1.1em;
+        }
+
+        .t-score-box li:before {
+            content: "•";
+            color: #007bff;
+            position: absolute;
+            left: 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .impact-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .impact-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .treatment-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .treatment-item h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+            font-size: 1.4em;
+        }
+
+        .self-care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .self-care-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .self-care-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .self-care-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .self-care-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .self-care-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .prevention-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .prevention-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .prevention-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .prevention-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .prevention-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #b3d9ff;
+        }
+
+        .highlight-box h3 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .highlight-box p {
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .risk-factors-grid,
+            .diagnosis-grid,
+            .treatment-grid,
+            .self-care-grid,
+            .prevention-grid,
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #0056b3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>骨質疏鬆症 (Osteoporosis)</h1>
+            <p>骨質疏鬆症是一種骨骼疾病，其特徵是骨密度降低和骨骼強度減弱，導致骨折風險增加。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是骨質疏鬆症</a></li>
+                <li><a href="#risk-groups">誰容易得骨質疏鬆症</a></li>
+                <li><a href="#causes">骨質疏鬆症的成因</a></li>
+                <li><a href="#symptoms">症狀表現</a></li>
+                <li><a href="#impacts">疾病影響</a></li>
+                <li><a href="#diagnosis">診斷方法</a></li>
+                <li><a href="#treatment">治療方法</a></li>
+                <li><a href="#self-care">自我照顧</a></li>
+                <li><a href="#prevention">預防方法</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是骨質疏鬆症？</h2>
+            <p>骨質疏鬆症是一種骨骼疾病，其特徵是骨密度降低和骨骼強度減弱，導致骨折風險增加。</p>
+        </div>
+
+        <div class="section" id="risk-groups">
+            <h2>誰容易得骨質疏鬆症？</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <h4>🧓 老年人</h4>
+                    <p>骨質疏鬆症最常見於老年人</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>👩 停經後婦女</h4>
+                    <p>停經後婦女是高風險群體</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>👥 其他人群</h4>
+                    <p>它也可能發生在男性和年輕人身上</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>骨質疏鬆症的成因</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <h4>⏰ 年齡</h4>
+                    <p>隨著年齡增長，骨骼自然會變得更脆弱</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🔬 荷爾蒙變化</h4>
+                    <p>停經後婦女雌激素水平下降，會加速骨質流失</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🥛 營養</h4>
+                    <p>鈣和維生素 D 攝取不足會影響骨骼健康</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>💊 藥物</h4>
+                    <p>某些藥物，如類固醇，會增加骨質流失的風險</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🚭 生活方式</h4>
+                    <p>缺乏運動、吸煙和過量飲酒會增加患骨質疏鬆症的風險</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🏥 其他疾病</h4>
+                    <p>某些疾病，如甲狀腺機能亢進，會影響骨骼健康</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>👨‍👩‍👧‍👦 家族史</h4>
+                    <p>如果有骨質疏鬆症或骨折家族史，患骨質疏鬆症的風險會增加</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>骨質疏鬆症有哪些症狀？</h2>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <h4>「沉默的疾病」</h4>
+                    <p>骨質疏鬆症通常沒有任何症狀，直到發生骨折。這就是為什麼它被稱為「沉默的疾病」。</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>身高降低</h4>
+                    <p>身高隨著時間的推移而降低</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>背痛</h4>
+                    <p>由於脊椎骨折引起的背痛</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>駝背</h4>
+                    <p>脊椎變形導致的姿勢改變</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>容易骨折</h4>
+                    <p>容易發生骨折，特別是在髖部、脊椎、手腕或肋骨</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="impacts">
+            <h2>骨質疏鬆症會對身體造成什麼影響？</h2>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h4>疼痛</h4>
+                    <p>骨折引起的急性和慢性疼痛</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>殘疾</h4>
+                    <p>可能導致行動不便</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>生活品質下降</h4>
+                    <p>影響日常活動和獨立性</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>需要長期護理</h4>
+                    <p>骨折後可能需要長期照護</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>死亡風險增加</h4>
+                    <p>特別是髖部骨折</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="diagnosis">
+            <h2>如何診斷骨質疏鬆症？</h2>
+            
+            <div class="diagnosis-grid">
+                <div class="diagnosis-item">
+                    <h3>雙能量 X 線吸收儀 (DXA) 掃描</h3>
+                    <p>骨質疏鬆症的診斷通常使用雙能量 X 線吸收儀 (DXA) 掃描來測量骨密度。</p>
+                    <p>DXA 掃描是一種安全、無痛的檢查，可測量髖部和脊椎的骨密度。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h3>其他檢查</h3>
+                    <p>醫生可能還會建議進行血液和尿液檢查，以排除可能導致骨質流失的其他疾病。</p>
+                </div>
+            </div>
+
+            <div class="t-score-box">
+                <h3>骨密度結果解讀</h3>
+                <p>骨密度結果以 T 值表示：</p>
+                <ul>
+                    <li>T 值為 -1.0 或更高：骨密度正常</li>
+                    <li>T 值介於 -1.0 和 -2.5 之間：骨密度偏低（骨質減少）</li>
+                    <li>T 值為 -2.5 或更低：骨質疏鬆症</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="treatment">
+            <h2>如何治療骨質疏鬆症？</h2>
+            
+            <div class="treatment-grid">
+                <div class="treatment-item">
+                    <h3>💊 藥物治療</h3>
+                    <ul>
+                        <li><strong>雙磷酸鹽類藥物：</strong>減緩骨質流失並降低骨折風險</li>
+                        <li><strong>地舒單抗：</strong>一種單株抗體，可抑制骨質流失並增強骨密度</li>
+                        <li><strong>特立帕肽：</strong>一種副甲狀腺激素類似物，可促進新骨形成</li>
+                        <li><strong>雷洛昔芬：</strong>一種選擇性雌激素受體調節劑 (SERM)，可增加脊椎的骨密度</li>
+                        <li><strong>荷爾蒙療法：</strong>可能用於停經後婦女，但有其他風險</li>
+                    </ul>
+                </div>
+
+                <div class="treatment-item">
+                    <h3>🏃‍♂️ 生活方式的改變</h3>
+                    <ul>
+                        <li>攝取足夠的鈣和維生素 D</li>
+                        <li>進行負重運動，如步行、跑步和跳舞</li>
+                        <li>戒菸並限制飲酒</li>
+                        <li>防止跌倒的措施，如改善居家照明、使用輔助裝置</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="self-care">
+            <h2>骨質疏鬆症患者的自我照顧</h2>
+            
+            <div class="self-care-grid">
+                <div class="self-care-item">
+                    <div class="icon">💊</div>
+                    <h4>遵從醫囑</h4>
+                    <p>按時服藥</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🥗</div>
+                    <h4>保持健康飲食</h4>
+                    <p>攝取足夠的鈣和維生素 D</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🏋️‍♀️</div>
+                    <h4>規律運動</h4>
+                    <p>包括負重運動和肌力訓練</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🛡️</div>
+                    <h4>預防跌倒</h4>
+                    <p>採取措施預防跌倒</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🔍</div>
+                    <h4>定期檢查</h4>
+                    <p>定期接受骨密度檢查</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🤝</div>
+                    <h4>尋求支持</h4>
+                    <p>與家人和朋友分享感受，必要時尋求心理諮商</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="prevention">
+            <h2>骨質疏鬆症的預防</h2>
+            
+            <div class="prevention-grid">
+                <div class="prevention-item">
+                    <div class="icon">🥛</div>
+                    <h4>營養攝取</h4>
+                    <p>攝取足夠的鈣和維生素 D</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="icon">🏋️‍♀️</div>
+                    <h4>負重運動</h4>
+                    <p>進行規律的負重運動</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="icon">🚭</div>
+                    <h4>健康習慣</h4>
+                    <p>避免吸煙和過量飲酒</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="icon">⚖️</div>
+                    <h4>體重管理</h4>
+                    <p>維持健康的體重</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="icon">🛡️</div>
+                    <h4>預防跌倒</h4>
+                    <p>採取措施預防跌倒</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="icon">👨‍⚕️</div>
+                    <h4>醫療諮詢</h4>
+                    <p>與醫師討論骨骼健康</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>骨質疏鬆症是一種常見的疾病，可能導致嚴重的後果。然而，透過早期診斷、適當的治療和自我照顧，患者可以有效控制病情，降低骨折風險，並維持良好的生活品質。</p>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add fade-in animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });

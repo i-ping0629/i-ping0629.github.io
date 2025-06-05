@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蕁麻疹 (Urticaria) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #495057;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #007bff;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #6c757d;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .risk-factor-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .risk-factor-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .risk-factor-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .risk-factor-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .cause-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .cause-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cause-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .symptom-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .symptom-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .symptom-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .impact-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .impact-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diagnosis-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .diagnosis-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagnosis-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .treatment-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .treatment-item h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+            font-size: 1.4em;
+        }
+
+        .self-care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .self-care-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .self-care-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .self-care-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .self-care-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .self-care-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .prevention-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .prevention-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .prevention-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .prevention-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .prevention-item .number {
+            background: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #b3d9ff;
+        }
+
+        .highlight-box h3 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .highlight-box p {
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .conclusion-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .conclusion-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .risk-factors-grid,
+            .causes-grid,
+            .diagnosis-grid,
+            .treatment-grid,
+            .self-care-grid,
+            .prevention-grid,
+            .impact-grid,
+            .conclusion-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #0056b3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>蕁麻疹 (Urticaria)</h1>
+            <p>蕁麻疹是一種常見的皮膚病，其特徵是出現瘙癢的紅色或膚色膨疹，大小不一，可發生在身體的任何部位。這些膨疹的出現是由於皮膚中的肥大細胞釋放組織胺和其他化學物質，導致血管擴張和滲漏。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是蕁麻疹</a></li>
+                <li><a href="#risk-groups">誰容易得蕁麻疹</a></li>
+                <li><a href="#causes">蕁麻疹的病因</a></li>
+                <li><a href="#symptoms">症狀表現</a></li>
+                <li><a href="#impacts">疾病影響</a></li>
+                <li><a href="#diagnosis">診斷方法</a></li>
+                <li><a href="#treatment">治療方法</a></li>
+                <li><a href="#self-care">自我照顧</a></li>
+                <li><a href="#prevention">預防方法</a></li>
+                <li><a href="#conclusion">結論</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是蕁麻疹？</h2>
+            <p>蕁麻疹是一種常見的皮膚病，其特徵是出現瘙癢的紅色或膚色膨疹，大小不一，可發生在身體的任何部位。</p>
+            <p>這些膨疹的出現是由於皮膚中的肥大細胞釋放組織胺和其他化學物質，導致血管擴張和滲漏。</p>
+        </div>
+
+        <div class="section" id="risk-groups">
+            <h2>誰容易得蕁麻疹？</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <h4>👥 任何人群</h4>
+                    <p>任何人都可能得蕁麻疹</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🔬 過敏體質</h4>
+                    <p>有過敏體質的人更容易發作</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>蕁麻疹的病因</h2>
+            
+            <div class="causes-grid">
+                <div class="cause-item">
+                    <h4>🍽️ 過敏反應</h4>
+                    <p>食物（如貝類、堅果、蛋）、藥物（如抗生素、非類固醇消炎藥）</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🦠 感染</h4>
+                    <p>病毒感染（如感冒）、細菌感染（如鏈球菌性喉炎）</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🌡️ 物理因素</h4>
+                    <p>例如皮膚劃痕、壓力、冷、熱、陽光、振動、運動</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🏥 自身免疫性疾病</h4>
+                    <p>如紅斑性狼瘡、類風濕性關節炎</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🐛 其他因素</h4>
+                    <p>昆蟲叮咬、吸入物（如花粉、動物皮屑）、乳膠、輸血</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>蕁麻疹有哪些症狀？</h2>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <h4>😣 瘙癢</h4>
+                    <p>皮膚強烈瘙癢感</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>🔴 膨疹</h4>
+                    <p>紅色或膚色膨疹，大小和形狀各異</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>🔗 融合現象</h4>
+                    <p>膨疹可能會融合，形成更大的區域</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>🔄 遷移性</h4>
+                    <p>膨疹可能會在數小時內消失，但在其他部位出現新的膨疹</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>💧 血管性水腫</h4>
+                    <p>在某些情況下，可能伴有血管性水腫（影響皮膚更深層的腫脹，尤其是在眼瞼、嘴唇、舌頭或喉嚨）</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="impacts">
+            <h2>蕁麻疹會對身體造成什麼影響？</h2>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h4>😰 皮膚不適</h4>
+                    <p>瘙癢和腫脹</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>😴 睡眠問題</h4>
+                    <p>嚴重症狀影響睡眠</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>📅 日常生活</h4>
+                    <p>影響正常活動</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>😔 情緒影響</h4>
+                    <p>可能導致焦慮或沮喪</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="diagnosis">
+            <h2>如何診斷蕁麻疹？</h2>
+            
+            <div class="diagnosis-grid">
+                <div class="diagnosis-item">
+                    <h4>👨‍⚕️ 臨床表現</h4>
+                    <p>醫生會詢問病史，包括可能的觸發因素，並進行身體檢查</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>🧪 過敏原測試</h4>
+                    <p>以確定是否對特定物質過敏</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>🩸 血液檢查</h4>
+                    <p>以檢查感染或自身免疫性疾病的跡象</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>🔬 皮膚活檢</h4>
+                    <p>在少數情況下，以排除其他皮膚病</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="treatment">
+            <h2>如何治療蕁麻疹？</h2>
+            
+            <div class="treatment-grid">
+                <div class="treatment-item">
+                    <h3>💊 藥物治療</h3>
+                    <ul>
+                        <li><strong>抗組織胺：</strong>用於緩解瘙癢和皮疹，分為第一代和第二代，第二代通常較少嗜睡副作用</li>
+                        <li><strong>類固醇：</strong>口服或注射，用於嚴重或慢性蕁麻疹，但長期使用有副作用</li>
+                        <li><strong>其他藥物：</strong>如白三烯受體拮抗劑、免疫抑制劑（如環孢素）、生物製劑（如奧馬珠單抗），用於難治性慢性蕁麻疹</li>
+                    </ul>
+                </div>
+
+                <div class="treatment-item">
+                    <h3>🏠 非藥物治療</h3>
+                    <ul>
+                        <li><strong>避免觸發因素：</strong>如已知對某些食物或藥物過敏，應嚴格避免</li>
+                        <li><strong>冷敷：</strong>可緩解瘙癢和腫脹</li>
+                        <li><strong>穿著寬鬆、透氣的衣物</strong></li>
+                        <li><strong>避免搔抓：</strong>以減少皮膚損傷和感染的風險</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="self-care">
+            <h2>蕁麻疹患者的自我照顧</h2>
+            
+            <div class="self-care-grid">
+                <div class="self-care-item">
+                    <div class="icon">🚫</div>
+                    <h4>避免觸發因素</h4>
+                    <p>避免已知的過敏原和觸發因素</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🧴</div>
+                    <h4>皮膚護理</h4>
+                    <p>保持皮膚清潔和涼爽，避免過度搔抓</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🧽</div>
+                    <h4>選擇適當產品</h4>
+                    <p>使用溫和、無刺激性的清潔用品</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">👕</div>
+                    <h4>舒適衣著</h4>
+                    <p>穿著寬鬆、透氣的衣物</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🍎</div>
+                    <h4>健康生活方式</h4>
+                    <p>保持規律的作息和健康的飲食</p>
+                </div>
+
+                <div class="self-care-item">
+                    <div class="icon">🧘‍♀️</div>
+                    <h4>壓力管理</h4>
+                    <p>學習壓力管理技巧，例如冥想、瑜珈等</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="prevention">
+            <h2>蕁麻疹的預防</h2>
+            
+            <div class="prevention-grid">
+                <div class="prevention-item">
+                    <div class="number">1</div>
+                    <h4>避免已知的觸發因素</h4>
+                    <p>預防蕁麻疹的最佳方法是避免已知的觸發因素。這可能包括特定食物、藥物、環境因素或物理刺激。</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="number">2</div>
+                    <h4>長期藥物治療</h4>
+                    <p>如果無法確定觸發因素，則可能需要長期藥物治療以控制症狀。這通常包括定期服用抗組織胺藥物或其他處方藥。</p>
+                </div>
+
+                <div class="prevention-item">
+                    <div class="number">3</div>
+                    <h4>保持記錄</h4>
+                    <p>記錄可能的觸發因素和症狀發作時間，有助於識別模式和預防未來發作。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="conclusion">
+            <h2>結論</h2>
+            
+            <div class="conclusion-grid">
+                <div class="conclusion-item">
+                    <h4>常見皮膚病</h4>
+                    <p>蕁麻疹是一種常見的皮膚病，雖然可能引起不適，但通常不會危及生命</p>
+                </div>
+
+                <div class="conclusion-item">
+                    <h4>急性蕁麻疹</h4>
+                    <p>大多數急性蕁麻疹病例會在數天或數週內自行消失</p>
+                </div>
+
+                <div class="conclusion-item">
+                    <h4>慢性蕁麻疹</h4>
+                    <p>慢性蕁麻疹可能需要更長時間的治療和管理</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Prevent any external navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove any potential problematic attributes or links
+            document.querySelectorAll('[href]').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    link.removeAttribute('href');
+                    console.warn('Removed external link:', href);
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (scrollButton && window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else if (scrollButton) {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add fade-in animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

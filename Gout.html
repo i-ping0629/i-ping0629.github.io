@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>痛風 (Gout) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #495057;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #007bff;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #6c757d;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .vs-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #dee2e6;
+        }
+
+        .vs-box h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .vs-box p {
+            color: #6c757d;
+        }
+
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .risk-factor-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .risk-factor-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .risk-factor-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .risk-factor-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .symptom-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .symptom-item h3 {
+            color: #007bff;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .treatment-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .treatment-item h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+            font-size: 1.4em;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .step-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .step-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .step-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .step-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .diet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diet-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .diet-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .diet-item h3 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            border: none;
+            padding: 0;
+        }
+
+        .diet-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .comorbidities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .comorbidity-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .comorbidity-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .comorbidity-item h4 {
+            color: #495057;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #b3d9ff;
+        }
+
+        .highlight-box h3 {
+            color: #0056b3;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+        }
+
+        .highlight-box p {
+            color: #495057;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .risk-factors-grid,
+            .treatment-grid,
+            .steps-grid,
+            .diet-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #0056b3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>痛風 (Gout)</h1>
+            <p>痛風是一種發炎性關節炎，會反覆發作，引起劇烈的關節疼痛。這種疼痛通常發生在大腳趾，但也可能出現在其他腳趾、腳踝、膝蓋甚至手指。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是痛風</a></li>
+                <li><a href="#causes">為什麼會得痛風</a></li>
+                <li><a href="#risk-factors">哪些人容易得痛風</a></li>
+                <li><a href="#symptoms">痛風發作症狀</a></li>
+                <li><a href="#treatment">治療方法</a></li>
+                <li><a href="#emergency">痛風發作時的處理</a></li>
+                <li><a href="#diet">飲食指南</a></li>
+                <li><a href="#prognosis">預後與併發症</a></li>
+                <li><a href="#genetics">遺傳因素</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是痛風？(Gout)</h2>
+            <p>痛風是一種發炎性關節炎，會反覆發作，引起劇烈的關節疼痛。</p>
+            <p>這種疼痛通常發生在大腳趾，但也可能出現在其他腳趾、腳踝、膝蓋甚至手指。</p>
+            
+            <div class="vs-box">
+                <h3>痛風和「假性痛風」一樣嗎？</h3>
+                <p><strong>不一樣。</strong>「假性痛風」的症狀和痛風很像，但它是因為關節內沉積了不同的晶體（焦磷酸鈣晶體）所引起的。</p>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>為什麼會得痛風？</h2>
+            <ul>
+                <li><strong>嘌呤分解：</strong>尿酸是身體分解嘌呤這種物質後產生的。</li>
+                <li><strong>尿酸過多：</strong>痛風主要是因為身體裡的尿酸過高。</li>
+                <li><strong>排泄問題：</strong>如果身體產生太多尿酸，或是腎臟無法順利把它排出去，尿酸就會形成像針一樣的晶體，沉積在關節裡，引起發炎和劇烈疼痛。</li>
+            </ul>
+        </div>
+
+        <div class="section" id="risk-factors">
+            <h2>哪些人容易得痛風？</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <h4>🍽️ 飲食因素</h4>
+                    <p>吃太多紅肉、某些甲殼類海鮮和喝太多含糖飲料或啤酒。</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>⚖️ 體重問題</h4>
+                    <p>過重會讓身體產生更多尿酸，也更難排除尿酸。</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>👨‍👩‍👧‍👦 家族遺傳</h4>
+                    <p>如果家裡有人得過痛風，你得痛風的機率也會比較高。</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🏥 慢性疾病</h4>
+                    <p>像是糖尿病、心臟病、腎臟病等。</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>💊 藥物影響</h4>
+                    <p>有些高血壓藥物如利尿劑可能會增加痛風風險。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>痛風發作是什麼感覺？</h2>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <h3>突發性疼痛</h3>
+                    <p>痛風發作通常很突然，而且非常痛。</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h3>關節發炎症狀</h3>
+                    <p>關節會變得紅、腫、熱、痛到幾乎不能動。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="treatment">
+            <h2>痛風有哪些治療方法？</h2>
+            
+            <div class="treatment-grid">
+                <div class="treatment-item">
+                    <h3>💊 藥物治療</h3>
+                    <ul>
+                        <li><strong>消炎止痛藥：</strong>可以快速緩解發作時的疼痛和發炎。</li>
+                        <li><strong>秋水仙鹼：</strong>也是一種消炎藥，但有些人會有副作用(拉肚子)。</li>
+                        <li><strong>類固醇：</strong>可以有效消炎，但長期使用可能會有一些副作用。</li>
+                        <li><strong>降尿酸藥物：</strong>如果痛風反覆發作，醫師可能會開這類藥物來減少身體裡的尿酸，預防未來發作。</li>
+                    </ul>
+                </div>
+
+                <div class="treatment-item">
+                    <h3>🏃‍♂️ 生活方式調整</h3>
+                    <ul>
+                        <li><strong>健康飲食：</strong>多吃蔬菜水果，多喝水，減少紅肉和酒精的攝取。</li>
+                        <li><strong>減重：</strong>如果體重過重，減重可以幫助降低尿酸。</li>
+                        <li><strong>規律運動：</strong>適度的運動對痛風患者很有益處，可以幫助控制體重、促進整體健康。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="emergency">
+            <h2>痛風發作時，我該怎麼辦？</h2>
+            
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="icon">💊</div>
+                    <h4>吃藥</h4>
+                    <p>醫生開的藥要按時吃。</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="icon">🧊</div>
+                    <h4>冰敷</h4>
+                    <p>可以幫助減輕疼痛和腫脹。</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="icon">💧</div>
+                    <h4>多喝水</h4>
+                    <p>幫助身體排出尿酸。</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="icon">🛌</div>
+                    <h4>休息</h4>
+                    <p>讓疼痛的關節好好休息。</p>
+                </div>
+
+                <div class="step-item">
+                    <div class="icon">👨‍⚕️</div>
+                    <h4>看醫生</h4>
+                    <p>讓醫生了解你的情況，他們可能會給你一些建議或開立其他藥物。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="diet">
+            <h2>飲食對痛風有多重要？</h2>
+            
+            <div class="diet-grid">
+                <div class="diet-item">
+                    <h3>✅ 可以多吃</h3>
+                    <p>蔬菜、水果、全穀類。</p>
+                </div>
+
+                <div class="diet-item">
+                    <h3>⚖️ 適量攝取</h3>
+                    <p>魚、堅果。</p>
+                </div>
+
+                <div class="diet-item">
+                    <h3>❌ 盡量避免</h3>
+                    <p>紅肉、酒精(啤酒)、含糖飲料。</p>
+                </div>
+
+                <div class="diet-item">
+                    <h3>🎯 整體平衡</h3>
+                    <p>飲食確實會影響尿酸水平，但光靠飲食可能無法完全控制痛風。不過，健康的飲食習慣仍然很重要。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="prognosis">
+            <h2>痛風會好嗎？</h2>
+            
+            <div class="highlight-box">
+                <h3>痛風的治療控制</h3>
+                <p>痛風雖然不能完全治癒，但我們可以透過治療來控制症狀，預防痛風發作，並減少對關節的傷害。</p>
+            </div>
+
+            <h3>痛風只是腳痛而已嗎？</h3>
+            <p>很多人以為痛風只是腳痛，但其實它可能增加罹患其他疾病的風險，像是：</p>
+            
+            <div class="comorbidities-grid">
+                <div class="comorbidity-item">
+                    <h4>🫘 腎臟疾病</h4>
+                </div>
+
+                <div class="comorbidity-item">
+                    <h4>❤️ 心臟病</h4>
+                </div>
+
+                <div class="comorbidity-item">
+                    <h4>🩺 糖尿病</h4>
+                </div>
+
+                <div class="comorbidity-item">
+                    <h4>🧠 憂鬱症</h4>
+                </div>
+
+                <div class="comorbidity-item">
+                    <h4>😴 睡眠呼吸中止症</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="genetics">
+            <h2>痛風會遺傳嗎？</h2>
+            
+            <h3>遺傳因素</h3>
+            <p>痛風確實有遺傳的因素</p>
+            
+            <h3>生活習慣</h3>
+            <p>但健康的生活習慣可以降低遺傳風險的影響</p>
+            
+            <div class="highlight-box">
+                <p>痛風雖然會帶來許多不適，但只要我們積極面對，配合醫生的治療，並養成良好的生活習慣，還是可以擁有不錯的生活品質。</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add fade-in animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

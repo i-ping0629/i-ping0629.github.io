@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乾癬性關節炎 (PsA) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #3498db;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .demographics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .demographic-item {
+            text-align: center;
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .demographic-item .big-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .demographic-item h4 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .symptom-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .symptom-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .causes-flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cause-step {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cause-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: #3498db;
+        }
+
+        .cause-step h4 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diagnosis-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .diagnosis-item:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .diagnosis-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .treatment-category {
+            background: #f8f9fa;
+            margin: 25px 0;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .treatment-category h4 {
+            color: #c0392b;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .self-care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .self-care-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .self-care-item:hover {
+            background: #e9ecef;
+            border-top-color: #2980b9;
+        }
+
+        .self-care-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .self-care-item .icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .health-risks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .health-risk-item {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+        .health-risk-item:hover {
+            background: #f8f9fa;
+            border-left-color: #2980b9;
+        }
+
+        .health-risk-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .important-note {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: 1px solid #c3e6cb;
+        }
+
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .advice-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .advice-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .demographics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .causes-flow {
+                grid-template-columns: 1fr;
+            }
+            
+            .cause-step::after {
+                display: none;
+            }
+            
+            .advice-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #2980b9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>乾癬性關節炎 (PsA)</h1>
+            <p>乾癬性關節炎是一種慢性的自體免疫性關節炎，它和乾癬這種皮膚病常常一起出現。在 PsA 中，身體的免疫系統會錯誤地攻擊健康的組織，引起發炎和疼痛，主要是在關節和皮膚，但也可能影響其他器官。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是乾癬性關節炎</a></li>
+                <li><a href="#demographics">誰會得到</a></li>
+                <li><a href="#relationship">與乾癬的關係</a></li>
+                <li><a href="#symptoms">症狀表現</a></li>
+                <li><a href="#causes">成因</a></li>
+                <li><a href="#impacts">對身體的影響</a></li>
+                <li><a href="#diagnosis">診斷方法</a></li>
+                <li><a href="#treatment">治療方式</a></li>
+                <li><a href="#self-care">自我照顧</a></li>
+                <li><a href="#health-risks">健康風險</a></li>
+                <li><a href="#advice">給患者的建議</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是乾癬性關節炎 (PsA)？</h2>
+            <p>乾癬性關節炎 (PsA) 是一種慢性的自體免疫性關節炎，它和乾癬這種皮膚病常常一起出現。在 PsA 中，身體的免疫系統會錯誤地攻擊健康的組織，引起發炎和疼痛，主要是在關節和皮膚，但也可能影響其他器官。</p>
+        </div>
+
+        <div class="section" id="demographics">
+            <h2>誰會得到乾癬性關節炎？</h2>
+            
+            <div class="demographics-grid">
+                <div class="demographic-item">
+                    <div class="big-number">30+</div>
+                    <h4>發病年齡</h4>
+                    <p>通常在30歲之後發病</p>
+                </div>
+
+                <div class="demographic-item">
+                    <div class="big-number">50%</div>
+                    <h4>性別分布</h4>
+                    <p>男性和女性發病率相近</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="relationship">
+            <h2>乾癬和乾癬性關節炎的關係是什麼？</h2>
+            <p>大約有三分之一的乾癬患者會發展成乾癬性關節炎。不過，有些人會先出現關節炎，然後才有皮膚的問題，而有些人則是兩者同時發生。</p>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>乾癬性關節炎有哪些症狀？</h2>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <h4>🖐️ 皮膚</h4>
+                    <p>紅色斑塊，上面有銀白色的鱗屑，可能會發癢或疼痛，常見於手肘、膝蓋、頭皮等部位。</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>🦴 關節</h4>
+                    <p>關節疼痛、腫脹、僵硬，可能發生在手指、手腕、腳踝、膝蓋等處，有時候會讓整個手指或腳趾腫起來，變得又痛又難彎曲。</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>🏃‍♂️ 脊椎</h4>
+                    <p>腰部、臀部、頸部也可能出現疼痛和僵硬。</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>💅 指甲</h4>
+                    <p>指甲可能會出現凹陷、龜裂、變厚或與甲床分離。</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>🔍 其他</h4>
+                    <p>疲勞、肌腱或韌帶連接到骨頭的地方發炎（附著點炎）</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>為什麼會得到乾癬性關節炎？</h2>
+            
+            <div class="causes-flow">
+                <div class="cause-step">
+                    <h4>🧬 基因遺傳</h4>
+                    <p>家族遺傳因素</p>
+                </div>
+                <div class="cause-step">
+                    <h4>🌍 環境觸發</h4>
+                    <p>感染、壓力或受傷</p>
+                </div>
+                <div class="cause-step">
+                    <h4>🔬 免疫系統失調</h4>
+                    <p>身體錯誤攻擊自身組織</p>
+                </div>
+                <div class="cause-step">
+                    <h4>🔥 發炎反應</h4>
+                    <p>導致關節和皮膚症狀</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px;">PsA 是一種自體免疫疾病，也就是說，身體的免疫系統錯誤地攻擊了自己的組織。至於為什麼會這樣，目前還沒有確切的答案，但認為可能和基因遺傳以及一些環境觸發因素有關，例如感染、壓力或受傷。</p>
+        </div>
+
+        <div class="section" id="impacts">
+            <h2>乾癬性關節炎會對身體造成什麼影響？</h2>
+            <ul>
+                <li><strong>關節影響</strong>：關節受損，變得難以活動，甚至造成殘疾。</li>
+                <li><strong>眼睛問題</strong>：眼睛發炎，引起疼痛、發紅、視力問題。</li>
+                <li><strong>腸胃影響</strong>：腸胃問題，增加發炎性腸道疾病的風險。</li>
+                <li><strong>心血管風險</strong>：心血管問題，增加心臟病和中風的風險。</li>
+                <li><strong>肺部影響</strong>：肺部問題，引起呼吸困難。</li>
+            </ul>
+
+            <div class="important-note">
+                如果沒有好好控制，PsA 的發炎反應可能會導致這些系統性問題，影響整體健康。
+            </div>
+        </div>
+
+        <div class="section" id="diagnosis">
+            <h2>乾癬性關節炎要怎麼診斷？</h2>
+            
+            <div class="diagnosis-grid">
+                <div class="diagnosis-item">
+                    <h4>病史評估</h4>
+                    <p>醫生會詳細詢問你的症狀、發病時間、家族史等。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>身體檢查</h4>
+                    <p>醫生會檢查你的關節、皮膚和指甲。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>血液檢查</h4>
+                    <p>檢查發炎指標（如 ESR、CRP）、類風濕因子 (RF) 等。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>影像學檢查</h4>
+                    <p>X 光、超音波、MRI 等，觀察關節是否有損傷。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>皮膚切片檢查</h4>
+                    <p>有時候會需要檢查一小塊皮膚組織，確認是否為乾癬。</p>
+                </div>
+            </div>
+
+            <div class="important-note">
+                診斷 PsA 沒有單一的檢查可以確定，醫生通常會綜合評估以上資訊來做診斷。
+            </div>
+        </div>
+
+        <div class="section" id="treatment">
+            <h2>乾癬性關節炎要怎麼治療？</h2>
+            
+            <div class="treatment-category">
+                <h4>治療目標</h4>
+                <ul>
+                    <li>減緩疾病進展</li>
+                    <li>減輕疼痛</li>
+                    <li>保護關節</li>
+                    <li>改善生活品質</li>
+                </ul>
+            </div>
+
+            <div class="treatment-category">
+                <h4>藥物治療</h4>
+                <ul>
+                    <li><strong>NSAIDs (非類固醇消炎藥)</strong>：減輕疼痛和發炎</li>
+                    <li><strong>DMARDs（疾病修飾抗風濕藥物)</strong>：如滅殺除炎(MTX)，減緩關節和皮膚的損傷</li>
+                    <li><strong>生物製劑</strong>：更精準地抑制發炎反應，效果通常較好</li>
+                    <li><strong>標靶藥物</strong>：口服藥物，作用類似生物製劑</li>
+                    <li><strong>類固醇</strong>：快速減輕發炎，但長期使用可能有副作用</li>
+                    <li><strong>局部治療</strong>：針對皮膚的藥膏、乳霜等</li>
+                </ul>
+            </div>
+
+            <div class="treatment-category">
+                <h4>復健治療</h4>
+                <ul>
+                    <li><strong>物理治療</strong>：運動、伸展等，幫助維持關節功能</li>
+                    <li><strong>職能治療</strong>：教導保護關節、讓日常活動更輕鬆的技巧</li>
+                </ul>
+            </div>
+
+            <div class="treatment-category">
+                <h4>生活方式調整</h4>
+                <ul>
+                    <li>戒菸</li>
+                    <li>壓力管理</li>
+                    <li>健康飲食</li>
+                    <li>適度運動</li>
+                    <li>維持健康體重</li>
+                </ul>
+            </div>
+
+            <div class="important-note">
+                PsA 的治療需要綜合多種方法，藥物治療是核心，但復健和生活方式調整也非常重要。
+            </div>
+        </div>
+
+        <div class="section" id="self-care">
+            <h2>乾癬性關節炎患者如何照顧自己？</h2>
+            
+            <div class="self-care-grid">
+                <div class="self-care-item">
+                    <h4><span class="icon">👤</span>照顧皮膚</h4>
+                    <p>保持皮膚濕潤，避免刺激性的清潔用品。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4><span class="icon">🍽️</span>健康飲食</h4>
+                    <p>均衡飲食，多吃蔬果、魚類等，有助於控制發炎。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4><span class="icon">🏋️‍♂️</span>規律運動</h4>
+                    <p>選擇適合自己的運動，保持關節靈活。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4><span class="icon">🧠</span>壓力管理</h4>
+                    <p>學習放鬆技巧，避免壓力過大。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4><span class="icon">😴</span>充足睡眠</h4>
+                    <p>良好的睡眠有助於減輕疼痛和疲勞。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="health-risks">
+            <h2>乾癬性關節炎患者需要注意哪些健康問題？</h2>
+            
+            <div class="health-risks-grid">
+                <div class="health-risk-item">
+                    <h4>❤️ 心血管疾病</h4>
+                    <p>PsA患者心臟病和中風風險比一般人高出50%。建議每3-6個月檢查血壓，每年檢測膽固醇水平，控制在正常範圍（總膽固醇低於200 mg/dL）。如有胸痛、呼吸困難等症狀，應立即就醫。</p>
+                </div>
+
+                <div class="health-risk-item">
+                    <h4>🩸 糖尿病</h4>
+                    <p>慢性發炎會降低胰島素敏感性，使糖尿病風險增加約30%。應定期檢測空腹血糖（正常值應低於100 mg/dL）和糖化血色素。維持健康體重、低醣飲食和規律運動有助降低風險。</p>
+                </div>
+
+                <div class="health-risk-item">
+                    <h4>🦵 發炎性腸道疾病</h4>
+                    <p>PsA患者罹患克隆氏症和潰瘍性結腸炎的風險增加3倍。如出現持續腹瀉（超過兩週）、腹痛、體重減輕或血便等症狀，應諮詢胃腸科醫師。飲食中增加高纖食物和益生菌可能有幫助。</p>
+                </div>
+
+                <div class="health-risk-item">
+                    <h4>👁️ 眼睛發炎</h4>
+                    <p>約25%的PsA患者會出現葡萄膜炎或結膜炎。症狀包括眼睛發紅、疼痛、畏光和視力模糊。建議每6-12個月進行眼科檢查，使用人工淚液可緩解乾眼症狀，發現異常應立即就醫。</p>
+                </div>
+            </div>
+
+            <h3>其他健康風險</h3>
+            <ul>
+                <li><strong>代謝症候群</strong>：包括高血壓、高血糖、腹部肥胖和血脂異常，風險增加40%，應定期進行全面健康檢查</li>
+                <li><strong>肝臟和腎臟問題</strong>：某些PsA藥物可能影響肝腎功能，需每3-6個月檢測肝腎功能指標</li>
+                <li><strong>憂鬱症和焦慮</strong>：風險比一般人高2倍，出現情緒低落、失眠、食慾改變時應尋求心理健康專家協助</li>
+                <li><strong>骨質疏鬆</strong>：炎症和某些藥物可能加速骨質流失，應補充鈣質和維生素D，考慮定期骨密度檢測</li>
+            </ul>
+
+            <div class="important-note">
+                積極管理這些健康風險，配合自我照顧措施，能顯著提升PsA患者的生活品質和長期健康。
+            </div>
+        </div>
+
+        <div class="section

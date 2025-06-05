@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>異位性皮膚炎 (Atopic Dermatitis) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #495057;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #007bff;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #6c757d;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .risk-factor-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .risk-factor-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .risk-factor-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .risk-factor-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .causes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .cause-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .cause-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cause-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .symptom-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .symptom-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .symptom-item ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .symptom-item li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .symptom-item li:before {
+            content: "•";
+            color: #007bff;
+            position: absolute;
+            left: 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .impact-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .impact-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .impact-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .impact-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .diagnosis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diagnosis-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .diagnosis-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagnosis-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .treatment-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .treatment-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .treatment-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .treatment-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .self-care-section {
+            background: #f0f7ff;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 1px solid #b3d9ff;
+        }
+
+        .self-care-category {
+            margin-bottom: 30px;
+        }
+
+        .self-care-category h4 {
+            color: #0056b3;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .self-care-category ul {
+            margin-left: 0;
+            list-style: none;
+        }
+
+        .self-care-category li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .self-care-category li:before {
+            content: "✓";
+            color: #28a745;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .health-concerns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .health-concern-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .health-concern-item:hover {
+            background: #e9ecef;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .health-concern-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #dc3545;
+        }
+
+        .health-concern-item h4 {
+            color: #495057;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .health-concern-item p {
+            color: #6c757d;
+            font-size: 1em;
+        }
+
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .conclusion-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .conclusion-item h4 {
+            color: #007bff;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border: 1px solid #b3d9ff;
+        }
+
+        .highlight-box p {
+            color: #495057;
+            font-size: 1.1em;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .risk-factors-grid,
+            .causes-grid,
+            .diagnosis-grid,
+            .treatment-grid,
+            .health-concerns-grid,
+            .impact-grid,
+            .conclusion-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #0056b3;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>異位性皮膚炎 (Atopic Dermatitis)</h1>
+            <p>異位性皮膚炎是一種慢性皮膚病，會引起皮膚乾燥、發癢和發炎。它通常在嬰兒期開始，但也可能發生在任何年齡。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是異位性皮膚炎</a></li>
+                <li><a href="#risk-groups">誰容易得異位性皮膚炎</a></li>
+                <li><a href="#causes">為什麼會得異位性皮膚炎</a></li>
+                <li><a href="#symptoms">症狀表現</a></li>
+                <li><a href="#impacts">疾病影響</a></li>
+                <li><a href="#diagnosis">診斷方法</a></li>
+                <li><a href="#treatment">治療方法</a></li>
+                <li><a href="#self-care">自我照顧</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是異位性皮膚炎？</h2>
+            <p>異位性皮膚炎 (Atopic Dermatitis, AD) 是一種慢性皮膚病，會引起皮膚乾燥、發癢和發炎。它通常在嬰兒期開始，但也可能發生在任何年齡。</p>
+        </div>
+
+        <div class="section" id="risk-groups">
+            <h2>誰容易得異位性皮膚炎？</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <h4>👶 嬰兒和兒童</h4>
+                    <p>異位性皮膚炎好發於嬰兒和兒童，但約有一半的患者在成年後也會持續有症狀。</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🤧 過敏體質者</h4>
+                    <p>有過敏體質（例如氣喘、過敏性鼻炎）或家族史的人，患異位性皮膚炎的風險較高。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>為什麼會得異位性皮膚炎？</h2>
+            <p>異位性皮膚炎的確切原因尚不清楚，但它與以下因素有關：</p>
+            
+            <div class="causes-grid">
+                <div class="cause-item">
+                    <h4>🧬 遺傳</h4>
+                    <p>異位性皮膚炎有遺傳傾向。</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🛡️ 免疫系統</h4>
+                    <p>異位性皮膚炎患者的免疫系統可能對某些物質過度反應。</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🧴 皮膚屏障</h4>
+                    <p>異位性皮膚炎患者的皮膚屏障功能較弱，容易流失水分，也更容易受到刺激物和過敏原的影響。</p>
+                </div>
+
+                <div class="cause-item">
+                    <h4>🌍 環境因素</h4>
+                    <p>接觸到某些刺激物或過敏原可能會誘發或加重異位性皮膚炎症狀。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>異位性皮膚炎有哪些症狀？</h2>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <h4>🔴 皮膚症狀</h4>
+                    <ul>
+                        <li>皮膚乾燥、發癢</li>
+                        <li>皮膚發紅、發炎</li>
+                        <li>皮膚粗糙、增厚</li>
+                        <li>皮膚出現隆起的小紅疹</li>
+                        <li>搔抓引起的皮膚破損、滲出液體</li>
+                    </ul>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>📍 症狀分布</h4>
+                    <ul>
+                        <li>在嬰兒身上，皮疹通常出現在臉部、頭皮</li>
+                        <li>在兒童和成人身上，皮疹常出現在手肘、膝蓋內側</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; font-style: italic;">異位性皮膚炎的症狀可能因人而異，也可能隨著時間而變化。</p>
+        </div>
+
+        <div class="section" id="impacts">
+            <h2>異位性皮膚炎會對身體造成什麼影響？</h2>
+            <p>異位性皮膚炎主要影響皮膚，但也可能對患者的生活造成其他影響。</p>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h4>🔴 皮膚影響</h4>
+                    <p>長期搔抓可能導致皮膚變厚、色素沉澱，增加皮膚感染的風險。</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>😴 睡眠影響</h4>
+                    <p>嚴重的搔癢可能影響睡眠品質。</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>😔 心理影響</h4>
+                    <p>皮膚狀況影響外觀，可能導致患者感到自卑、焦慮或憂鬱。</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>🏠 生活影響</h4>
+                    <p>異位性皮膚炎可能影響患者的日常活動、社交和工作。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="diagnosis">
+            <h2>如何診斷異位性皮膚炎？</h2>
+            <p>異位性皮膚炎的診斷主要依據臨床症狀和病史。</p>
+            
+            <div class="diagnosis-grid">
+                <div class="diagnosis-item">
+                    <h4>📋 病史詢問</h4>
+                    <p>醫生會詢問您的皮膚症狀、發病時間、家族史等。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>👨‍⚕️ 身體檢查</h4>
+                    <p>醫生會檢查您的皮膚狀況，包括皮疹的分布、外觀等。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>🧪 過敏原測試</h4>
+                    <p>確認是否對特定物質過敏，這有助於找出可能的誘發因素。</p>
+                </div>
+
+                <div class="diagnosis-item">
+                    <h4>🔬 皮膚切片檢查</h4>
+                    <p>在少數情況下，醫生可能會進行皮膚切片檢查以排除其他皮膚疾病。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="treatment">
+            <h2>如何治療異位性皮膚炎？</h2>
+            
+            <div class="treatment-grid">
+                <div class="treatment-item">
+                    <div class="icon">💊</div>
+                    <h4>藥物治療</h4>
+                    <ul>
+                        <li><strong>保濕劑：</strong>用於保持皮膚濕潤，減少乾燥和搔癢</li>
+                        <li><strong>局部類固醇藥膏：</strong>用於減輕皮膚發炎</li>
+                        <li><strong>局部免疫調節劑：</strong>用於抑制皮膚的免疫反應，減少發炎</li>
+                        <li><strong>抗組織胺：</strong>用於緩解搔癢</li>
+                        <li><strong>口服藥物：</strong>在嚴重或難以控制的病例中使用</li>
+                        <li><strong>抗生素或抗病毒藥物：</strong>用於治療皮膚感染</li>
+                    </ul>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="icon">💡</div>
+                    <h4>照光治療</h4>
+                    <p>使用特定波長的紫外線照射皮膚，以減輕發炎</p>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="icon">🩹</div>
+                    <h4>濕敷療法</h4>
+                    <p>在皮膚上塗抹藥物和保濕劑後，用濕繃帶包紮，以增加藥效和保濕效果</p>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="icon">🔬</div>
+                    <h4>生物製劑及小分子藥物</h4>
+                    <p>較新的治療方法，通過抑制特定的免疫分子來控制病情</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="self-care">
+            <h2>異位性皮膚炎患者的自我照顧</h2>
+            <p>除了醫藥治療外，患者的日常自我照顧對控制異位性皮膚炎至關重要。以下是詳細的自我管理方法：</p>
+            
+            <div class="self-care-section">
+                <div class="self-care-category">
+                    <h4>💧 保濕護理</h4>
+                    <ul>
+                        <li>每天至少塗抹保濕劑2-3次，特別是在洗澡後3分鐘內</li>
+                        <li>選擇無香料、無酒精的厚重乳霜或軟膏（如凡士林、含有神經醯胺的產品）</li>
+                        <li>使用溫水（不超過37°C）洗澡，時間控制在5-10分鐘內</li>
+                    </ul>
+                </div>
+
+                <div class="self-care-category">
+                    <h4>🚫 避免刺激物</h4>
+                    <ul>
+                        <li>穿著100%棉質、寬鬆的衣物，避免羊毛和合成纖維</li>
+                        <li>使用無香料、無染料的洗衣劑，並進行雙重漂洗</li>
+                        <li>避免接觸常見過敏原，如塵蟎、花粉、寵物毛髮</li>
+                        <li>選擇低敏性的化妝品和個人護理產品</li>
+                    </ul>
+                </div>
+
+                <div class="self-care-category">
+                    <h4>✋ 搔癢管理</h4>
+                    <ul>
+                        <li>保持指甲短而圓滑，避免在睡覺時不自覺抓傷皮膚</li>
+                        <li>嚴重搔癢時，可使用冰敷或冷毛巾減輕症狀</li>
+                        <li>考慮使用棉質手套，特別是兒童夜間使用</li>
+                        <li>遵醫囑使用抗組織胺藥物控制夜間搔癢</li>
+                    </ul>
+                </div>
+
+                <div class="self-care-category">
+                    <h4>🏠 環境與生活習慣</h4>
+                    <ul>
+                        <li>維持室內濕度在45-55%，使用加濕器可能有幫助</li>
+                        <li>保持室溫在20-22°C，避免過熱環境</li>
+                        <li>每週用熱水（60°C以上）清洗床單、枕頭套，以減少塵蟎</li>
+                        <li>練習深呼吸、漸進式肌肉放鬆等減壓技巧</li>
+                        <li>每晚保持7-8小時的充足睡眠，有助於免疫系統功能和皮膚修復</li>
+                    </ul>
+                </div>
+
+                <div class="self-care-category">
+                    <h4>🍎 飲食調整</h4>
+                    <ul>
+                        <li>記錄食物日誌，觀察是否有特定食物會誘發症狀（如牛奶、雞蛋、小麥）</li>
+                        <li>增加富含omega-3脂肪酸的食物攝取（如亞麻籽、核桃、深海魚）</li>
+                        <li>保持充分水分攝取，每天至少飲用2公升水</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <p>這些自我照顧方法應與醫生建議的治療計劃結合使用，不應取代專業醫療建議。定期追蹤診療並調整自我照顧計劃是控制異位性皮膚炎的關鍵。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Prevent any external navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Remove any potential problematic attributes or links
+            document.querySelectorAll('[href]').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#')) {
+                    link.removeAttribute('href');
+                    console.warn('Removed external link:', href);
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (scrollButton && window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else if (scrollButton) {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add fade-in animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退化性關節炎 (OA) - 完整指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            padding: 10px 0;
+            border-left: 3px solid #3498db;
+            padding-left: 15px;
+        }
+
+        .section p, .section li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .age-aging {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .affected-areas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .area-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .area-item h4 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .risk-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .risk-factor-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .risk-factor-item:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .risk-factor-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .symptom-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .symptom-item:hover {
+            background: #e9ecef;
+            border-top-color: #2980b9;
+        }
+
+        .symptom-item h4 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .diagnosis-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .diagnosis-step {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .diagnosis-step:hover {
+            background: #e9ecef;
+            border-left-color: #2980b9;
+        }
+
+        .diagnosis-step h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .exercise-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-item:hover {
+            background: #e9ecef;
+            border-top-color: #2980b9;
+        }
+
+        .exercise-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .exercise-item .icon {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .self-care-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .self-care-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .self-care-item:hover {
+            background: #e9ecef;
+            border-top-color: #2980b9;
+        }
+
+        .self-care-item h4 {
+            color: #3498db;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .important-note {
+            background: #d4edda;
+            color: #155724;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: 1px solid #c3e6cb;
+        }
+
+        .toc {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 10px;
+        }
+
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .toc a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .age-aging {
+                grid-template-columns: 1fr;
+            }
+            
+            .affected-areas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .risk-factors-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #2980b9;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>退化性關節炎 (OA)</h1>
+            <p>退化性關節炎是一種常見的關節炎，會影響關節的軟骨、骨骼、韌帶和滑膜等組織。它會導致關節疼痛、僵硬和活動能力下降。</p>
+        </div>
+
+        <div class="toc">
+            <h3>目錄</h3>
+            <ul>
+                <li><a href="#definition">什麼是退化性關節炎</a></li>
+                <li><a href="#aging-relation">與老化的關係</a></li>
+                <li><a href="#affected-areas">常見發生部位</a></li>
+                <li><a href="#causes">成因與風險因子</a></li>
+                <li><a href="#symptoms">症狀表現</a></li>
+                <li><a href="#impacts">疾病影響</a></li>
+                <li><a href="#diagnosis">診斷方法</a></li>
+                <li><a href="#exercise">運動治療</a></li>
+                <li><a href="#self-care">自我照顧</a></li>
+            </ul>
+        </div>
+
+        <div class="section" id="definition">
+            <h2>什麼是退化性關節炎？</h2>
+            <p>退化性關節炎 (Osteoarthritis, OA) 是一種常見的關節炎，會影響關節的軟骨、骨骼、韌帶和滑膜等組織。它會導致關節疼痛、僵硬和活動能力下降。</p>
+            <p>這是一種退化性疾病，主要特徵是關節軟骨的逐漸磨損和破壞，同時伴隨著骨刺的形成和關節結構的改變。</p>
+        </div>
+
+        <div class="section" id="aging-relation">
+            <h2>退化性關節炎和老化有關嗎？</h2>
+            <p>雖然退化性關節炎常發生在 50 歲以上的人身上，但它不是一種單純的「老化」疾病。</p>
+            <p>年輕人也可能因為關節受傷等原因而患上 OA。</p>
+            
+            <div class="important-note">
+                退化性關節炎並非老化的必然結果，而是多種因素共同作用的結果。
+            </div>
+        </div>
+
+        <div class="section" id="affected-areas">
+            <h2>退化性關節炎會發生在哪裡？</h2>
+            <p>退化性關節炎可以影響任何關節，但最常見於：</p>
+            
+            <div class="affected-areas-grid">
+                <div class="area-item">
+                    <h4>🖐️ 手部</h4>
+                    <p>常見於手指關節</p>
+                </div>
+
+                <div class="area-item">
+                    <h4>🦵 膝蓋</h4>
+                    <p>承重關節常受影響</p>
+                </div>
+
+                <div class="area-item">
+                    <h4>🦴 髖部</h4>
+                    <p>影響行走能力</p>
+                </div>
+
+                <div class="area-item">
+                    <h4>🏃‍♂️ 下背部和頸部</h4>
+                    <p>可能導致慢性疼痛</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="causes">
+            <h2>為什麼會得到退化性關節炎？</h2>
+            
+            <div class="risk-factors-grid">
+                <div class="risk-factor-item">
+                    <h4>👴 年齡增長</h4>
+                    <p>隨著年齡增長，關節磨損風險增加</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🦴 關節損傷或過度使用</h4>
+                    <p>運動傷害或職業性過度使用可增加風險</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>⚖️ 肥胖</h4>
+                    <p>增加關節負擔和發炎風險</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>💪 肌肉無力</h4>
+                    <p>無法提供足夠關節支撐</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🦴 關節結構異常</h4>
+                    <p>先天或後天結構問題</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🧬 遺傳</h4>
+                    <p>家族病史可能增加風險</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>♀️ 性別</h4>
+                    <p>女性風險較高</p>
+                </div>
+
+                <div class="risk-factor-item">
+                    <h4>🏭 環境因素</h4>
+                    <p>某些工作或活動可能增加風險</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="symptoms">
+            <h2>退化性關節炎有哪些症狀？</h2>
+            <p>退化性關節炎的症狀通常會隨著時間慢慢出現。</p>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <h4>關節疼痛或酸痛</h4>
+                    <p>活動後或長時間不活動後加劇</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>關節僵硬</h4>
+                    <p>特別是早晨或長時間不活動後</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>活動範圍受限</h4>
+                    <p>難以完全彎曲或伸展關節</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>關節活動時有聲音</h4>
+                    <p>可能有摩擦聲或喀喀聲</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>關節腫脹</h4>
+                    <p>由於發炎或骨刺形成</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>肌肉無力</h4>
+                    <p>影響關節周圍的肌肉</p>
+                </div>
+
+                <div class="symptom-item">
+                    <h4>關節不穩定</h4>
+                    <p>可能感覺關節無法支撐身體</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="impacts">
+            <h2>退化性關節炎會造成什麼影響？</h2>
+            <ul>
+                <li><strong>疼痛和不適</strong>：影響日常生活品質</li>
+                <li><strong>活動能力下降</strong>：限制日常活動和獨立性</li>
+                <li><strong>慢性疾病風險</strong>：肥胖、糖尿病和心臟病</li>
+                <li><strong>跌倒和骨折</strong>：增加意外傷害風險</li>
+            </ul>
+        </div>
+
+        <div class="section" id="diagnosis">
+            <h2>如何診斷退化性關節炎？</h2>
+            
+            <div class="diagnosis-steps">
+                <div class="diagnosis-step">
+                    <h4>詢問病史和症狀</h4>
+                    <p>醫生會詳細了解您的症狀、何時開始、什麼情況下加重或緩解，以及是否有家族病史。</p>
+                </div>
+
+                <div class="diagnosis-step">
+                    <h4>進行身體檢查</h4>
+                    <p>檢查關節的腫脹、壓痛、活動範圍、穩定性和聲音，以及周圍肌肉的強度。</p>
+                </div>
+
+                <div class="diagnosis-step">
+                    <h4>影像學檢查和關節液檢查</h4>
+                    <p>可能進行X光檢查觀察骨刺和關節間隙變窄，或MRI檢查軟組織損傷，有時會抽取關節液進行分析。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="exercise">
+            <h2>運動對退化性關節炎有什麼幫助？</h2>
+            
+            <div class="exercise-grid">
+                <div class="exercise-item">
+                    <div class="icon">🚶‍♂️</div>
+                    <h4>有氧運動</h4>
+                    <p>例如步行、游泳</p>
+                </div>
+
+                <div class="exercise-item">
+                    <div class="icon">🏋️‍♂️</div>
+                    <h4>肌力訓練</h4>
+                    <p>增強關節周圍肌肉</p>
+                </div>
+
+                <div class="exercise-item">
+                    <div class="icon">🤸‍♀️</div>
+                    <h4>伸展運動</h4>
+                    <p>改善關節活動範圍</p>
+                </div>
+
+                <div class="exercise-item">
+                    <div class="icon">⚖️</div>
+                    <h4>平衡訓練</h4>
+                    <p>預防跌倒</p>
+                </div>
+
+                <div class="exercise-item">
+                    <div class="icon">🏊‍♀️</div>
+                    <h4>水中運動</h4>
+                    <p>減輕關節壓力</p>
+                </div>
+
+                <div class="exercise-item">
+                    <div class="icon">🧘‍♀️</div>
+                    <h4>太極拳和瑜珈</h4>
+                    <p>改善柔軟度和平衡</p>
+                </div>
+            </div>
+
+            <div class="important-note">
+                適當的運動可以減輕疼痛、改善關節功能，並幫助控制體重。<br>
+                體重控制對退化性關節炎的重要性：減輕體重可以減輕關節的負擔，減少發炎，並可能延緩疾病的進展。
+            </div>
+        </div>
+
+        <div class="section" id="self-care">
+            <h2>如何照顧自己？</h2>
+            
+            <div class="self-care-grid">
+                <div class="self-care-item">
+                    <h4>保持健康的體重</h4>
+                    <p>透過均衡飲食和適當運動維持理想體重，減輕關節負擔。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4>控制血糖</h4>
+                    <p>高血糖可能加速關節退化，定期檢查並控制血糖水平。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4>保持關節活動範圍</h4>
+                    <p>定期進行伸展運動，避免關節僵硬和活動範圍縮小。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4>保護關節</h4>
+                    <p>使用正確姿勢和輔助工具，避免關節過度負荷。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4>放鬆和減壓</h4>
+                    <p>壓力可能加重疼痛感受，學習放鬆技巧如冥想和深呼吸。</p>
+                </div>
+
+                <div class="self-care-item">
+                    <h4>選擇健康的生活方式</h4>
+                    <p>戒菸、限制酒精攝取，保持充足睡眠和積極社交活動。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add fade-in animation to sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
