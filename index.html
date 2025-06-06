@@ -80,6 +80,7 @@
         nav ul {
             display: flex;
             list-style: none;
+            background-color: white; /* Changed from grey to white */
         }
         
         nav ul li {
@@ -657,6 +658,10 @@
             
             .nav-links.active {
                 display: flex;
+                background-color: white;
+                padding: 15px 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+                border-radius: 0 0 10px 10px;
             }
             
             .doctor-profile, .contact-cards {
@@ -669,6 +674,7 @@
         .dropdown {
             position: relative;
             display: inline-block;
+            text-align: left;
         }
         
         .dropdown-content {
@@ -703,9 +709,8 @@
         
         .dropdown > a::after {
             content: " ";
-            font-size: 0.7em;
-            vertical-align: middle;
-            margin-left: 3px;
+            font-size: 0.8em;
+            margin-left: 5px;
         }
         
         @media (max-width: 768px) {
@@ -713,7 +718,7 @@
                 position: static;
                 box-shadow: none;
                 background-color: var(--accent-light);
-                margin-left: 15px;
+                margin-top: 10px;
                 border-radius: 5px;
             }
         }
@@ -1276,6 +1281,16 @@
             const navLinks = document.querySelector('.nav-links');
             mobileMenuBtn.addEventListener('click', function() {
                 navLinks.classList.toggle('active');
+            });
+
+            // Close mobile menu on item click (without submenu)
+            const navItems = document.querySelectorAll('.nav-links > ul > li:not(.dropdown)');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    setTimeout(() => {
+                        navLinks.classList.remove('active');
+                    }, 300);
+                });
             });
 
             // 子頁面切換功能
