@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>類風濕性關節炎全面照護指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #1a237e;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-title {
+            font-size: 1.4em;
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .card-title .icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .symptom-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .complication-section {
+            border-left-color: #e74c3c;
+        }
+        
+        .complication-section .card-title {
+            color: #e74c3c;
+        }
+        
+        .care-section {
+            border-left-color: #27ae60;
+        }
+        
+        .care-section .card-title {
+            color: #27ae60;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .risk-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .frequency-table {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .frequency-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .frequency-table th,
+        .frequency-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .frequency-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .conclusion h2 {
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .symptoms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>類風濕性關節炎：不只是關節痛，更需全身照護</h1>
+            <p>類風濕性關節炎（RA）是一種全身性慢性發炎疾病，不僅影響關節，也可能波及眼睛、肺臟、心血管、骨骼等器官與系統。良好的疾病管理應該從多面向全面照護做起。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🔍</span>
+                常見症狀
+            </div>
+            <div class="symptoms-grid">
+                <div class="symptom-item">
+                    <strong>關節疼痛、腫脹、晨間僵硬</strong>
+                </div>
+                <div class="symptom-item">
+                    <strong>全身疲倦、體重減輕</strong>
+                </div>
+                <div class="symptom-item">
+                    <strong>關節變形</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="card complication-section">
+            <div class="card-title">
+                <span class="icon">⚠️</span>
+                類風濕性關節炎常見併發症與共病
+            </div>
+            
+            <h3>👁️ 眼部問題</h3>
+            <ul>
+                <li><strong>乾眼症</strong>（常合併乾燥症）：可用人工淚液舒緩</li>
+                <li><strong>鞏膜炎</strong>：紅眼、視力模糊，嚴重時需即時就醫</li>
+            </ul>
+
+            <h3>🫁 肺部疾病</h3>
+            <ul>
+                <li><strong>支氣管擴張、結節、肺纖維化</strong></li>
+                <li>注意：咳嗽、胸痛、呼吸喘、發燒</li>
+            </ul>
+
+            <h3>✋ 腕隧道症候群</h3>
+            <ul>
+                <li>手指麻、刺痛</li>
+                <li>可用手腕夾板、類固醇注射，嚴重需手術</li>
+            </ul>
+
+            <h3>🦴 骨質疏鬆症</h3>
+            <ul>
+                <li>發炎與類固醇皆會傷害骨頭</li>
+                <li>症狀：背痛、身高變矮</li>
+                <li>建議補充 <span class="highlight">鈣（1000–1200 mg）+ 維生素D（800–1000 IU）</span></li>
+            </ul>
+
+            <h3>😴 睡眠與精神困擾</h3>
+            <ul>
+                <li>疼痛干擾睡眠，可能導致<strong>憂鬱、焦慮</strong></li>
+                <li>建議培養<strong>良好睡眠衛生習慣</strong></li>
+            </ul>
+
+            <div class="risk-box">
+                <h3>❤️ 心血管疾病</h3>
+                <p>RA患者心血管疾病風險高於常人約<span class="highlight">兩倍</span></p>
+                <p>慢性發炎、類固醇與NSAIDs皆為風險因子</p>
+            </div>
+
+            <h3>🩸 血管炎（少見但需注意）</h3>
+            <ul>
+                <li>常見於<strong>腿部潰瘍、指甲周圍潰瘍</strong></li>
+                <li>神經受損可能出現灼熱或麻木感</li>
+            </ul>
+
+            <h3>🧪 肝腎與血液系統影響</h3>
+            <ul>
+                <li>藥物可能影響<strong>肝腎功能</strong></li>
+                <li>可能出現<strong>貧血、血栓風險上升</strong></li>
+            </ul>
+        </div>
+
+        <div class="card care-section">
+            <div class="card-title">
+                <span class="icon">🩺</span>
+                如何全面照護？
+            </div>
+            
+            <h3>✅ 1. 定期健康檢查</h3>
+            <p>檢查項目：<span class="highlight">骨密度、肺功能、心血管指標、肝腎功能、血球計數</span></p>
+            
+            <div class="frequency-table">
+                <h4>心血管風險評估建議：</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>年齡</th>
+                            <th>檢查頻率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>30–39歲</td>
+                            <td>每5年檢查一次</td>
+                        </tr>
+                        <tr>
+                            <td>40–64歲</td>
+                            <td>每3年</td>
+                        </tr>
+                        <tr>
+                            <td>≥65歲</td>
+                            <td>每年一次</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>✅ 2. 生活習慣調整</h3>
+            <ul>
+                <li><strong>規律運動</strong>：有氧與肌力訓練皆可</li>
+                <li><strong>均衡飲食</strong>：多蔬果、Omega-3、低飽和脂肪</li>
+                <li><strong>壓力管理</strong>：冥想、深呼吸、適當休息</li>
+                <li><strong>戒菸</strong>：請諮詢醫師協助</li>
+                <li><strong>睡眠衛生</strong>：固定作息、避免睡前使用3C</li>
+            </ul>
+
+            <h3>✅ 3. 藥物治療與風險控管</h3>
+            <ul>
+                <li><strong>規則服藥</strong>、定期門診追蹤</li>
+                <li>注意副作用，<strong>主動回報任何不適</strong></li>
+                <li>定期監測<strong>血壓、血糖、膽固醇</strong></li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <h2>🤝 與醫療團隊合作，共同守護健康</h2>
+            <p>類風濕性關節炎的治療是一場<strong>長期抗戰</strong>，但透過良好的醫病溝通、規律服藥、健康生活型態與定期檢查，我們可以有效控制病情、減少併發症，一起邁向更健康的未來！</p>
+        </div>
+    </div>
+</body>
+</html>

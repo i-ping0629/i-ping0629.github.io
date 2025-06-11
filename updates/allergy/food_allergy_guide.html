@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>食物過敏，你了解多少？</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #adb5bd 0%, #ced4da 100%);
+            color: #495057;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: white;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .section-title {
+            color: #000000;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #adb5bd 0%, #868e96 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .warning {
+            background: #ffe4b5;
+            color: #8b4513;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning h3 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .tip {
+            background: linear-gradient(135deg, #74a9d8 0%, #5a8db8 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .food-item {
+            background: linear-gradient(135deg, #adb5bd 0%, #ced4da 100%);
+            color: #495057;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .food-item:hover {
+            transform: scale(1.05);
+        }
+
+        .symptoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .symptom-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .symptom-category h4 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .diagnosis-steps {
+            counter-reset: step-counter;
+        }
+
+        .diagnosis-step {
+            counter-increment: step-counter;
+            background: #f8f9fa;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .diagnosis-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 15px;
+            background: #74a9d8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .risk-factors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .risk-factor {
+            background: linear-gradient(135deg, #74a9d8 0%, #5a8db8 100%);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #adb5bd 0%, #ced4da 100%);
+            color: #495057;
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .food-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>食物過敏，你了解多少？</h1>
+            <p>認識食物過敏的成因、症狀與預防方式</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">什麼是食物過敏？</h2>
+            <p>食物過敏是當我們的免疫系統誤以為某些食物是「有害物質」時，產生的<span class="highlight">異常免疫反應</span>。正常情況下，免疫系統是用來對抗病菌的，但對於有過敏體質的人，某些食物可能會引起不必要的免疫反應。</p>
+            <p>食物過敏的症狀有時只是輕微的不適，但在某些情況下，可能會導致<span class="highlight">嚴重甚至危及生命的反應（如過敏性休克）</span>。</p>
+            
+            <div class="tip" style="font-weight: 700;">
+                <strong>小提醒：</strong>食物不耐症（如乳糖不耐症）和食物過敏不同。不耐症主要是消化問題，例如腹脹、脹氣，<strong>並非免疫系統的反應</strong>。
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">常見引起過敏的食物有哪些？</h2>
+            <p>全球最常見的致敏食物包括：</p>
+            
+            <div class="food-grid">
+                <div class="food-item">牛奶</div>
+                <div class="food-item">雞蛋</div>
+                <div class="food-item">甲殼類海鮮</div>
+                <div class="food-item">魚類</div>
+                <div class="food-item">花生</div>
+                <div class="food-item">堅果類</div>
+                <div class="food-item">小麥</div>
+                <div class="food-item">大豆</div>
+                <div class="food-item">芝麻</div>
+            </div>
+            
+            <p><strong>注意：</strong>一個人可能對<span class="highlight">不只一種</span>食物過敏。</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">誰容易有食物過敏？</h2>
+            <p>食物過敏可以發生在<span class="highlight">任何年齡</span>，無論是嬰幼兒、兒童還是成人。有些孩子隨著年齡增長可能會「長大就不再過敏」，但也有人在成年後才開始對某些食物產生過敏反應。</p>
+            
+            <h3>高風險族群包括：</h3>
+            <div class="risk-factors">
+                <div class="risk-factor">異位性皮膚炎（濕疹）</div>
+                <div class="risk-factor">氣喘或過敏性疾病</div>
+                <div class="risk-factor">家族過敏病史</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">食物過敏的症狀有哪些？</h2>
+            <p>症狀通常會在<span class="highlight">吃下致敏食物的幾分鐘到兩小時內發生</span>，而且每次反應可能不完全一樣。</p>
+            
+            <div class="symptoms-grid">
+                <div class="symptom-category">
+                    <h4>皮膚症狀</h4>
+                    <ul>
+                        <li>皮膚紅疹或蕁麻疹</li>
+                        <li>嘴唇、臉部或舌頭腫脹</li>
+                        <li>嘴巴、喉嚨或舌頭癢癢的</li>
+                    </ul>
+                </div>
+                <div class="symptom-category">
+                    <h4>消化系統</h4>
+                    <ul>
+                        <li>嘔吐</li>
+                        <li>腹瀉</li>
+                        <li>肚子痛</li>
+                    </ul>
+                </div>
+                <div class="symptom-category">
+                    <h4>呼吸系統</h4>
+                    <ul>
+                        <li>咳嗽</li>
+                        <li>喘鳴</li>
+                        <li>呼吸困難</li>
+                    </ul>
+                </div>
+                <div class="symptom-category">
+                    <h4>全身症狀</h4>
+                    <ul>
+                        <li>頭暈</li>
+                        <li>昏沉</li>
+                        <li>低血壓</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warning">
+                <h3>🚨 嚴重過敏反應（過敏性休克）</h3>
+                <ul>
+                    <li>呼吸道腫脹，呼吸困難</li>
+                    <li>血壓急降、意識喪失</li>
+                    <li>嚴重時可能致命，需<strong style="color: #cc5500;">立即送醫或叫救護車（撥打119）</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">如何診斷食物過敏？</h2>
+            <p>醫師會根據以下方式進行診斷：</p>
+            
+            <div class="diagnosis-steps">
+                <div class="diagnosis-step">
+                    <h4>病史詢問</h4>
+                    <p>詳細詢問症狀、病史與家族史</p>
+                </div>
+                <div class="diagnosis-step">
+                    <h4>身體檢查</h4>
+                    <p>進行全身性身體檢查評估</p>
+                </div>
+                <div class="diagnosis-step">
+                    <h4>過敏檢查</h4>
+                    <ul>
+                        <li>皮膚點刺測試</li>
+                        <li>血液檢查（IgE抗體）</li>
+                        <li>食物排除試驗</li>
+                        <li>食物挑戰測試（最準確，需醫師監控）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">食物過敏如何治療？</h2>
+            <p>目前<span class="highlight">無法根治</span>食物過敏，最重要的原則是：</p>
+            
+            <div class="warning">
+                <h3>❗ 避免攝取會引起過敏的食物</h3>
+            </div>
+
+            <h3>其他輔助治療方式：</h3>
+            <ul>
+                <li>抗組織胺或類固醇藥物，可減輕輕度症狀</li>
+                <li>嚴重過敏者需配備<span style="background: #ffcccb; padding: 2px 8px; border-radius: 4px; font-weight: 600;">腎上腺素自我注射器（如EpiPen）</span>，在出現過敏性休克時立即施打</li>
+            </ul>
+
+            <div class="tip" style="font-weight: 700;">
+                <strong>貼心提醒：</strong>如果您或您的孩子有過敏性體質，務必告知學校、托育人員或工作夥伴，並隨身攜帶過敏藥物。
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>結語</h3>
+            <p>食物過敏雖然無法治癒，但透過正確的診斷、教育與預防，可以大大降低過敏反應的風險。如果您懷疑自己對某些食物過敏，請諮詢專業醫師做進一步評估與檢查。</p>
+        </div>
+    </div>
+</body>
+</html>

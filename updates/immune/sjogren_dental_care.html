@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乾燥症患者蛀牙預防指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c5282, #3182ce);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid #3182ce;
+        }
+
+        .section-title {
+            color: #2c5282;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: "";
+            color: #3182ce;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .strategy-card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .strategy-card h3 {
+            color: #c2410c;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .strategy-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .strategy-card li {
+            margin-bottom: 8px;
+            padding-left: 0;
+            position: relative;
+        }
+
+        .strategy-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            color: #3182ce;
+        }
+
+        .highlight-box {
+            background: #ebf8ff;
+            border: 1px solid #90cdf4;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h3 {
+            color: #2c5282;
+            margin-bottom: 10px;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            background: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid #48bb78;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .warning-box {
+            background: #fffaf0;
+            border: 1px solid #fbd38d;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box h3 {
+            color: #c05621;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #2c5282;
+            color: white;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .footer strong {
+            display: block;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>乾燥症患者如何預防蛀牙</h1>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">為什麼乾燥症容易蛀牙？</h2>
+            <p>乾燥症（Sjögren's Syndrome）常常導致唾液腺功能異常，造成口乾舌燥。唾液對口腔健康極其重要，它能幫助清潔牙齒、中和酸性物質。當唾液不足時，就容易引起蛀牙、牙齒侵蝕，甚至影響生活品質。</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">預防蛀牙的四大策略</h2>
+            <div class="strategy-grid">
+                <div class="strategy-card">
+                    <h3>氟化物：牙齒的好幫手</h3>
+                    <ul>
+                        <li>氟化物就像是牙齒的保護罩，能幫助牙齒變得更堅固，抵抗蛀蝕</li>
+                        <li>可選擇含氟牙膏、氟化漱口水或凝膠</li>
+                        <li>專家們建議，有口乾問題的乾燥症患者應該使用局部氟化物。雖然目前沒有明確指出哪種氟化物或使用頻率最佳，但持續使用是關鍵！</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h3>唾液刺激：增加唾液分泌</h3>
+                    <ul>
+                        <li>雖然目前還沒有直接研究證明增加唾液就能百分之百預防蛀牙，但口腔健康界普遍認為，增加唾液量有助於減少蛀牙的發生</li>
+                        <li>建議可採用以下方法：</li>
+                        <li><strong>味覺和咀嚼刺激</strong>：可嚼食無糖口香糖或吸吮無糖喉糖，含食酸味食物（如檸檬片），刺激唾液分泌</li>
+                        <li><strong>藥物輔助</strong>：在醫生評估下，可考慮使用匹羅卡品（pilocarpine）或西維美林（cevimeline）等處方藥物</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h3>抗菌劑：減少壞菌</h3>
+                    <ul>
+                        <li>若你有口乾問題且牙根蛀牙率很高，可考慮使用含氯己定（chlorhexidine）的漱口水、凝膠或塗料</li>
+                        <li>然而，氯己定可能引起牙齒染色、味覺改變等副作用，因此使用前請與牙醫討論</li>
+                    </ul>
+                </div>
+
+                <div class="strategy-card">
+                    <h3>非氟化物再礦化劑：補強牙齒結構</h3>
+                    <ul>
+                        <li>若你也有口乾和高牙根蛀牙率，可考慮使用非氟化物再礦化劑作為輔助療法</li>
+                        <li>例如磷酸鈣漱口水，有研究指出在預防蛀牙方面具有幫助</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">日常口腔保健習慣</h2>
+            <ul class="tips-list">
+                <li>使用軟毛牙刷避免刺激敏感口腔</li>
+                <li>每天刷牙至少兩次，搭配含氟牙膏</li>
+                <li>每日使用牙線清潔牙縫</li>
+                <li>定期口腔檢查，早期發現問題</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">飲食注意事項</h2>
+            <div class="highlight-box">
+                <h3>建議做法</h3>
+                <ul>
+                    <li>減少含糖飲料與甜食攝取</li>
+                    <li>選擇無糖產品，避免餵養口腔細菌</li>
+                    <li>多喝水保持口腔濕潤</li>
+                    <li>適量攝取富含鈣質的食物</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <h3>重要提醒</h3>
+            <p><strong>修格連氏症候群的口乾問題雖然難以根治，但透過定期追蹤與正確的口腔照護策略，可以有效降低蛀牙與其他併發症的風險。</strong>每位患者的情況不同，建議與醫療團隊討論最適合的治療方案。</p>
+        </div>
+
+        <div class="footer">
+            <strong>現在就和您的牙醫師與風濕免疫科醫師討論</strong>
+            <p>訂製專屬於您的護牙計畫！</p>
+        </div>
+    </div>
+</body>
+</html>

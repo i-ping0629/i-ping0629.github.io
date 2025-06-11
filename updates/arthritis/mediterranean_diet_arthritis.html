@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地中海飲食對抗關節炎指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-title {
+            font-size: 1.4em;
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .card-title .icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        
+        .highlight {
+            font-weight: 600;
+        }
+        
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .benefit-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .food-item {
+            background: #e8f5e8;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .recommendation-box {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .recommendation-box h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+        
+        .benefits-section {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .warning-section {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .food-category {
+            margin-bottom: 30px;
+        }
+        
+        .serving-info {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        
+        .serving-info strong {
+            color: #1a237e;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .conclusion h2 {
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌿 地中海飲食幫助對抗關節炎發炎反應</h1>
+            <p>關節炎常伴隨發炎與關節疼痛，不少患者會問：「有沒有能改善關節炎的飲食？」雖然沒有專門「治癒關節炎」的飲食，但研究發現<strong>地中海飲食</strong>中的多種天然食物具有<strong>抗發炎</strong>與<strong>改善症狀</strong>的效果。</p>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">✅</span>
+                地中海飲食的好處
+            </div>
+            
+            <p>地中海飲食包含大量<strong>天然食材</strong>，如：</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">🍎 水果</div>
+                <div class="benefit-item">🥬 蔬菜</div>
+                <div class="benefit-item">🐟 魚類</div>
+                <div class="benefit-item">🥜 堅果</div>
+                <div class="benefit-item">🫘 豆類</div>
+            </div>
+            
+            <p>並減少加工食品與飽和脂肪，這樣的飲食方式可帶來以下好處：</p>
+            
+            <div class="benefits-list">
+                <div class="benefit-item">🧠 降低發炎指數（如 CRP、IL-6）</div>
+                <div class="benefit-item">💓 有益心血管與關節健康</div>
+                <div class="benefit-item">⚖️ 協助控制體重，減輕關節負擔</div>
+                <div class="benefit-item">🔰 預防慢性疾病（如癌症、中風）</div>
+            </div>
+        </div>
+
+        <div class="card food-category">
+            <div class="card-title">
+                <span class="icon">🐟</span>
+                魚類：Omega-3 抗發炎明星
+            </div>
+            
+            <div class="serving-info">
+                <strong>建議攝取</strong>：每週 2 次（每次約 85–115 克）<br>
+                <strong>推薦魚類</strong>：鮭魚、鮪魚、沙丁魚、鯷魚、鯡魚
+            </div>
+            
+            <div class="benefits-section">
+                <p>👉 富含<strong>Omega-3脂肪酸</strong>，能降低發炎蛋白（如 CRP、IL-6）</p>
+                <p>👉 有研究發現，RA（類風濕性關節炎）患者補充魚油可減少關節腫痛、晨僵與疾病活動</p>
+            </div>
+        </div>
+
+        <div class="card food-category">
+            <div class="card-title">
+                <span class="icon">🥜</span>
+                堅果與種子：小小營養庫
+            </div>
+            
+            <div class="serving-info">
+                <strong>建議攝取</strong>：每天一把（約 1.5 盎司）<br>
+                <strong>推薦種類</strong>：核桃、杏仁、松子、開心果
+            </div>
+            
+            <div class="benefits-section">
+                <p>👉 富含單元不飽和脂肪、維生素B6、植物性抗氧化物</p>
+                <p>👉 可降低發炎性疾病的死亡風險，亦有助控制體重</p>
+            </div>
+        </div>
+
+        <div class="card food-category">
+            <div class="card-title">
+                <span class="icon">🍓</span>
+                水果與蔬菜：天然抗氧化劑來源
+            </div>
+            
+            <div class="serving-info">
+                <strong>建議攝取</strong>：每天 9 份以上（例如 1 份 = 1 杯水果或 2 杯綠葉蔬菜）<br>
+                <strong>推薦食材</strong>：藍莓、櫻桃、菠菜、羽衣甘藍、西蘭花、柳橙
+            </div>
+            
+            <div class="benefits-section">
+                <p>👉 富含<strong>花青素</strong>與<strong>維生素C/K</strong>，中和自由基，保護關節</p>
+                <p>👉 深色水果與蔬菜的抗氧化能力更強！</p>
+            </div>
+        </div>
+
+        <div class="card food-category">
+            <div class="card-title">
+                <span class="icon">🫒</span>
+                橄欖油：天然植物止痛藥
+            </div>
+            
+            <div class="serving-info">
+                <strong>建議用量</strong>：每日 2–3 湯匙
+            </div>
+            
+            <div class="benefits-section">
+                <p>👉 含<strong>油橄欖素</strong>，具有類似 NSAIDs 的抗發炎效果</p>
+                <p>👉 可降低COX酶活性，減緩疼痛與發炎</p>
+                <p style="margin-top: 15px;"><strong>其他好油</strong>：酪梨油、紅花油、核桃油（含更多Omega-3）</p>
+            </div>
+        </div>
+
+        <div class="card food-category">
+            <div class="card-title">
+                <span class="icon">🫘</span>
+                豆類：平價又營養的抗發炎食物
+            </div>
+            
+            <div class="serving-info">
+                <strong>建議攝取</strong>：每週 2 次以上，每次約 1 杯<br>
+                <strong>推薦種類</strong>：紅豆、紅芸豆、斑豆
+            </div>
+            
+            <div class="benefits-section">
+                <p>👉 富含植物蛋白、纖維與植物營養素</p>
+                <p>👉 可有效降低 CRP 等發炎指標</p>
+            </div>
+        </div>
+
+        <div class="card food-category">
+            <div class="card-title">
+                <span class="icon">🌾</span>
+                全穀物：纖維助你穩定免疫
+            </div>
+            
+            <div class="serving-info">
+                <strong>建議攝取</strong>：每日6盎司穀物，其中至少3盎司為全穀<br>
+                <strong>推薦來源</strong>：糙米、燕麥、藜麥、全麥麵包
+            </div>
+            
+            <div class="benefits-section">
+                <p>👉 高纖維可穩定血糖與控制體重，間接減少發炎</p>
+            </div>
+            
+            <div class="warning-section">
+                <p>⚠️ 有麩質敏感或乳糜瀉者需注意選擇</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🍅</span>
+                茄屬蔬菜：每個人體質不同
+            </div>
+            
+            <p><strong>包含</strong>：番茄、茄子、甜椒、馬鈴薯</p>
+            
+            <div class="warning-section">
+                <p>這類蔬菜營養豐富，但有些人認為它們可能加劇關節炎。雖然<strong>目前無科學證據證明茄屬蔬菜會造成關節炎</strong>，但若您發現吃了後症狀惡化，可以嘗試停用幾週，再觀察是否改善。</p>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>🔚 小結：飲食也能幫助改善關節健康</h2>
+            <p>透過<strong>地中海飲食</strong>，結合健康生活習慣，能有助緩解發炎、減輕關節不適，並照顧整體健康。</p>
+        </div>
+    </div>
+</body>
+</html>

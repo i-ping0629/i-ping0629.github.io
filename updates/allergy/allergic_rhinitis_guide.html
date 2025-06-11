@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>過敏性鼻炎：您的鼻子，您了解多少？</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #adb5bd 0%, #ced4da 100%);
+            color: #495057;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: white;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .section-title {
+            color: #000000;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #adb5bd 0%, #868e96 100%);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .symptoms-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .symptoms-list li {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #74a9d8;
+        }
+
+        .symptoms-list li strong {
+            color: #495057;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .allergen-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .allergen-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #74a9d8;
+        }
+
+        .allergen-item h4 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .treatment-item {
+            background: linear-gradient(135deg, #adb5bd 0%, #ced4da 100%);
+            color: #495057;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .treatment-item:hover {
+            transform: scale(1.02);
+        }
+
+        .treatment-item h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .tip {
+            background: linear-gradient(135deg, #74a9d8 0%, #5a8db8 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .warning {
+            background: #ffe4b5;
+            color: #8b4513;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .warning h3 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #adb5bd 0%, #ced4da 100%);
+            color: #495057;
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+            
+            .allergen-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .treatment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>過敏性鼻炎：您的鼻子，您了解多少？</h1>
+            <p>了解過敏性鼻炎的成因、症狀與管理方式</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">什麼是過敏性鼻炎？</h2>
+            <p>想像一下，我們的鼻子就像是身體的第一道防線，它努力過濾空氣中的微粒，保護我們的呼吸道。對大多數人來說，這個「安全系統」運作得很好。但是，如果您有<span class="highlight">過敏性鼻炎</span>，也就是俗稱的「花粉症」，那麼您的鼻子可能就有些「反應過度」了，它會把一些無害的物質誤認為是敵人。</p>
+            
+            <p>當這些「無害的敵人」——也就是<span class="highlight">過敏原</span>，像是花粉、塵蟎、寵物皮屑或黴菌孢子——進入您的鼻子時，您的免疫系統會過度反應，釋放出一系列化學物質，其中就包括<span class="highlight">組織胺</span>，這會導致我們熟悉的那些症狀。</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">過敏性鼻炎的常見信號</h2>
+            <p>過敏性鼻炎的症狀輕重不一，但通常包括：</p>
+            
+            <ul class="symptoms-list">
+                <li>
+                    <strong>連續打噴嚏：</strong>
+                    常常是接二連三地打噴嚏，好像鼻子在努力把過敏原排出體外。
+                </li>
+                <li>
+                    <strong>流鼻水：</strong>
+                    通常是清澈的水狀鼻涕，這是身體在嘗試沖走刺激物。
+                </li>
+                <li>
+                    <strong>鼻塞：</strong>
+                    鼻腔發炎和腫脹會讓您覺得鼻子堵塞，呼吸困難。
+                </li>
+                <li>
+                    <strong>鼻子、眼睛或喉嚨發癢：</strong>
+                    這種惱人的癢感是過敏反應的典型表現。
+                </li>
+                <li>
+                    <strong>眼睛紅腫或流淚：</strong>
+                    您的眼睛也可能感到發癢，看起來紅紅的，或者不停流淚。
+                </li>
+                <li>
+                    <strong>喉嚨癢或咳嗽：</strong>
+                    鼻涕倒流到喉嚨後方，可能導致喉嚨不適或引發咳嗽。
+                </li>
+            </ul>
+            
+            <p>這些症狀會嚴重影響您的日常生活，包括睡眠品質、專注力和整體的生活舒適度。</p>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">環境策略：識別並避免觸發因素</h2>
+            <p>管理過敏性鼻炎最有效的方法之一，就是找出並盡量減少接觸您特有的過敏原。這就像是為自己的健康當個偵探一樣。</p>
+            
+            <div class="allergen-section">
+                <div class="allergen-item">
+                    <h4>花粉</h4>
+                    <p>如果花粉是您的「頭號敵人」，在花粉量高的時段，特別是刮風的日子，盡量待在室內。關閉門窗，並使用有良好濾網的空調也有幫助。從戶外回來後，更換衣物並洗澡可以清除皮膚和頭髮上的花粉。</p>
+                </div>
+                
+                <div class="allergen-item">
+                    <h4>塵蟎</h4>
+                    <p>這些微小的生物喜歡在寢具和軟墊家具中生長。使用防蟎床罩和枕套，每週用熱水清洗寢具，並定期使用帶有高效空氣過濾器（HEPA）的吸塵器，可以顯著減少它們的存在。</p>
+                </div>
+                
+                <div class="allergen-item">
+                    <h4>寵物皮屑</h4>
+                    <p>如果您對寵物皮屑過敏，限制接觸是關鍵。這可能意味著讓寵物遠離您的臥室，或者在更嚴重的情況下，考慮在家中設置「無寵物區」。定期給寵物洗澡也有助於減少皮屑。</p>
+                </div>
+                
+                <div class="allergen-item">
+                    <h4>黴菌孢子</h4>
+                    <p>黴菌喜歡潮濕的環境。修復漏水處，在潮濕區域使用除濕機，並用漂白水溶液清潔發霉的表面，有助於控制黴菌生長。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">治療選項</h2>
+            <p>雖然避免接觸觸發因素很重要，但有時這還不夠。幸運的是，有幾種治療方法可以提供緩解。</p>
+            
+            <div class="treatment-grid">
+                <div style="padding: 20px; border-radius: 10px; text-align: left; font-weight: 600; transition: transform 0.3s ease;">
+                    <h4 style="font-weight: 700; font-size: 1.3em;">鼻噴劑型類固醇</h4>
+                    <p>這些鼻噴劑通常被認為是對抗過敏性鼻炎最有效的治療方法。它們通過減少鼻腔內的炎症來發揮作用。為了達到最佳效果，持續規律地使用非常重要。</p>
+                </div>
+                
+                <div style="padding: 20px; border-radius: 10px; text-align: left; font-weight: 600; transition: transform 0.3s ease;">
+                    <h4 style="font-weight: 700; font-size: 1.3em;">抗組織胺</h4>
+                    <p>這些藥物能阻斷組織胺，這是導致許多過敏症狀的化學物質。它們可以口服或以鼻噴劑的形式使用。現在有許多非嗜睡型的選項可供選擇。</p>
+                </div>
+                
+                <div style="padding: 20px; border-radius: 10px; text-align: left; font-weight: 600; transition: transform 0.3s ease;">
+                    <h4 style="font-weight: 700; font-size: 1.3em;">去充血劑</h4>
+                    <p>以鼻噴劑或口服藥物的形式存在，去充血劑有助於緩解鼻塞。然而，鼻噴劑型去充血劑只能短期使用幾天，以避免產生「反彈性鼻炎」，導致鼻塞反而惡化。</p>
+                </div>
+                
+                <div style="padding: 20px; border-radius: 10px; text-align: left; font-weight: 600; transition: transform 0.3s ease;">
+                    <h4 style="font-weight: 700; font-size: 1.3em;">過敏原免疫療法（減敏治療）</h4>
+                    <p>對於持續且嚴重的過敏性鼻炎，您的醫生可能會建議減敏治療。這種治療方法是逐步讓您接觸越來越多的過敏原，幫助您的免疫系統隨著時間建立耐受性。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>結語</h3>
+            <p>過敏性鼻炎雖然可能令人困擾，但透過適當的環境控制、藥物治療和生活方式調整，大多數患者都能有效管理症狀，維持良好的生活品質。如果您懷疑自己患有過敏性鼻炎，建議諮詢專業醫師進行詳細評估和個人化治療計劃。</p>
+        </div>
+    </div>
+</body>
+</html>

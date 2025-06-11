@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退化性關節炎治療指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        .goals-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .goals-title {
+            font-size: 1.4em;
+            color: #1a237e;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .goals-title .icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        
+        .goals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .goal-item {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card-title {
+            font-size: 1.4em;
+            color: #1a237e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .card-title .icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        
+        .treatment-section {
+            margin-bottom: 25px;
+        }
+        
+        .treatment-section h3 {
+            color: #1976d2;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .treatment-content {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-box {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .weight-fact {
+            background: #e8f5e8;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-weight: 600;
+            color: #2e7d32;
+        }
+        
+        .medication-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .medication-item {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .medication-item h4 {
+            color: #e65100;
+            margin-bottom: 8px;
+        }
+        
+        .lifestyle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .lifestyle-item {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .lifestyle-item h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        
+        .surgery-section {
+            background: #ffebee;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .surgery-section h3 {
+            color: #c62828;
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+        
+        .highlight {
+            font-weight: 600;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .conclusion h2 {
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #1a237e;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .goals-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .medication-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lifestyle-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>退化性膝關節炎怎麼辦？你可以這樣做！</h1>
+            <p>膝蓋痠、腫、卡卡，走路沒力、上下樓梯困難……這可能是「退化性膝關節炎」的表現！別擔心，透過正確的治療與日常保養，可以大大減緩症狀、恢復行動力！</p>
+        </div>
+
+        <div class="goals-section">
+            <div class="goals-title">
+                <span class="icon">🦴</span>
+                退化性關節炎的治療目標
+            </div>
+            <div class="goals-list">
+                <div class="goal-item">
+                    <strong>緩解疼痛與僵硬</strong>
+                </div>
+                <div class="goal-item">
+                    <strong>維持活動功能與生活品質</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🏃‍♀️</span>
+                第一線治療：非藥物介入
+            </div>
+            
+            <div class="treatment-section">
+                <h3>✅ 運動與物理治療</h3>
+                <div class="treatment-content">
+                    <ul>
+                        <li>每週規律運動（如步行、游泳、水中有氧、瑜珈）</li>
+                        <li>若疼痛明顯，可與物理治療師制定個人化運動計畫</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="treatment-section">
+                <h3>✅ 減重（若體重過重）</h3>
+                <div class="weight-fact">
+                    每減1公斤，膝蓋負擔減少約4公斤
+                </div>
+                <div class="treatment-content">
+                    <p>減重可明顯改善症狀、延緩病情惡化</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">💊</span>
+                藥物治療
+            </div>
+            
+            <div class="treatment-section">
+                <h3>口服藥物：</h3>
+                <div class="medication-grid">
+                    <div class="medication-item">
+                        <h4>普拿疼</h4>
+                        <p>輕中度疼痛可用</p>
+                    </div>
+                    <div class="medication-item">
+                        <h4>NSAIDs（非類固醇抗發炎藥）</h4>
+                        <p>如Ibuprofen 有助於止痛與抗發炎</p>
+                    </div>
+                    <div class="medication-item">
+                        <h4>Cymbalta</h4>
+                        <p>抗憂鬱藥，也可緩解慢性疼痛</p>
+                    </div>
+                    <div class="medication-item">
+                        <h4>Tramadol</h4>
+                        <p>處方鴉片類，僅用於無法控制的疼痛</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="treatment-section">
+                <h3>局部藥物：</h3>
+                <div class="treatment-content">
+                    <ul>
+                        <li><strong>薄荷醇、雙氯芬酸（Diclofenac）凝膠</strong>等</li>
+                        <li>適用於表淺關節，如手部、膝蓋</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="treatment-section">
+                <h3>注射治療：</h3>
+                <div class="treatment-content">
+                    <ul>
+                        <li><strong>皮質類固醇</strong>：抗發炎、短期止痛效果佳</li>
+                        <li><strong>玻尿酸</strong>：潤滑關節，但效果因人而異</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🧘‍♀️</span>
+                輔助治療選項
+            </div>
+            
+            <div class="treatment-content">
+                <ul>
+                    <li>熱敷/冷敷</li>
+                    <li>放鬆技巧（呼吸、冥想）</li>
+                    <li><strong>針灸</strong>、<strong>按摩</strong></li>
+                    <li>支架、夾板、矯形器具</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">
+                <span class="icon">🧠</span>
+                生活型態調整
+            </div>
+            
+            <div class="lifestyle-grid">
+                <div class="lifestyle-item">
+                    <h4>戒菸</h4>
+                    <p>吸菸可能加速關節惡化</p>
+                </div>
+                <div class="lifestyle-item">
+                    <h4>使用輔助工具</h4>
+                    <p>如扶手、增高器具、握力輔助器具</p>
+                </div>
+                <div class="lifestyle-item">
+                    <h4>心理支持與溝通</h4>
+                    <p>疼痛會影響情緒、人際關係，應主動尋求協助</p>
+                </div>
+                <div class="lifestyle-item">
+                    <h4>工作環境調整</h4>
+                    <p>改變桌椅高度、安排休息、站坐交替等</p>
+                </div>
+                <div class="lifestyle-item">
+                    <h4>健康飲食</h4>
+                    <p>地中海型飲食（蔬菜、水果、魚、橄欖油）有助抗發炎</p>
+                </div>
+                <div class="lifestyle-item">
+                    <h4>營養補充品</h4>
+                    <p>如<strong>葡萄糖胺與軟骨素</strong>，對部分患者有效，但效果因人而異</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="surgery-section">
+                <div class="card-title">
+                    <span class="icon">🏥</span>
+                    手術治療
+                </div>
+                <ul>
+                    <li>當藥物與保守治療無效，<strong>可考慮關節置換手術</strong>（如人工膝關節）</li>
+                    <li>評估對象：疼痛劇烈、功能喪失、影響生活品質者</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>結語</h2>
+            <p>骨關節炎雖無法根治，但透過<strong>綜合治療與生活管理</strong>，可有效緩解症狀、延緩退化，重拾活動能力與生活品質。與您的醫師密切合作，找到最適合您的治療組合是關鍵。</p>
+        </div>
+    </div>
+</body>
+</html>

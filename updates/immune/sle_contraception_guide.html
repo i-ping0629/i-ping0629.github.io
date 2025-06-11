@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLE患者的避孕建議</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c5282 0%, #3182ce 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content {
+            background: white;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section h2 {
+            color: #2c5282;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .success-box {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #28a745;
+            margin: 1rem 0;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 1rem 0;
+        }
+
+        .info-box {
+            background: #d1ecf1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #17a2b8;
+            margin: 1rem 0;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #2c5282;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 0.8rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .check {
+            color: #28a745;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .cross {
+            color: #dc3545;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        strong {
+            color: #2c5282;
+            font-weight: 600;
+        }
+
+        .red-highlight {
+            color: #c53030;
+            font-weight: 600;
+        }
+
+        .green-highlight {
+            color: #28a745;
+            font-weight: 600;
+        }
+
+        .conclusion-box {
+            background: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #3182ce;
+            margin: 1.5rem 0;
+        }
+
+        .conclusion-box h4 {
+            color: #2c5282;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background: #2c5282;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+
+            th, td {
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>SLE患者的避孕建議</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="section">
+                <h2>✅ 所有人皆適用且最有效的方法（安全、效果佳，適用於所有SLE患者）</h2>
+                <div class="success-box">
+                    <ul>
+                        <li><span class="green-highlight">結紮手術</span></li>
+                        <li><span class="green-highlight">皮下植入型避孕器</span></li>
+                        <li><span class="green-highlight">子宮內避孕器（IUD）</span>（含銅或黃體素型）</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>💊 賀爾蒙避孕藥選擇（依病況調整）</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>避孕方式</th>
+                                <th>其他免疫病</th>
+                                <th>狼瘡活動低</th>
+                                <th>狼瘡活動高</th>
+                                <th>有高血栓風險</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Depo-Provera</strong>（黃體素注射）</td>
+                                <td class="check">✅</td>
+                                <td class="check">✅</td>
+                                <td class="cross">❌</td>
+                                <td class="cross">❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>動情素藥物</strong>（含雌激素）</td>
+                                <td class="check">✅</td>
+                                <td class="check">✅</td>
+                                <td class="cross">❌</td>
+                                <td class="cross">❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>避孕環</strong>（含雌激素）</td>
+                                <td class="check">✅</td>
+                                <td class="cross">❌</td>
+                                <td class="cross">❌</td>
+                                <td class="cross">❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>避孕貼片</strong>（含雌激素）</td>
+                                <td class="check">✅</td>
+                                <td class="cross">❌</td>
+                                <td class="cross">❌</td>
+                                <td class="cross">❌</td>
+                            </tr>
+                            <tr>
+                                <td><strong>迷你避孕丸</strong>（僅含黃體素）</td>
+                                <td class="check">✅</td>
+                                <td class="check">✅</td>
+                                <td class="check">✅</td>
+                                <td class="check">✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">✅ = 可使用；❌ = 不建議使用</p>
+
+                <div class="warning-box">
+                    <h4>📌 備註：</h4>
+                    <ul>
+                        <li><span class="red-highlight">高疾病活動度或有血栓風險者，不建議使用含雌激素避孕方式。</span></li>
+                        <li><span class="red-highlight">單一黃體素製劑（如迷你避孕丸）較為安全，常為優先選擇。</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🛡️ 效果較差的避孕方法（可輔助使用）</h2>
+                <ul>
+                    <li><span class="green-highlight">保險套</span>（也可預防性病）</li>
+                    <li><span class="green-highlight">避孕海綿</span></li>
+                    <li><span class="green-highlight">殺精劑</span></li>
+                    <li><span class="green-highlight">子宮頸帽</span></li>
+                    <li><span class="green-highlight">計算安全期</span></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>⚠️ 小提醒</h2>
+                <ul>
+                    <li><strong>結合兩種避孕方式效果更佳</strong>，例如：保險套 + 黃體素避孕藥。</li>
+                    <li><strong>事後避孕藥對SLE患者是安全的</strong>，但不應作為常規避孕手段。</li>
+                    <li><span class="red-highlight">若您有抗磷脂抗體</span>、病情活躍或曾有血栓病史，<span class="red-highlight">應避免使用含雌激素的避孕方式</span>。</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>📍 結論</h2>
+                <p style="margin-bottom: 1rem;">若您目前無生育打算，建議選擇：</p>
+                <div class="conclusion-box">
+                    <ul>
+                        <li><strong>子宮內避孕器（IUD）</strong></li>
+                        <li><strong>皮下避孕棒</strong></li>
+                        <li><strong>單一黃體素藥物</strong></li>
+                        <li><strong>配合保險套的屏障法</strong></li>
+                    </ul>
+                </div>
+                <div class="info-box">
+                    <p>選擇前<span class="red-highlight">請務必與風濕科醫師或婦產科醫師討論</span>，確保避孕方式既安全又有效。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>與醫療團隊討論，選擇最適合您的避孕方式</p>
+        </div>
+    </div>
+</body>
+</html>
