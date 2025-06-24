@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCVD風險計算器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 8px;
+            color: #856404;
+        }
+
+        .form-container {
+            padding: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .required {
+            color: #dc3545;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #4f46e5;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .radio-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #4f46e5;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #4f46e5;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3730a3;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            display: none;
+            text-align: center;
+        }
+
+        .result.show {
+            display: block;
+        }
+
+        .result.low-risk {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .result.borderline-risk {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .result.intermediate-risk {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+        }
+
+        .result.high-risk {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .risk-score {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 15px 0;
+        }
+
+        .risk-category {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .risk-description {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .recommendations {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .recommendations h4 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .recommendations li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .recommendations li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .info-text {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .disclaimer {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #475569;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ASCVD風險計算器</h1>
+            <p>評估未來10年動脈粥樣硬化性心血管疾病風險</p>
+        </div>
+
+        <div class="warning">
+            <strong>重要提醒：</strong>本計算器僅適用於40-79歲無心血管疾病史的成年人，結果僅供參考，請諮詢醫師獲得專業建議。
+        </div>
+
+        <div class="form-container">
+            <div class="input-group">
+                <label>年齡 <span class="required">*</span></label>
+                <input type="number" id="age" min="40" max="79" placeholder="請輸入40-79歲">
+                <div class="info-text">請輸入您目前的年齡</div>
+            </div>
+
+            <div class="input-group">
+                <label>性別 <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" name="sex" value="male" id="male">
+                        <label for="male">男性</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="sex" value="female" id="female">
+                        <label for="female">女性</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>種族 <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" name="race" value="white" id="white">
+                        <label for="white">白人</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="race" value="black" id="black">
+                        <label for="black">非裔美國人</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="race" value="other" id="other" checked>
+                        <label for="other">亞洲人/其他</label>
+                    </div>
+                </div>
+                <div class="info-text">台灣民眾請選擇「亞洲人/其他」</div>
+            </div>
+
+            <div class="input-group">
+                <label>收縮壓 (mmHg) <span class="required">*</span></label>
+                <input type="number" id="sbp" min="90" max="200" placeholder="例如：120">
+            </div>
+
+            <div class="input-group">
+                <label>總膽固醇 (mg/dL) <span class="required">*</span></label>
+                <input type="number" id="totalChol" min="130" max="320" placeholder="例如：200">
+            </div>
+
+            <div class="input-group">
+                <label>HDL膽固醇 (mg/dL) <span class="required">*</span></label>
+                <input type="number" id="hdl" min="20" max="100" placeholder="例如：50">
+                <div class="info-text">HDL是「好膽固醇」，數值越高越好</div>
+            </div>
+
+            <div class="input-group">
+                <label>目前是否服用血壓藥物？</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" name="onTreatment" value="yes" id="treatmentYes">
+                        <label for="treatmentYes">是</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" name="onTreatment" value="no" id="treatmentNo" checked>
+                        <label for="treatmentNo">否</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>請勾選符合的項目：</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="diabetes">
+                        <label for="diabetes">糖尿病</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="smoker">
+                        <label for="smoker">目前吸菸</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-primary" onclick="calculateRisk()">計算風險</button>
+                <button class="btn btn-secondary" onclick="resetForm()">重設</button>
+            </div>
+
+            <div id="result" class="result">
+                <div class="risk-score" id="riskScore"></div>
+                <div class="risk-category" id="riskCategory"></div>
+                <div class="risk-description" id="riskDescription"></div>
+                
+                <div class="recommendations">
+                    <h4>建議措施：</h4>
+                    <ul id="recommendationsList"></ul>
+                </div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>免責聲明：</strong>本計算結果僅供參考，不能取代醫師的專業判斷。請務必諮詢您的醫療照護提供者以獲得個人化的醫療建議和治療方案。
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateRisk() {
+            // 收集資料
+            const age = parseInt(document.getElementById('age').value) || 0;
+            const sex = document.querySelector('input[name="sex"]:checked')?.value || '';
+            const race = document.querySelector('input[name="race"]:checked')?.value || '';
+            const sbp = parseInt(document.getElementById('sbp').value) || 0;
+            const totalChol = parseInt(document.getElementById('totalChol').value) || 0;
+            const hdl = parseInt(document.getElementById('hdl').value) || 0;
+            const onTreatment = document.querySelector('input[name="onTreatment"]:checked')?.value === 'yes';
+            const diabetes = document.getElementById('diabetes').checked;
+            const smoker = document.getElementById('smoker').checked;
+
+            // 驗證必填欄位
+            const errors = [];
+            if (!age || age < 40 || age > 79) errors.push('年齡必須介於40-79歲');
+            if (!sex) errors.push('請選擇性別');
+            if (!race) errors.push('請選擇種族');
+            if (!sbp || sbp < 90 || sbp > 200) errors.push('收縮壓必須介於90-200 mmHg');
+            if (!totalChol || totalChol < 130 || totalChol > 320) errors.push('總膽固醇必須介於130-320 mg/dL');
+            if (!hdl || hdl < 20 || hdl > 100) errors.push('HDL膽固醇必須介於20-100 mg/dL');
+
+            if (errors.length > 0) {
+                alert('請修正以下錯誤：\n• ' + errors.join('\n• '));
+                return;
+            }
+
+            // 計算風險
+            const risk = calculatePooledCohortRisk(age, sex, race, sbp, totalChol, hdl, onTreatment, diabetes, smoker);
+            
+            if (risk !== null) {
+                displayResult(risk);
+            }
+        }
+
+        function calculatePooledCohortRisk(age, sex, race, sbp, totalChol, hdl, onTreatment, diabetes, smoker) {
+            try {
+                const lnAge = Math.log(age);
+                const lnTotalChol = Math.log(totalChol);
+                const lnHdl = Math.log(hdl);
+                const lnSbp = Math.log(sbp);
+                const diabetesInt = diabetes ? 1 : 0;
+                const smokerInt = smoker ? 1 : 0;
+                const treatmentInt = onTreatment ? 1 : 0;
+                
+                let individualSum = 0;
+                let meanSum = 0;
+                let baseSurvival = 0;
+                
+                // 2013 ACC/AHA 群體世代方程式
+                if (sex === 'male') {
+                    if (race === 'black') {
+                        individualSum = (2.469 * lnAge) + (0.302 * lnTotalChol) + (-0.307 * lnHdl) + 
+                                       (1.916 * treatmentInt * lnSbp) + (1.809 * (1 - treatmentInt) * lnSbp) + 
+                                       (0.549 * diabetesInt) + (0.645 * smokerInt);
+                        meanSum = 19.54;
+                        baseSurvival = 0.8954;
+                    } else {
+                        individualSum = (12.344 * lnAge) + (11.853 * lnTotalChol) + (-2.664 * lnAge * lnTotalChol) + 
+                                       (-7.990 * lnHdl) + (1.769 * lnAge * lnHdl) + (1.797 * treatmentInt * lnSbp) + 
+                                       (1.764 * (1 - treatmentInt) * lnSbp) + (7.837 * diabetesInt) + 
+                                       (-1.795 * lnAge * diabetesInt) + (0.658 * smokerInt) + (-0.101 * lnAge * smokerInt);
+                        meanSum = 61.18;
+                        baseSurvival = 0.9144;
+                    }
+                } else {
+                    if (race === 'black') {
+                        individualSum = (17.114 * lnAge) + (0.940 * lnTotalChol) + (-18.920 * lnHdl) + 
+                                       (4.475 * lnAge * lnHdl) + (29.291 * treatmentInt * lnSbp) + 
+                                       (-6.432 * lnAge * treatmentInt * lnSbp) + (27.820 * (1 - treatmentInt) * lnSbp) + 
+                                       (-6.087 * lnAge * (1 - treatmentInt) * lnSbp) + (0.691 * diabetesInt) + (0.874 * smokerInt);
+                        meanSum = 86.61;
+                        baseSurvival = 0.9533;
+                    } else {
+                        individualSum = (-29.799 * lnAge) + (4.884 * lnAge * lnAge) + (13.540 * lnTotalChol) + 
+                                       (-3.114 * lnAge * lnTotalChol) + (-13.578 * lnHdl) + (3.149 * lnAge * lnHdl) + 
+                                       (2.019 * treatmentInt * lnSbp) + (1.957 * (1 - treatmentInt) * lnSbp) + 
+                                       (7.574 * diabetesInt) + (-1.665 * lnAge * diabetesInt) + (0.661 * smokerInt);
+                        meanSum = -29.18;
+                        baseSurvival = 0.9665;
+                    }
+                }
+                
+                const riskScore = individualSum - meanSum;
+                const probability = 1 - Math.pow(baseSurvival, Math.exp(riskScore));
+                return Math.max(0.1, Math.min(probability * 100, 99.9));
+                
+            } catch (error) {
+                alert('計算過程發生錯誤，請檢查輸入數值');
+                return null;
+            }
+        }
+
+        function displayResult(risk) {
+            const resultDiv = document.getElementById('result');
+            const riskScore = document.getElementById('riskScore');
+            const riskCategory = document.getElementById('riskCategory');
+            const riskDescription = document.getElementById('riskDescription');
+            const recommendationsList = document.getElementById('recommendationsList');
+            
+            riskScore.textContent = risk.toFixed(1) + '%';
+            
+            // 清除之前的類別
+            resultDiv.className = 'result show';
+            
+            let category, description, recommendations, cssClass;
+            
+            if (risk < 5) {
+                category = '低風險';
+                cssClass = 'low-risk';
+                description = '您未來10年發生心血管疾病的風險較低';
+                recommendations = [
+                    '維持健康生活型態',
+                    '規律運動每週150分鐘',
+                    '均衡飲食，少鹽少油',
+                    '定期健康檢查',
+                    '血壓控制目標 <130/80 mmHg'
+                ];
+            } else if (risk < 7.5) {
+                category = '邊緣風險';
+                cssClass = 'borderline-risk';
+                description = '您有中等程度的心血管風險，建議開始積極預防';
+                recommendations = [
+                    '加強生活型態調整',
+                    '考慮其他危險因子評估',
+                    '定期監測血壓血脂',
+                    '戒菸限酒',
+                    '必要時考慮藥物治療'
+                ];
+            } else if (risk < 20) {
+                category = '中度風險';
+                cssClass = 'intermediate-risk';
+                description = '您有明顯的心血管風險，建議藥物治療';
+                recommendations = [
+                    '建議開始他汀類藥物治療',
+                    '積極控制血壓血糖',
+                    '生活型態全面調整',
+                    '定期心臟科追蹤',
+                    'LDL膽固醇目標 <100 mg/dL'
+                ];
+            } else {
+                category = '高風險';
+                cssClass = 'high-risk';
+                description = '您有很高的心血管風險，需要立即積極治療';
+                recommendations = [
+                    '立即開始高強度他汀治療',
+                    '嚴格控制所有危險因子',
+                    '考慮心臟科專科會診',
+                    'LDL膽固醇目標 <70 mg/dL',
+                    '定期密切追蹤'
+                ];
+            }
+            
+            resultDiv.classList.add(cssClass);
+            riskCategory.textContent = category;
+            riskDescription.textContent = description;
+            
+            recommendationsList.innerHTML = '';
+            recommendations.forEach(rec => {
+                const li = document.createElement('li');
+                li.textContent = rec;
+                recommendationsList.appendChild(li);
+            });
+            
+            // 滾動到結果
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function resetForm() {
+            document.getElementById('age').value = '';
+            document.getElementById('sbp').value = '';
+            document.getElementById('totalChol').value = '';
+            document.getElementById('hdl').value = '';
+            
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                if (radio.value === 'other' || radio.value === 'no') {
+                    radio.checked = true;
+                } else {
+                    radio.checked = false;
+                }
+            });
+            
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            
+            document.getElementById('result').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
