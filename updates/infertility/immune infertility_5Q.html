@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>免疫系統也會影響懷孕？破解免疫性不孕的5個常見疑問！</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background-color: #f4f6f9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 35px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.4em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .question-section {
+            margin-bottom: 45px;
+            padding: 30px;
+            background-color: #fdfdfd;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-top: 4px solid #3498db;
+        }
+
+        .question-title {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .question-number {
+            background-color: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .question-content {
+            color: #34495e;
+            font-size: 1.1em;
+        }
+
+        .question-content h3 {
+            color: #2c3e50;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+        }
+
+        .disease-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .category-box {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+
+        .category-box h4 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .mechanism-list {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .mechanism-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .mechanism-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.2);
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .mechanism-list li:last-child {
+            border-bottom: none;
+        }
+
+        .mechanism-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .mechanism-list strong {
+            color: #2c3e50;
+        }
+
+        .check-list {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ffc107;
+            margin: 20px 0;
+        }
+
+        .check-list h4 {
+            color: #856404;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .check-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .check-list li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .treatment-box {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #3498db;
+        }
+
+        .treatment-box h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        .treatment-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .treatment-box li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .treatment-box li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .advice-steps {
+            counter-reset: step-counter;
+        }
+
+        .advice-step {
+            background-color: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            position: relative;
+            padding-left: 80px;
+        }
+
+        .advice-step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 25px;
+            top: 25px;
+            background-color: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .advice-step h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .collaboration-highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .collaboration-highlight h4 {
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .conclusion {
+            background-color: #e8f5e8;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #28a745;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .conclusion h2 {
+            color: #155724;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .conclusion p {
+            color: #155724;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlight-text {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ffc107;
+            margin: 15px 0;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .question-title {
+                font-size: 1.5em;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .disease-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .treatment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .advice-step {
+                padding-left: 25px;
+                padding-top: 80px;
+            }
+            
+            .advice-step:before {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>免疫系統也會影響懷孕？</h1>
+            <p>破解免疫性不孕的5個常見疑問！</p>
+        </div>
+
+        <div class="question-section">
+            <div class="question-title">
+                <div class="question-number">1</div>
+                <div>什麼是免疫不孕症？免疫系統如何干擾受孕？</div>
+            </div>
+            <div class="question-content">
+                <p>免疫不孕症是指身體的免疫系統出現異常，把精子、卵子或胚胎誤認為「外來物」，產生攻擊反應，導致不容易懷孕，或反覆著床失敗、流產。</p>
+                
+                <p>這類情況常與一些自體免疫疾病有關，例如紅斑性狼瘡、抗磷脂症候群、橋本氏甲狀腺炎等。</p>
+                
+                <div class="highlight-text">
+                    在許多找不到明確原因的不孕症中，大約有五分之一可能與免疫因素有關。但因為症狀不一定明顯，檢查也較複雜，容易被忽略。
+                </div>
+                
+                <h3>免疫系統可能影響受孕的方式包括：</h3>
+                <div class="mechanism-list">
+                    <ul>
+                        <li><strong>破壞精子或卵子</strong>：產生抗體攻擊精子，影響其活動力與受精能力。</li>
+                        <li><strong>阻礙胚胎著床</strong>：對胚胎產生排斥反應，使胚胎無法順利著床。</li>
+                        <li><strong>導致反覆流產</strong>：例如抗磷脂抗體造成胎盤血栓，阻礙營養供應。</li>
+                        <li><strong>干擾排卵或荷爾蒙</strong>：如甲狀腺異常影響月經與排卵週期。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-section">
+            <div class="question-title">
+                <div class="question-number">2</div>
+                <div>常見涉及免疫不孕的疾病有哪些？</div>
+            </div>
+            <div class="question-content">
+                <p>可能造成免疫性不孕的疾病大致可分為兩類：</p>
+                
+                <div class="disease-categories">
+                    <div class="category-box">
+                        <h4>一、自體免疫疾病相關</h4>
+                        <ul>
+                            <li>紅斑性狼瘡(SLE)</li>
+                            <li>乾燥症(Sjögren's syndrome)</li>
+                            <li>抗磷脂症候群(APS)</li>
+                            <li>橋本氏甲狀腺炎(Hashimoto's thyroiditis)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="category-box">
+                        <h4>二、針對胚胎或精子的免疫反應</h4>
+                        <ul>
+                            <li><strong>抗精子抗體(Antisperm Antibodies)</strong>：造成精子活動力下降或難以通過子宮頸。</li>
+                            <li><strong>胚胎著床排斥(Alloimmune implantation dysfunction)</strong>：例如自然殺手細胞(NK cells)過高，會誤把胚胎當成外來物攻擊，導致著床失敗或早期流產。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-section">
+            <div class="question-title">
+                <div class="question-number">3</div>
+                <div>臨床上如何判斷是否需要介入免疫治療？風濕免疫科的治療方式？</div>
+            </div>
+            <div class="question-content">
+                <p>醫師可能會在以下情況懷疑免疫問題，並建議進一步檢查：</p>
+                
+                <div class="check-list">
+                    <h4>可能需要免疫評估的情況：</h4>
+                    <ul>
+                        <li>傳統檢查正常卻無法懷孕(不明原因不孕)</li>
+                        <li>多次試管嬰兒失敗或反覆著床失敗</li>
+                        <li>二次以上反覆性流產</li>
+                        <li>已知患有自體免疫疾病(如紅斑性狼瘡、乾燥症、抗磷脂症候群等)</li>
+                        <li>有甲狀腺功能異常或凝血異常病史</li>
+                    </ul>
+                </div>
+                
+                <h3>常見的免疫相關檢查包括：</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="padding: 8px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                        <strong>自體免疫抗體檢查</strong>(如 抗核抗體、抗磷脂抗體、甲狀腺抗體等)
+                    </li>
+                    <li style="padding: 8px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                        <strong>甲狀腺功能與凝血功能</strong>
+                    </li>
+                    <li style="padding: 8px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                        <strong>自然殺手細胞(NK cells)或免疫細胞比率</strong>
+                    </li>
+                </ul>
+                
+                <h3>風濕免疫科常見的治療方式：</h3>
+                <div class="treatment-grid">
+                    <div class="treatment-box">
+                        <h4>免疫調節藥物</h4>
+                        <ul>
+                            <li>類固醇(低劑量)抑制過度免疫反應</li>
+                            <li>奎寧(Hydroxychloroquine)常用於紅斑性狼瘡等自體免疫疾病，有助穩定免疫狀態</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="treatment-box">
+                        <h4>抗凝血藥物</h4>
+                        <ul>
+                            <li>低劑量阿斯匹靈、低分子量肝素(LMWH)降低血栓風險</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="treatment-box">
+                        <h4>其他免疫療法</h4>
+                        <ul>
+                            <li>靜脈注射免疫球蛋白(IVIG)、免疫抑制劑或生物製劑(視個案使用)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="question-section">
+            <div class="question-title">
+                <div class="question-number">4</div>
+                <div>婦產科懷疑免疫因素時，風濕免疫科如何協助？</div>
+            </div>
+            <div class="question-content">
+                <p>當婦產科醫師發現以下情況時，可能會轉介風濕免疫科評估：</p>
+                <ul style="list-style: none; padding-left: 0; margin: 20px 0;">
+                    <li style="padding: 8px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                        多次人工生殖或試管嬰兒失敗
+                    </li>
+                    <li style="padding: 8px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                        反覆流產但找不到原因
+                    </li>
+                    <li style="padding: 8px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                        本身有自體免疫疾病或抽血發現抗體異常、凝血異常
+                    </li>
+                </ul>
+                
+                <div class="collaboration-highlight">
+                    <h4>風濕免疫科會提供：</h4>
+                </div>
+                
+                <ul style="list-style: none; padding-left: 0; margin: 20px 0;">
+                    <li style="padding: 12px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">→</span>
+                        <strong>完整的免疫狀態評估</strong>(抗體檢測、NK 細胞活性、Th1/Th2 等)
+                    </li>
+                    <li style="padding: 12px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">→</span>
+                        <strong>評估是否需要免疫介入</strong>，即使未達明確診斷標準
+                    </li>
+                    <li style="padding: 12px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">→</span>
+                        <strong>與婦產科密切討論生殖計畫與安全用藥</strong>
+                    </li>
+                    <li style="padding: 12px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">→</span>
+                        <strong>根據狀況給予治療</strong>，例如類固醇、奎寧、阿斯匹靈、肝素等
+                    </li>
+                    <li style="padding: 12px 0; position: relative; padding-left: 25px;">
+                        <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">→</span>
+                        <strong>懷孕期間持續追蹤免疫指標</strong>，協助確保胎兒穩定發育
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="question-section">
+            <div class="question-title">
+                <div class="question-number">5</div>
+                <div>給自體免疫病患想懷孕的建議</div>
+            </div>
+            <div class="question-content">
+                <div class="advice-steps">
+                    <div class="advice-step">
+                        <h4>選對時機很重要</h4>
+                        <p>懷孕建議在疾病穩定至少 6 個月後進行，較能降低流產與早產風險。</p>
+                    </div>
+                    
+                    <div class="advice-step">
+                        <h4>懷孕前務必檢查與評估</h4>
+                        <p>建議與婦產科及風濕免疫科共同合作，檢查項目包括：</p>
+                        <ul style="list-style: none; padding-left: 0; margin: 15px 0;">
+                            <li style="padding: 5px 0; position: relative; padding-left: 25px;">
+                                <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                                自體抗體、甲狀腺功能、凝血功能、腎功能等
+                            </li>
+                            <li style="padding: 5px 0; position: relative; padding-left: 25px;">
+                                <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                                評估用藥安全性(部分藥物需停用、部分可繼續使用)
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="advice-step">
+                        <h4>懷孕中持續追蹤與調整</h4>
+                        <ul style="list-style: none; padding-left: 0; margin: 15px 0;">
+                            <li style="padding: 5px 0; position: relative; padding-left: 25px;">
+                                <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                                評估是否持續使用奎寧、類固醇、阿斯匹靈、肝素等
+                            </li>
+                            <li style="padding: 5px 0; position: relative; padding-left: 25px;">
+                                <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                                留意胎盤功能與胎兒發育情況
+                            </li>
+                            <li style="padding: 5px 0; position: relative; padding-left: 25px;">
+                                <span style="position: absolute; left: 0; color: #3498db; font-weight: bold;">•</span>
+                                依照孕期狀況調整治療與生產計畫
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="advice-step">
+                        <h4>保持健康生活方式與穩定情緒</h4>
+                        <p>良好睡眠、規律運動、減少熬夜與壓力，有助於穩定免疫系統與促進懷孕。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            <h2>結語</h2>
+            <p>懷孕不只是婦產科的事，免疫系統也可能默默扮演關鍵角色。當傳統檢查都找不到原因時，別忘了還有「免疫」這一塊可以探索。</p>
+            <p>透過免疫科與婦產科的密切合作，加上個人化的免疫評估與治療計畫，讓我們幫助每一位渴望當媽媽的妳，更靠近夢想一步。</p>
+        </div>
+    </div>
+</body>
+</html>
