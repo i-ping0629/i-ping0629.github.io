@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>睡眠衛教 - 五大生活衛生管理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft JhengHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #87CEEB 0%, #B0E0E6 50%, #E0F6FF 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .moon-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #4A90E2; }
+            to { text-shadow: 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #4A90E2; }
+        }
+
+        .hygiene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .hygiene-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hygiene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .hygiene-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-color);
+        }
+
+        .card-sleep { --accent-color: #e74c3c; }
+        .card-mental { --accent-color: #3498db; }
+        .card-work { --accent-color: #2ecc71; }
+        .card-family { --accent-color: #9b59b6; }
+        .card-personal { --accent-color: #f39c12; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .card-content {
+            font-size: 1em;
+            color: #34495e;
+            margin-bottom: 15px;
+        }
+
+        .tips-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tips-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .tips-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tips-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .footer-message {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .footer-message h3 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-message p {
+            font-size: 1.1em;
+            color: #34495e;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 25px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .hygiene-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .hygiene-card {
+                padding: 20px;
+            }
+            
+            .card-icon {
+                font-size: 2em;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="moon-icon">🌙</div>
+            <h1>想睡得好？從五大生活衛生做起！</h1>
+            <p>全方位睡眠衛教指南 - 打造健康生活模式</p>
+        </div>
+
+        <div class="hygiene-grid">
+            <div class="hygiene-card card-sleep">
+                <div class="card-header">
+                    <div class="card-icon">🛌</div>
+                    <div>
+                        <div class="card-title">睡眠衛生</div>
+                        <div class="card-subtitle">Sleep Hygiene</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    養成良好的睡眠習慣，打造適合入睡的環境：
+                </div>
+                <ul class="tips-list">
+                    <li>固定睡眠與起床時間，建立生理時鐘</li>
+                    <li>避免睡前過飽或飲酒</li>
+                    <li>晚上避免劇烈運動</li>
+                    <li>睡前放鬆、不看新聞、不滑手機</li>
+                    <li>臥室只用來「睡覺與放鬆」，不處理工作</li>
+                </ul>
+            </div>
+
+            <div class="hygiene-card card-mental">
+                <div class="card-header">
+                    <div class="card-icon">🧠</div>
+                    <div>
+                        <div class="card-title">心理衛生</div>
+                        <div class="card-subtitle">Mental Hygiene</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    心理平穩，睡眠自然穩：
+                </div>
+                <ul class="tips-list">
+                    <li>保持樂觀與感恩的心 🌈</li>
+                    <li>問題不要災難化思考 🔍</li>
+                    <li>相對化思考：不要將問題無限放大 📏</li>
+                    <li>為自己保留放鬆充電時間 🧘</li>
+                    <li>工作與生活取得平衡 ⚖️</li>
+                </ul>
+            </div>
+
+            <div class="hygiene-card card-work">
+                <div class="card-header">
+                    <div class="card-icon">💼</div>
+                    <div>
+                        <div class="card-title">工作衛生</div>
+                        <div class="card-subtitle">Work Hygiene</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    下班後就該關機：
+                </div>
+                <ul class="tips-list">
+                    <li>避免過勞、過度思考 ⛔</li>
+                    <li>避免中斷、避免多工 (一次只做一件事) 🎯</li>
+                    <li>提高效率、避免拖延 📈</li>
+                    <li>學會委任工作任務 📤</li>
+                    <li>不在家工作，生活空間要分明 🏠</li>
+                </ul>
+            </div>
+
+            <div class="hygiene-card card-family">
+                <div class="card-header">
+                    <div class="card-icon">🏠</div>
+                    <div>
+                        <div class="card-title">家庭衛生</div>
+                        <div class="card-subtitle">Family Hygiene</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    讓家庭成為放鬆而非壓力的來源：
+                </div>
+                <ul class="tips-list">
+                    <li>分擔責任、不獨自扛 👪</li>
+                    <li>與家人分享快樂、遊戲時光 🎲</li>
+                    <li>適度讓孩子獨立，自己也要喘息 🎯</li>
+                    <li>維持家庭和諧，享受生活 💖</li>
+                </ul>
+            </div>
+
+            <div class="hygiene-card card-personal">
+                <div class="card-header">
+                    <div class="card-icon">💁‍♀️</div>
+                    <div>
+                        <div class="card-title">個人衛生</div>
+                        <div class="card-subtitle">Your Own Hygiene</div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    自我價值感建立良好睡眠的根基：
+                </div>
+                <ul class="tips-list">
+                    <li>擺脫完美主義與過度憂慮 💪</li>
+                    <li>尊重自我價值 💎</li>
+                    <li>培養興趣、追求夢想 🎨</li>
+                    <li>肯定自我成就 🏆</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-message pulse">
+            <h3>🌟 最後提醒</h3>
+            <p><span class="highlight">想要睡得好，不只是「準時睡覺」而已，而是全方位照顧自己的生活方式！</span><br>
+            從生理、心理、工作、家庭到個人層面，每個環節都影響著您的睡眠品質。<br>
+            開始實踐這些建議，讓優質睡眠成為您健康生活的基石。</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加滾動動畫效果
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // 為卡片添加滾動動畫
+        document.querySelectorAll('.hygiene-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // 添加點擊效果
+        document.querySelectorAll('.hygiene-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
